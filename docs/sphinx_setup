@@ -1,0 +1,93 @@
+Basic Sphinx Setup
+------------------
+
+https://docs.readthedocs.io/en/latest/getting_started.html
+
+::
+
+  pip install -U sphinx sphinx-autobuild
+  cd docs
+  sphinx-quickstart 
+  ll
+  vi index.rst 
+  make html
+
+
+
+Make Project README part of Sphinx Docs
+---------------------------------------
+
+my ``getting_started`` page sources the project readme::
+
+  > cat index.html
+  Welcome to Organizer's documentation!
+  =====================================
+  
+  .. toctree::
+     :maxdepth: 2
+     :caption: Contents:
+  
+     getting_started
+
+
+  > cat getting_started.rst 
+  :tocdepth: 2
+  
+  .. include:: ../README.rst
+
+
+Sphinx AutoDoc Setup
+--------------------
+
+The strategy is to run ``sphinx-apidoc`` command as a preprocessor to
+``sphinx-build``.  This traverses my package modules and generates
+ReSTructuredText from class, function, and method definitions and their
+associated docstrings.  These are written into the sphinx source directory and
+tied into the ``index.html`` toctree::
+
+  > cat index.html
+  Welcome to Organizer's documentation!
+  =====================================
+  
+  .. toctree::
+     :maxdepth: 2
+     :caption: Contents:
+  
+     getting_started
+     _api/modules
+
+
+During sphinx-quickstart I accepted extentions for ``autodoc`` and ``napolean``::
+
+  > grep -A4 ^extensions conf.py 
+  extensions = [
+      'sphinx.ext.autodoc',
+      'sphinx.ext.napoleon',
+  ]
+
+Then I added an extra ``apidoc`` target and params to the ``Makefile``::
+
+> git diff Makefile
+  diff --git a/docs/Makefile b/docs/Makefile
+  --- a/docs/Makefile
+  +++ b/docs/Makefile
+
+   SOURCEDIR     = .
+   BUILDDIR      = _build
+  +APIDOCBUILD      = sphinx-apidoc
+  +APIDOCHEADER     = 'Organizer API'
+  +APIDOCBUILDDIR   = $(SOURCEDIR)/_api
+  +APIDOCSOURCEDIR  = ../organizer
+   
+  +apidoc:
+  +       @rm -r $(APIDOCBUILDDIR)
+  +       @$(APIDOCBUILD) -H $(APIDOCHEADER) -M -e -o $(APIDOCBUILDDIR) $(APIDOCSOURCEDIR)
+  +
+
+  -%: Makefile
+  -       @$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+  +%: apidoc Makefile
+  +       @$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+
+
