@@ -60,3 +60,7 @@ http://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html#module-sphinx
 http://www.sphinx-doc.org/en/master/usage/extensions/example_google.html#example-google
 http://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#module-sphinx.ext.autodoc
 
+https://github.com/rtfd/sphinx-autoapi
+
+testing aws resources:
+example: https://github.com/mozilla-services/autopush/blob/master/autopush/tests/__init__.py
