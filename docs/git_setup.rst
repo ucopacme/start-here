@@ -5,11 +5,12 @@ Github
 ------
 
 If you don't already have one, create a personal git account for yourself.
-Go to https://github.com/ and select ``Sign up for Github``.
+Go to https://github.com/ and select ```Sign up for Github```.
 
 See the various github guides at https://guides.github.com/
 
 For starters:
+
 - https://guides.github.com/activities/hello-world/
 - https://guides.github.com/introduction/git-handbook/
 
@@ -33,7 +34,7 @@ or STS tokens.  There are pros and cons to CodeCommit:
 
 Pros:
 
-- access to repos is controled by IAM authentication and policies - very secure
+- access to repos is controled by IAM user auth and policies - very secure
 - integrates well with other AWS services
 - very reliable
 
@@ -41,8 +42,8 @@ Cons:
 
 - repositories can not be made publicly accessible
 - cross-account access to repos is difficult to configure
-- ssh access requires credential-helper setup
 - does not itegrate will with some IDEs when using access keys or sts tokens
+- ssh access requires additional git config setup 
 
 
 CodeCommit credential-helper setup
