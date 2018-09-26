@@ -42,7 +42,7 @@ Cons:
 
 - repositories can not be made publicly accessible
 - cross-account access to repos is difficult to configure
-- does not itegrate will with some IDEs when using access keys or sts tokens
+- does not itegrate will with some IDEs when using access keys or STS tokens
 - ssh access requires additional git config setup 
 
 
