@@ -5,7 +5,7 @@ Github
 ------
 
 If you don't already have one, create a personal git account for yourself.
-Go to https://github.com/ and select ```Sign up for Github```.
+Go to https://github.com/ and select **Sign up for Github**.
 
 See the various github guides at https://guides.github.com/
 
