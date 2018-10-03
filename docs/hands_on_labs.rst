@@ -1,4 +1,4 @@
-Hands-on Labs - From Console to Code
+Hands-On Labs - From Console to Code
 ====================================
 
 The following is a series of self-paced lab exercises designed to introduce new
@@ -12,11 +12,13 @@ all of the following AWS deployment methods:
 - boto3 SDK with unit-test
 
 Submit your solutions to your personal GitHub account in a repository named
-``hands-on-lab-solutions``.  Your console solutions should consist of a
-step-by-step instruction set or a series of screen-shots or both.  AWS CLI
-solutions can be shell script or a cut-n-paste of your shell session.
+``hands-on-lab-solutions``.  You do not need to submit a AWS Console solution.
+We will take your word for it.  AWS CLI solutions can be shell script or a
+cut-n-paste of your shell session.  For CloudFormation solutions, submit a yaml
+or json template file.  For boto3 solutions, submit an executible python
+script.
 
-See the Samples section for a complete example
+See the ``hands_on_lab_sample_solutions`` directory for a complete example.
 
 
 Lab 1 - IAM User
