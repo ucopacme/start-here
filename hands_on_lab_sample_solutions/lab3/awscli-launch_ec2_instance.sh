@@ -5,7 +5,6 @@
 
 # Set params based on your specific account and vpc
 AMI=ami-6cd6f714
-REGION=us-west-2
 SECURITY_GROUP=sg-0e19a5c91255a49ba
 SSHKEY=ashley@isis
 

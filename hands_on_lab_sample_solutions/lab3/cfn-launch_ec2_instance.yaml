@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Sample template to launch EC2 instance in default VPC.'
+Parameters: 
+    InstanceType:
+        Type: String
+        Default: t1.micro 
+        Description: EC2 instance type to launch.
+    ImageId:
+        Type: String
+        Default: ami-6cd6f714
+        Description: AWS Image Id
+    KeyName:
+        Type: String
+        Description: The name of SSH key pair to use to access the instance.
+    SecurityGroupIds:
+        Type: CommaDelimitedList
+        Description: VPC Security Group Id where to place EC2 instance.
+Resources:
+    Ec2Instance:
+        Type: AWS::EC2::Instance
+        Properties:
+            InstanceType:
+                Ref: InstanceType
+            ImageId: 
+                Ref: ImageId
+            KeyName:
+                Ref: KeyName
+            SecurityGroupIds:
+                Ref: SecurityGroupIds
+
+Outputs:
+    InstanceId:
+        Description: Instance Id of EC2 instance
+        Value: !Ref Ec2Instance
+    PublicIpAddress:
+        Description: External IP Address of EC2 instance
+        Value:
+            Fn::GetAtt:
+            - Ec2Instance
+            - PublicIp
