@@ -78,6 +78,12 @@ close to 1:1 with AWS CLI.
 
 **Boto3 Unit Testing**
 
+We recommend starting with pytest and moto for your unit-test labs.
+
+- https://docs.pytest.org/en/latest/contents.html#toc
+- https://github.com/spulec/moto
+- http://docs.getmoto.org/en/latest/docs/getting_started.html
+
 
 
 
