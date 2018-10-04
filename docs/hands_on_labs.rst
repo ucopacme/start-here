@@ -18,10 +18,6 @@ cut-n-paste of your shell session.  For CloudFormation solutions, submit a yaml
 or json template file.  For boto3 solutions, submit an executible python
 script.  
 
-For boto3 solutions we recommend you start out by using service clients_ rather
-than resources_.  Clients provide a low-level interface to AWS whose methods map
-close to 1:1 with AWS CLI.
-
 See the ``hands_on_lab/sample_solutions`` directory for a complete example.
 
 
@@ -51,10 +47,43 @@ Lab 3 - EC2 Instance
 - Delete your instance
 
 
+Prerequisites
+-------------
+
+- awscli
+- aws-shelltools
+- python venv
+
+
+Reference Documentation
+-----------------------
+
+**AWS-CLI**
+
+- ref
+
+**CloudFormation**
+
+- ref
+
+**Boto3 SDK**
+
+For boto3 solutions we recommend you start out by using service clients_ rather
+than resources_.  Clients provide a low-level interface to AWS whose methods map
+close to 1:1 with AWS CLI.
+
+- https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
+- https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-example-creating-buckets.html
+- https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#client
+
+**Boto3 Unit Testing**
 
 
 
 
 
-.. _client: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/clients.html
-.. _resource: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/resources.html#overview
+
+.. target-notes::
+
+.. _clients: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/clients.html
+.. _resources: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/resources.html#overview
