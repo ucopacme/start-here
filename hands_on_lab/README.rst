@@ -1,0 +1,1 @@
+../docs/hands_on_labs.rst

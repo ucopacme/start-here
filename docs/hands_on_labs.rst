@@ -16,9 +16,13 @@ Submit your solutions to your personal GitHub account in a repository named
 We will take your word for it.  AWS CLI solutions can be shell script or a
 cut-n-paste of your shell session.  For CloudFormation solutions, submit a yaml
 or json template file.  For boto3 solutions, submit an executible python
-script.
+script.  
 
-See the ``hands_on_lab_sample_solutions`` directory for a complete example.
+For boto3 solutions we recommend you start out by using service clients_ rather
+than resources_.  Clients provide a low-level interface to AWS whose methods map
+close to 1:1 with AWS CLI.
+
+See the ``hands_on_lab/sample_solutions`` directory for a complete example.
 
 
 Lab 1 - IAM User
@@ -46,3 +50,11 @@ Lab 3 - EC2 Instance
 - Log into your instance with ssh
 - Delete your instance
 
+
+
+
+
+
+
+.. _client: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/clients.html
+.. _resource: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/resources.html#overview
