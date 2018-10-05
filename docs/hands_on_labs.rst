@@ -9,50 +9,90 @@ all of the following AWS deployment methods:
 - AWS CLI
 - CloudFormation
 - boto3 SDK
-- boto3 SDK with unit-test
+- unit-test boto3
+
+The labs in `Part 2`_ inherit from those in `Part 1`_.
 
 Submit your solutions to your personal GitHub account in a repository named
 ``hands-on-lab-solutions``.  You do not need to submit a AWS Console solution.
 We will take your word for it.  AWS CLI solutions can be shell script or a
 cut-n-paste of your shell session.  For CloudFormation solutions, submit a yaml
-or json template file.  For boto3 solutions, submit an executible python
-script.  
+or json template file along with a script containing launch/delete
+instructions.  For boto3 solutions, submit an executible python script with
+usage examples.  
 
 See the ``hands_on_lab/sample_solutions`` directory for a complete example.
+
+
+Part 1
+------
 
 
 Lab 1 - IAM User
 ----------------
 
-- Create an IAM user and group  
-- Add the user to the group
-- Delete both user and group
+- Create an IAM user
+- Validate user creation
+- Delete user
 
 
 Lab 2 - S3 Bucket
 -----------------
 
 - Create an S3 bucket
-- Add an object to the bucket
-- Delete both object and bucket
+- Validate bucket creation
+- Delete bucket
 
 
 Lab 3 - EC2 Instance
 --------------------
 
-- Create an EC2 instance in the default VPC
-- Supply your public ssh key
-- Launch your instance
+- Launch EC2 instance in the default VPC
+- Validate instance is running
+- Delete instance
+
+
+Part 2
+------
+
+
+Lab 4 - IAM User in Group
+-------------------------
+
+- Create IAM user
+- Create IAM Group
+- Add the user to the group
+- Validate user is in group
+- Delete both user and group
+
+
+Lab 5 - S3 Object in Bucket
+---------------------------
+
+- Create an S3 bucket
+- Add an object to the bucket
+- Validate bucket is in object
+- Delete both object and bucket
+
+
+Lab 6 - SSH to EC2 Instance
+---------------------------
+
+- Create or upload an SSH keypair into EC2 service
+- Create a EC2 SecurityGroup in default VPC with rule allowing ssh access
+- Launch an EC2 instance your SSH keypair and SecurityGroup as properties
 - Log into your instance with ssh
-- Delete your instance
+- Delete your EC2 instance, SSH keypair and SecurityGroup
+
 
 
 Prerequisites
 -------------
 
-- awscli
-- aws-shelltools
-- python venv
+- Create a github account
+- Set up python 3 virtual environnment
+- Install and configure awscli
+- Install and configure aws-shelltools
 
 
 Reference Documentation
@@ -60,11 +100,17 @@ Reference Documentation
 
 **AWS-CLI**
 
-- ref
+- https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html
+- https://docs.aws.amazon.com/cli/latest/reference/
+- https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html
 
 **CloudFormation**
 
-- ref
+- https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.html
+- https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
+- https://aws.amazon.com/cloudformation/aws-cloudformation-templates/
+- https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html
+- https://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html
 
 **Boto3 SDK**
 
@@ -86,10 +132,6 @@ We recommend starting with pytest and moto for your unit-test labs.
 
 
 
-
-
-
-.. target-notes::
 
 .. _clients: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/clients.html
 .. _resources: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/resources.html#overview
