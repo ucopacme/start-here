@@ -18,10 +18,10 @@ Submit your solutions to your personal GitHub account in a repository named
 We will take your word for it.  AWS CLI solutions can be shell script or a
 cut-n-paste of your shell session.  For CloudFormation solutions, submit a yaml
 or json template file along with a script containing launch/delete
-instructions.  For boto3 solutions, submit an executible python script with
+instructions.  For boto3 solutions, submit an executable python script with
 usage examples.  
 
-See the ``hands_on_lab/sample_solutions`` directory for a complete example.
+See `sample solutions`_ for complete examples.
 
 
 Level 1
@@ -135,6 +135,7 @@ We recommend starting with pytest and moto for your unit-test labs.
 - http://docs.getmoto.org/en/latest/docs/getting_started.html
 
 
+.. _sample solutions: https://github.com/ucopacme/start-here/tree/master/hands_on_lab/sample_solutions/lab3
 .. _clients: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/clients.html
 .. _resources: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/resources.html#overview
 .. _github account: https://github.com/
