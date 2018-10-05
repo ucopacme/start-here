@@ -6,12 +6,12 @@ users to management of AWS resources with code.  Work on each exercise using
 all of the following AWS deployment methods:
 
 - AWS console
-- AWS CLI
-- CloudFormation
-- boto3 SDK
-- unit-test boto3
+- AWSCLI_
+- CloudFormation_
+- `Boto3 SDK`_
+- `Boto3 Unit Testing`_
 
-The labs in `Part 2`_ inherit from those in `Part 1`_.
+The labs in `Level 2`_ inherit from those in `Level 1`_.
 
 Submit your solutions to your personal GitHub account in a repository named
 ``hands-on-lab-solutions``.  You do not need to submit a AWS Console solution.
@@ -24,7 +24,7 @@ usage examples.
 See the ``hands_on_lab/sample_solutions`` directory for a complete example.
 
 
-Part 1
+Level 1
 ------
 
 
@@ -52,7 +52,7 @@ Lab 3 - EC2 Instance
 - Delete instance
 
 
-Part 2
+Level 2
 ------
 
 
@@ -89,7 +89,7 @@ Lab 6 - SSH to EC2 Instance
 Prerequisites
 -------------
 
-- Create a github account
+- Create a `github account`_
 - Set up python 3 virtual environnment
 - Install and configure awscli
 - Install and configure aws-shelltools
@@ -99,12 +99,14 @@ Reference Documentation
 -----------------------
 
 **AWS-CLI**
+-----------
 
 - https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html
 - https://docs.aws.amazon.com/cli/latest/reference/
 - https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html
 
 **CloudFormation**
+------------------
 
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.html
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
@@ -113,6 +115,7 @@ Reference Documentation
 - https://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html
 
 **Boto3 SDK**
+-------------
 
 For boto3 solutions we recommend you start out by using service clients_ rather
 than resources_.  Clients provide a low-level interface to AWS whose methods map
@@ -123,6 +126,7 @@ close to 1:1 with AWS CLI.
 - https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#client
 
 **Boto3 Unit Testing**
+----------------------
 
 We recommend starting with pytest and moto for your unit-test labs.
 
@@ -131,7 +135,9 @@ We recommend starting with pytest and moto for your unit-test labs.
 - http://docs.getmoto.org/en/latest/docs/getting_started.html
 
 
-
-
 .. _clients: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/clients.html
 .. _resources: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/resources.html#overview
+.. _github account: https://github.com/
+.. _python 3 virtual environnment: https://github.com/ucopacme/start-here/blob/master/docs/python_venv_setup.rst
+.. _awscli: https://docs.aws.amazon.com/cli/latest/userguide/installing.html
+.. _aws-shelltools: https://github.com/ashleygould/aws-shelltools
