@@ -90,9 +90,9 @@ Prerequisites
 -------------
 
 - Create a `github account`_
-- Set up python 3 virtual environnment
-- Install and configure awscli
-- Install and configure aws-shelltools
+- Set up `python 3 virtual environnment`_
+- Install and configure awscli_
+- Install and configure aws-shelltools_
 
 
 Reference Documentation
