@@ -8,7 +8,6 @@ from boto3_create_sns_topic import (
 
 
 TOPIC_NAME = 'test_topic'
-ACCOUNT_ID_REGEX = r'[0-9]{12}'
 ARN_REGEX = re.compile(r'arn:aws:sns:\w+\-\w+\-\d:\d{12}:%s' % TOPIC_NAME)
 
 
@@ -18,6 +17,7 @@ def test_create_sns_topic():
     #print(topic_arn)
     assert isinstance(topic_arn, str)
     assert ARN_REGEX.match(topic_arn)
+    #assert False
 
 
 @mock_sns

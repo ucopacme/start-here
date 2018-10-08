@@ -9,7 +9,7 @@ all of the following AWS deployment methods:
 - AWSCLI_
 - CloudFormation_
 - `Boto3 SDK`_
-- `Boto3 Unit Testing`_
+- `Boto3/Moto Unit Testing`_
 
 The labs in `Level 2`_ inherit from those in `Level 1`_.
 
@@ -98,14 +98,14 @@ Prerequisites
 Reference Documentation
 -----------------------
 
-**AWS-CLI**
+AWS-CLI
 -----------
 
 - https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html
 - https://docs.aws.amazon.com/cli/latest/reference/
 - https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html
 
-**CloudFormation**
+CloudFormation
 ------------------
 
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.html
@@ -114,7 +114,7 @@ Reference Documentation
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html
 - https://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html
 
-**Boto3 SDK**
+Boto3 SDK
 -------------
 
 For boto3 solutions we recommend you start out by using service clients_ rather
@@ -125,8 +125,8 @@ close to 1:1 with AWS CLI.
 - https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-example-creating-buckets.html
 - https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#client
 
-**Boto3 Unit Testing**
-----------------------
+Boto3/Moto Unit Testing
+---------------------------
 
 We recommend starting with pytest and moto for your unit-test labs.
 
