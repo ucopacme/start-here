@@ -21,11 +21,26 @@ or json template file along with a script containing launch/delete
 instructions.  For boto3 solutions, submit an executable python script with
 usage examples.  
 
-See `sample solutions`_ for complete examples.
+See `sample solutions`_ for a complete example.
+
+
+Peer Review
+-----------
+
+Once you have completed all five parts of a lab, open an issue in this
+github repo and request peer review of your solutions.  Supply the URL
+of your ``hands-on-lab-solutions`` repository and which lab needs review.
+
+Peer review will include the following:
+
+- are all five deployment methods complete?
+- do all code solutions run without error?
+- do solutions demonstrate understanding of the various deployment methods?
+- are code solutions well organized and well formatted?
 
 
 Level 1
-------
+-------
 
 
 Lab 1 - IAM User
@@ -53,7 +68,7 @@ Lab 3 - EC2 Instance
 
 
 Level 2
-------
+-------
 
 
 Lab 4 - IAM User in Group
@@ -99,14 +114,14 @@ Reference Documentation
 -----------------------
 
 AWS-CLI
------------
+-------
 
 - https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html
 - https://docs.aws.amazon.com/cli/latest/reference/
 - https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html
 
 CloudFormation
-------------------
+--------------
 
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.html
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
@@ -115,7 +130,7 @@ CloudFormation
 - https://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html
 
 Boto3 SDK
--------------
+---------
 
 For boto3 solutions we recommend you start out by using service clients_ rather
 than resources_.  Clients provide a low-level interface to AWS whose methods map
@@ -126,16 +141,17 @@ close to 1:1 with AWS CLI.
 - https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#client
 
 Boto3/Moto Unit Testing
----------------------------
+-----------------------
 
 We recommend starting with pytest and moto for your unit-test labs.
 
 - https://docs.pytest.org/en/latest/contents.html#toc
+- https://semaphoreci.com/community/tutorials/testing-python-applications-with-pytest
 - https://github.com/spulec/moto
 - http://docs.getmoto.org/en/latest/docs/getting_started.html
 
 
-.. _sample solutions: https://github.com/ucopacme/start-here/tree/master/hands_on_lab/sample_solutions/lab3
+.. _sample solutions: https://github.com/ucopacme/start-here/tree/master/hands_on_lab/sample_solutions
 .. _clients: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/clients.html
 .. _resources: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/resources.html#overview
 .. _github account: https://github.com/
