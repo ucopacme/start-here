@@ -1,6 +1,33 @@
 Setting up Git
 ==============
 
+Git Environment
+---------------
+
+Ensure your git commit messages contain correct contact info::
+
+  git config --global user.name "Ashley Gould"
+  git config --global user.email "agould@ucop.edu"
+
+Ensure vim is your default editor for git commit messages::
+
+  git config --global core.editor /usr/bin/vim
+
+Ensure git tab completion is enabled.  Git comes with its own auto-completion script, so if tab completion is not enabled, usually all you need is to set up bash-completion. (https://github.com/bobthecow/git-flow-completion/wiki/Install-Bash-git-completion)::
+
+  # fedora
+  sudo dnf install bash-completion
+  . ~/.bashrc
+
+  # centos
+  sudo yum install bash-completion
+  . ~/.bashrc
+
+  # debian
+  sudo apt-get install bash-completion
+  . ~/.bashrc
+
+
 Github
 ------
 
