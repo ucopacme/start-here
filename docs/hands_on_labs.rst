@@ -119,14 +119,14 @@ Reference Documentation
 -----------------------
 
 AWSCLI
-------
+******
 
 - https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html
 - https://docs.aws.amazon.com/cli/latest/reference/
 - https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html
 
 CloudFormation
---------------
+**************
 
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.html
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
@@ -135,7 +135,7 @@ CloudFormation
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/sample-templates-services-us-west-2.html
 
 Boto3 SDK
----------
+*********
 
 For boto3 solutions we recommend you start out by using service clients_ rather
 than resources_.  Clients provide a low-level interface to AWS whose methods map
@@ -146,7 +146,7 @@ close to 1:1 with AWS CLI.
 - https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#client
 
 Boto3/Moto Unit Testing
------------------------
+***********************
 
 We recommend starting with pytest and moto for your unit-test labs.
 
