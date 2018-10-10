@@ -11,15 +11,20 @@ all of the following AWS deployment methods:
 - `Boto3 SDK`_
 - `Boto3/Moto Unit Testing`_
 
-The labs in `Level 2`_ inherit from those in `Level 1`_.
 
-Submit your solutions to your personal GitHub account in a repository named
-``hands-on-lab-solutions``.  You do not need to submit a AWS Console solution.
-We will take your word for it.  AWS CLI solutions can be shell script or a
-cut-n-paste of your shell session.  For CloudFormation solutions, submit a yaml
-or json template file along with a script containing launch/delete
-instructions.  For boto3 solutions, submit an executable python script with
-usage examples.  
+To post your solutions follow the `Contributing to Github`_ workflow.  Make a
+fork of this repository in your personal GitHub account.  Add a directory for
+yourself under ``hands_on_lab/user_solutions/`` and post your code within
+subdirs named for each lab::
+
+  mkdir -p hands_on_lab/user_solutions/$USER/lab1
+  cp ~/lab1_code/* hands_on_lab/user_solutions/$USER/lab1
+
+You do not need to submit a AWS Console solution.  We will take your word for
+it.  AWS CLI solutions can be shell script or a cut-n-paste of your shell
+session.  For CloudFormation solutions, submit a yaml or json template file
+along with a script containing launch/delete instructions.  For boto3 and
+unit-test solutions, submit an executable python script with usage examples.  
 
 See `sample solutions`_ for a complete example.
 
@@ -27,14 +32,14 @@ See `sample solutions`_ for a complete example.
 Peer Review
 -----------
 
-Once you have completed all five parts of a lab, open an issue in this
-github repo and request peer review of your solutions.  Supply the URL
-of your ``hands-on-lab-solutions`` repository and which lab needs review.
+Once you have completed all five parts of a lab, open an issue and pull request in this
+github repo to review your solutions: ``[Resolves #<issue_number>] peer review ashley's lab1 solutions``
 
 Peer review will include the following:
 
 - are all five deployment methods complete?
 - do all code solutions run without error?
+- do unit-tests pass?
 - do solutions demonstrate understanding of the various deployment methods?
 - are code solutions well organized and well formatted?
 
@@ -43,36 +48,45 @@ Level 1
 -------
 
 
-Lab 1 - IAM User
-----------------
-
-- Create an IAM user
-- Validate user creation
-- Delete user
-
-
-Lab 2 - S3 Bucket
------------------
+Lab 1 - S3 Bucket
+*****************
 
 - Create an S3 bucket
 - Validate bucket creation
 - Delete bucket
 
 
+Lab 2 - IAM User
+****************
+
+- Create an IAM user
+- Validate user creation
+- Delete user
+
+
 Lab 3 - EC2 Instance
---------------------
+********************
 
 - Launch EC2 instance in the default VPC
 - Validate instance is running
 - Delete instance
 
 
-Level 2
--------
+Level 2 - Builds off of Level 1 solutions
+-----------------------------------------
 
 
-Lab 4 - IAM User in Group
--------------------------
+Lab 4 - S3 Object in Bucket
+***************************
+
+- Create an S3 bucket
+- Add an object to the bucket
+- Validate bucket is in object
+- Delete both object and bucket
+
+
+Lab 5 - IAM User in Group
+*************************
 
 - Create IAM user
 - Create IAM Group
@@ -81,17 +95,8 @@ Lab 4 - IAM User in Group
 - Delete both user and group
 
 
-Lab 5 - S3 Object in Bucket
----------------------------
-
-- Create an S3 bucket
-- Add an object to the bucket
-- Validate bucket is in object
-- Delete both object and bucket
-
-
 Lab 6 - SSH to EC2 Instance
----------------------------
+***************************
 
 - Create or upload an SSH keypair into EC2 service
 - Create a EC2 SecurityGroup in default VPC with rule allowing ssh access
@@ -113,8 +118,8 @@ Prerequisites
 Reference Documentation
 -----------------------
 
-AWS-CLI
--------
+AWSCLI
+------
 
 - https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html
 - https://docs.aws.amazon.com/cli/latest/reference/
@@ -125,9 +130,9 @@ CloudFormation
 
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.html
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
-- https://aws.amazon.com/cloudformation/aws-cloudformation-templates/
-- https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html
 - https://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html
+- https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html
+- https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/sample-templates-services-us-west-2.html
 
 Boto3 SDK
 ---------
@@ -151,6 +156,7 @@ We recommend starting with pytest and moto for your unit-test labs.
 - http://docs.getmoto.org/en/latest/docs/getting_started.html
 
 
+.. _Contributing to Github: https://github.com/ucopacme/start-here/blob/master/docs/contributing.rst
 .. _sample solutions: https://github.com/ucopacme/start-here/tree/master/hands_on_lab/sample_solutions
 .. _clients: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/clients.html
 .. _resources: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/resources.html#overview
