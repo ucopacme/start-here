@@ -1,0 +1,294 @@
+
+
+			Ashley's Git One-liners
+
+
+# init
+cd ~/project
+git init			# create new repo 
+git init my_new_repo		# create new repo in directory 'my_new_repo'
+git init --bare bare_repo	# create bare repository
+
+
+# clone
+git clone /path/to/repo			# clone from repo on same host
+git clone /path/to/repo ~/git/repo	# clone into named directory
+git clone --bare /path/to/repo 		# clone as a 'bare' repository
+git clone /path/to/repo -B <branch>	# checkout branch instead of remote HEAD
+git clone agould@gitserver:/path/to/repo	   # clone over ssh from remote
+git clone git://git.kernel.org/pub/scm/git/git.git # clone as anonymous user
+git clone https://agould@git.ucop.edu/<repo_path>  # over https as me
+# over https as me, ignore ssl verification
+git -c http.sslVerify=false clone https://agould@git.ucop.edu/<repo_path>
+
+
+# config
+git config --global user.name ashley    # set username for all repos on host
+git config --global user.email agould@ucop.edu 	# set email
+git config http.sslverify false		# set sslverify only for this repo
+# git log aliases
+git config --global alias.graphlog 'log --date=short --graph --no-merges --pretty=format:"%h %ad  %aN    %s"'
+git config --global alias.nopagelog 'git --no-pager log --oneline --no-merges'
+
+
+# checking status of working tree
+git status		# show modified files
+git diff		# show diff of modified files from thier committed state
+git diff <filename>	# show diff of <filename>
+git diff --cached	# chow diff for files added to index
+git diff devqa..master  # check if two branches point at same point in history
+
+
+# add
+git add file 			# add single file to the index
+git add dir			# add everything under dir to index
+git add .			# add everything current directory to index
+git add . -n			# dry run only
+git add -A .			# as above. fixes renames and deletes also
+
+
+# commiting changes
+git commit			# store current contents of index in new commit
+git commit <filename>		# only commit <filename>
+git commit -m 'edited filename'	# commit with message
+git commit -a			# add all modifiecations to index and commit
+git commit --amend 		# amend message of previous commit
+git add file;git commit --amend # add changes in 'file' to previous commit
+git commit --dry-run		# Do not create a commit
+
+
+# branches
+git branch			# list local branches
+git branch -v			# verbose list 
+git branch -r			# list remote branches
+git branch -va			# verbose list remote and local (all) branches
+git branch new_1		# create a new branch
+git branch --merged		# branches already merged into current branch
+git branch --no-merged		# local branches not merged into currrent branch
+git branch -r --no-merged	# all branches not merged into currrent branch
+git branch --contains v0.02     # all branches with tag v0.02 as ancestor
+git branch -d new_branch	# delete a branch - must be merged already
+git branch -D new_branch	# delete an unmerged branch
+git symbolic-ref HEAD refs/heads/staging   # change default branch in bare repo
+
+
+# remotes
+git remote					# list remotes
+git remote -v					# list remotes
+git remote add /data/puppet/dev_gonzalo gman	# add a remote
+git remote add agould@git:/data/git/repo1	# add a remote over ssh
+git remote rename origin repo1			# remane a remote
+git remote set-url origin git@git:/unix/autoupdate   # change remote url
+git remote show repo1   			# show details of remote
+git remote rm repo1				# delete remote
+git remote prune repo1    	# remove local refs to stale tracking branches
+git remote set-head origin staging      # change remote HEAD ref in local repo
+
+
+# fetch pull push from remote
+git fetch origin		# fetch any recent commits from remote 'origin'
+git pull origin master		# fetch and merge remote 'master' branch into 
+git push			# push local branch to remote tracking branch
+git pull -u origin master	# add upstream (tracking) reference
+git push origin ghack:hack	# push local branch ghack to remote branch hack
+git push origin :hack		# delete branch 'hack' on remote (push nothing)
+git push --tags origin staging	# push all tags as well as 'staging' branch
+git fetch --tags		# fetch all tags
+git fetch --prune		# fetch and remove stale tracking branches
+
+
+# checkout
+git checkout other_branch	# checkout a different branch into working tree
+git checkout origin/test	# checkout a remote tracking branch
+git checkout -b new_2		# create and checkout a new branch in one go
+git checkout -b stage master    # checkout a new branch based on master br
+git checkout -b stage origin/stage # checkout a new branch based on tracking br
+git checkout d394927		# checkout a commit (detached HEAD)
+git checkout v0.1		# checkout a tag (detached HEAD)
+git checkout test path/to/dir	# copy dir from branch 'test' into working tree
+git checkout HEAD^ path/to/file # revert file to its state in previous commit
+
+
+# merging branches
+git checkout master		# you checkout the branch you are merging into
+git merge topic			# merge commits from 'test' into current branch
+git merge origin/master         # merge fetched commits from remote tracking br
+git merge topic --no-commit	# merge 'topic' but don't create merge commit
+git merge --continue
+git merge --squash
+git ls-files -u                 # inspect the 3 stages of merge conflict
+git merge -s recursive -X theirs topic 
+				# force conflicts to favor merging branch
+
+# stashing
+git stash			# save changes to working tree into temp stash
+git stash list			# list stashes
+git stash show stash@{1}	# show changes in stash as diff of it's parent
+git stash pop			# retrieve stashed changes into working tree
+git stash apply			# retrieve changes but dont drop the stash yet
+git stash apply stash@{2}       # apply 3rd most recent stash
+git stash save --keep-index	# don't stash what's already in the index
+git stash branch stash@{1}      # checkout a new branch and apply a stash
+git stash drop			# drop a single stash
+git stash clear			# drop all stashes
+
+
+# tags
+git tag v1.02			# create basic tag
+git tag -a v1.02		# create annotated tag
+git tag -a v1.03 -m'comment'	# create annotated tag with comment
+git tag -a v1.01 871421		# tag a particular commit
+git show v1.02			# show tag
+git --no-pager show --abbrev-commit v0.02 | grep commit 
+				# what commit does tag point to
+git tag				# list tags
+git tag -n			# list tags with comments
+git tag -l "v1.*"		# list tags matching <pattern>
+git tag --contains 933408	# list tags which contain given commit
+git tag --contains origin/master # list tags containing HEAD of origin/master
+git checkout v1.02		# checkout a tag (headless - not a branch)
+git checkout -b new_br v1.02	# create/checkout a branch from a tag
+git push origin v1.02		# push a tag to remote repo
+git push origin --tags		# push all tags to remote repo
+git fetch origin v1.02		# fetch commits at tag from remote
+git tag -d v1.1			# delete a tag
+git push origin :refs/tags/v1.1 # delete tag on remote
+
+
+# show git objects
+git show b0cd5f9	# show commit object
+git show HEAD		# show commit at current HEAD
+git show		# same as git show HEAD
+git show HEAD^		# show commit at parent of HEAD
+git show HEAD^^		# show commit at grand parent of HEAD
+git show HEAD~4		# show commit at 4 generations before HEAD
+git show pryan		# show commit at HEAD of branch pryan
+git show v1.01		# show commit at tag
+git show v1.01^{tree}	# show tree object at tag
+git show 15f6220^1	# show first parent of a merge commit
+git show 15f6220^2	# show second parent of a merge commit
+git show pryan:manifests/site.pp 
+			# show contents of file in a different branch
+git show HEAD^:path/to/deleted_file > path/to/file 
+			# recreate deleted file
+git --no-pager show --abbrev-commit v0.02 | grep commit 
+			# what commit does tag point to
+
+
+# show references
+git show-ref			# list references in a local repository
+git show-ref --abbrev		# Abbreviate the object name
+git show-ref --head		# show HEAD as well 
+git show-ref --tags		# limit to only "refs/tags"
+git show-ref --heads		# limit to only "refs/heads" (local branches)
+git show-ref master		# list refs matching pattern 'master'
+git show-ref --head HEAD	# list all HEADs
+git show-ref -d			# show object IDs of tags as well as refs
+git show-ref --abbrev --head    # my favorite
+
+
+# show reference log
+git reflog			# show reference log of HEAD
+git reflog show test		# show reference log of of 'test' branch
+git reflog show origin/test	# show ref log of remote branch
+
+
+# view commit history
+git log			 # shows all commit headers most recent first
+git log --stat		 # shows what files changed in each commit
+git log -p		 # shows diffs of actual changes (patch)
+git log -2		 # only the last 2 commits
+git log v2.5..           # commits since (not reachable from) tag v2.5
+git log mybranch         # history for branch 'mybranch'
+git log --no-merges      # don't show merge commits
+git log --pretty=oneline # one per line
+git --no-pager log --oneline
+			 # one per line, don't use pager.  good for grepping
+git log test..master     # commits reachable from master but not test
+git log --no-merges master..test
+                         # non-merge commits reachable from test but not master
+git log --graph --oneline
+                         # show graphical representation of history
+git log master...test    # reachable from either test or master, but not both
+git log --since="2 weeks ago" # commits from the last 2 weeks
+git log Makefile         # commits which modify Makefile
+git log fs/              # commits which modify any file under fs/
+git log -S'foo()'        # commits which add or remove the string 'foo()'
+git --no-pager log --no-merges --oneline --since="one year ago" --author=agould | wc -l
+			# how many commits did ashley author last year
+
+
+# git log formats
+#
+# set output format: commit  authordate authorname  commnet_string
+git log --date=short --pretty=format:"%h %ad  %an:  %s" 	
+# shows branches/merges in graphic form
+git log --graph --pretty=format:"%h %s"
+# my favorite:
+git log --date=short --graph --no-merges --pretty=format:"%h %ad  %aN    %s"
+
+
+# shortlog command - summarize 'git log' output sorted by author
+git shortlog
+git shortlog --no-merges
+
+
+# reset 
+git reset --soft HEAD^		# Move branch HEAD to parent of HEAD, index and
+				# working tree are not changed
+git reset HEAD^		        # Move branch HEAD, resync index with new HEAD
+				# but working is unchanged
+git reset --hard HEAD^		# Move branch HEAD, sync index, and working tree
+				# fully reverts branch to previous commit
+git reset HEAD			# Resync index with HEAD. unstages all changes
+git reset --hard HEAD		# Resync index and working tree with HEAD,
+				# wipes all uncommited changes
+git reset 
+git reset --hard HEAD~3 	# Revert branch to 3 commits ago
+git reset 2bd29f		# Revert branch to commit id 2bd29f
+git reset file.txt              # Restore file.txt from HEAD into index
+                                # this unstages file.txt from index
+git reset v1.2 file.txt         # Copy file.txt from tag v1.2 into index
+                                # does not update working tree
+git reset --abort		# Bad merge conflicts, return to unmerged state
+git reset --hard ORIG_HEAD	# Back out of a merge. does same as above
+
+
+
+# revert
+git revert HEAD		# revert changes made in most recent commit (HEAD)
+			# this creates a new commit and retains history.
+git revert b7f4134	# revert changes made in previous commit
+git revert -m1 a2334f6  # revert a merge commit to mainline parent
+git revert -n master~5..master~2 # revert a range of commits
+git revert --abort	# Cancel the operation and return to pre-sequence state
+
+
+________________________________________________________________________________
+Advanced git stuff (I haven't really learned yet)
+
+# merge-base
+git merge-base origin/master test
+git show $(git merge-base puppetdb controlm-aduser)
+
+# git rebase
+# git bisect
+
+
+
+
+
+
+
+________________________________________________________________________________
+Plumming Commands
+
+# Create sub-project from existing repostory
+git filter-branch --subdirectory-filter foodir -- --all
+
+# Resetting branch head on a bare repo
+git update-ref HEAD ac53d0f1255ed5e6098b31775e9538079690dda8
+
+
+
+

@@ -1,0 +1,648 @@
+
+
+			Ashley's Into to Git
+
+_________________
+The Things of Git
+
+repository
+working tree
+index
+commit
+log
+reference
+branch
+tag
+merge
+remote
+remote tracking branch
+
+
+___________________
+Common Git Commands
+
+git init
+git clone
+git config
+git log
+git status
+git diff
+git add
+git commit
+git tag
+git branch
+git checkout
+git merge
+git reset
+git remote
+git fetch
+git pull
+git push
+
+
+____________
+Getting Help
+
+git help
+git help tutorial
+git help <command>
+man git-<command>
+
+https://git-scm.com/doc
+
+					- 2 -
+
+___________________________
+The Things of Repositories:
+
+repository
+working tree
+index
+commit
+commit log
+reference
+remote
+
+
+__________
+Repository
+
+A "repository" is a .git directory with subdirectories for objects,
+referencess, configs, hooks, and other git metadata.
+
+
+____________
+Working Tree
+
+A "working tree" is the directory containing the repository (.git) and files
+managed by the repository.  This is where you edit and commit changes to
+the repository.
+
+A "bare repository" is a git repo with no associated working tree.  We use
+these on central git servers.
+
+Example: Create a new repo with working tree:
+  $ ~ git init my_new_repo
+  Initialized empty Git repository in /home/agould/tmp/my_new_repo/.git/
+  $ ~ find my_new_repo/ -maxdepth 2
+  my_new_repo/		# this is the working tree
+  my_new_repo/.git	# this is the repo
+  my_new_repo/.git/hooks
+  my_new_repo/.git/branches
+  my_new_repo/.git/description
+  my_new_repo/.git/HEAD
+  my_new_repo/.git/info
+  my_new_repo/.git/objects
+  my_new_repo/.git/refs
+  my_new_repo/.git/config
+
+
+_____
+Index
+
+The "index" is a staging area where the contents of modified files in your
+working tree is temporarily stored.  New and changed files must be "added"
+to the index prior to being committed.
+
+					- 3 -
+______
+Commit
+
+A "commit" is the hash of the entire snapshot of the working tree along with
+metadata (commit message, date, etc), and commit IDs of any parent commits.  It
+is identified by SHA-1 hash of the commit object itself.  Typically, we refer
+to commits by the first 7 chars of the commit id hash.
+
+Example: anatomy of a commit:
+  sha1(
+      commit message  => "second commit"
+      commiter        => Christoph Burgdorf <christoph.burgdorf@gmail.com>
+      commit date     => Sat Nov 8 11:13:49 2014 +0100
+      author          => Christoph Burgdorf <christoph.burgdorf@gmail.com>
+      author date     => Sat Nov 8 11:13:49 2014 +0100
+      tree            => 9c435a86e664be00db0d973e981425e4a3ef3f8d
+      parents         => [0d973e9c4353ef3f8ddb98a86e664be001425e4a]
+  )
+
+___
+Log
+
+The "commit log" is an ordered history of all commits.
+
+Example: list commits, one per line:
+  $ ~/git-repos/create_vm git log --oneline
+  67a0971 update docs, edit get_buildinfo script
+  b9de8df added todo file and usage docs
+  316471a added create-vm script from windows side
+  213dc86 initial commit
+
+_________
+Reference
+
+A "reference" is a pointer to a commit.  There are several types of refs:
+ - symbolic refs (e.g. HEAD, MERGE_HEAD, FETCH_HEAD)
+ - relative refs (e.g. HEAD^, master~4, v1.03^1)
+ - branches
+ - tags (lightweight|annotated)
+
+______
+Remote
+
+A "remote" is separate git repository sharing the same Git project as your
+local repository.  Often there is a main project repository on a Git server
+somewhere.  Users clone from this remote repository to create local repository
+of the project.  As far as your local repository is concerned a "remote" is
+configuration item which defines a named url with which to share commits.  It
+is possible for your local repository to have several "remote" definitions.
+
+					- 4 -
+
+
+
+_______________________
+More Repository Things:
+
+hooks
+config
+.gitignore
+
+
+_____
+Hooks
+
+Git "hooks" are user defined shell scripts that get called whenever particular
+actions occur in the repository such as checkout, commit, merge.  Hooks are
+optional.  They reside under .git/hooks/ and are named for the git action 
+that triggers them.
+
+Example:
+  $ ~ cat my_new_repo/.git/hooks/applypatch-msg
+  #!/bin/sh
+  #
+  # An example hook script to check the commit log message taken by
+  # applypatch from an e-mail message.
+  . git-sh-setup
+  commitmsg="$(git rev-parse --git-path hooks/commit-msg)"
+  test -x "$commitmsg" && exec "$commitmsg" ${1+"$@"}
+  :
+
+
+______
+Config
+
+The Git "config" tool allows you to customize your Git environment. Typical
+uses are to set your email and username to be used when making commits, or
+setting git command aliases.  Git configs are scoped depending on where
+they reside.  "local" configs override "global" which override "system":
+ /etc/gitconfig    - "system" wide configs applied to all users on this host.
+ $HOME/.gitconfig  - "global" configs apply to any repositories you work with.
+ $REPO/.git/config - "local" configs apply to just this repository.
+
+
+__________
+.gitignore
+
+The ".gitignore" file is where you can specify files you do not want to
+include in your git repository.  .gitignore resides in the base directory of
+your working tree.
+
+Example:
+  $ ~ cat my_new_repo/.gitignore
+  data/*
+  .secret_ftp_password
+  *.swp
+
+					- 5 -
+
+___________________
+Repository Actions:
+
+committing
+branching
+merging
+tagging
+stashing
+inspecting
+undoing
+
+
+__________
+Committing
+
+Tools: status diff rm mv add reset commit 
+
+Committing changes is a multi-step process.  After making changes or adding
+files in your working tree, you must add them to the index in order to stage
+them for commit.  Then you commit the indexed changes and supply a commit
+message.
+
+Example workflow:
+  vi newfile
+  vi existing_file
+  git rm badfile
+  git mv brilliant_idea piece_of_crap
+  git status
+  git diff existing_file
+  git add .
+  git reset HEAD badfile
+  git commit -m"add newfile, tweek existing_file, rename briliant_idea"
+
+
+_________
+Branching
+
+Tools: branch checkout
+
+A branch is a reference to a commit.  Use branches to create human readable
+names to track various states of your repository.  When you checkout a branch,
+git resets your working tree to the state of the corresponding commit.  Also,
+the symbolic ref HEAD is changed to point to the same commit as the newly
+checked out branch.
+
+Example workflow:
+  git checkout master
+  git branch dev
+  git checkout dev
+
+This form creates and checks out a new branch in one go:
+  git checkout -b qa master
+
+					- 6 -
+_______
+Merging
+
+Tools: checkout merge
+
+We merge branches into one another as part of normal workflow.  There are
+2 primary types of merges: 
+
+fast-forward - all commits of the checked out branch are already part of the
+branche we are merging in.  The HEAD and branch refs of the checked out branch
+simply fast forwards to point at the same commit as the merging branch.
+
+true merge  - some commits in merging branch are new to the checked out branch.
+The branches to be merged are tied together by a new commit that has both
+branches as its parents.  HEAD and both branches now point to this new merge
+commit.
+
+Example workflow: merging qa branch into master:
+  git checkout master
+  git merge qa
+
+A Merge Conflict occurs when git can't easily determine which version of a file
+or files is intended.  For example, the same section of a file was edited in
+both branches.  In this case git inserts markers into the file showing
+what the conflicts are. The user has to edit the file to the desired state,
+remove the markers, add the updated file to the index, and recommit.
+Alternativley, the user can abort the merge (git merge --abort).
+
+Example:
+  $ ~/my_new_repo git merge qa
+  Auto-merging .gitignore
+  CONFLICT (content): Merge conflict in .gitignore
+  Automatic merge failed; fix conflicts and then commit the result.
+  
+  $ ~/my_new_repo cat .gitignore 
+  data/*
+  <<<<<<< HEAD
+  .super_secret_ftp_password
+  =======
+  .secret_
+  >>>>>>> qa
+  *.swp
+  
+  $ ~/my_new_repo vi .gitignore 
+  $ ~/my_new_repo cat .gitignore
+  data/*
+  .super_secret_ftp_password
+  *.swp
+  
+  $ ~/my_new_repo git add .
+  $ ~/my_new_repo git commit
+  [master fc97df7] Merge branch 'qa'
+
+					- 7 -
+_______
+Tagging
+
+Tools: tag show
+
+Tagging lets you create a perminant point-in-time reference to a specific
+commit.  Typically people use this functionality to mark release points (v1.0,
+and so on).
+
+There are 2 types of tags.  A "lightweight" tag is simply a reference to a
+commit.  It is like a branch that doesn't change.  Whereas "annotated" tags
+contain a creation date, the tagger name and e-mail, a tagging message, and an
+optional GnuPG signature.
+
+Example workflow:
+  git checkout staging
+  git tag -a -m'release candidate rc1.06' v1.06
+  git show v1.06
+  git checkout production
+  git merge v1.06
+
+
+________
+Stashing
+
+Tools: stash
+
+Use git stash when you want to save the current state of the working tree and
+index, but want to go back to a clean working tree. The command saves your
+local modifications away and reverts the working tree to match the HEAD commit.
+This lets you checkout or merge branches that would otherwise overlap with your
+uncommited changes.
+ 
+Example workflow:
+ vi .gitignore 
+ git merge master 
+ (error: Your local changes would be overwritten by merge. Aborting)
+ git stash
+ git merge master 
+ git stash pop
+
+					- 8 -
+
+__________
+Inspecting
+
+Tools: status diff log show show-ref
+
+Inspecting the working tree:
+  git status		show status of working tree
+  git diff		show uncommited edits in diff format
+
+Inspecting references:
+  git branch		list branches
+  git tag		list tags
+  git show-ref		list all references
+  
+Inspecting the repository:
+  git log		query commit history 
+  git show		query git objects
+
+
+  
+_______
+Undoing
+
+Tools: commit checkout reset revert 
+
+Use cases:
+
+Commits:
+  make changes to previous commit. e.g. modify a file or the commit message
+  revert changes brought in by a previous unwanted commit
+
+Individual files/dirs:
+  drop uncommited edits to a file in the working tree
+  unstage a changed file from the index
+  restore a file to it's state in a previous commit
+
+Branches:
+  drop all changes to working tree since last commit
+  reset current branch to an earlier commit
+  reset branch, but put intervening changes into the working tree
+
+Merges:
+  undo a merge
+  backout of a merge with conflicts
+
+					- 9 -
+
+Example 'undo' workflows:
+
+Commits:
+Make changes to previous commit:
+  git commit -m 'hey Rocky, watch me pull a rabbit out of my hat'
+  (tests happen and fail badly)
+  vi file   # again?!
+  git add file
+  git commit --amend -m 'this time for sure'
+
+Revert changes brought in by a previous commit without losing history.
+This creates a new commit:
+  git revert b7f4134
+
+
+Individual files/dirs:
+Drop uncommited edits to a file in the working tree:
+  git checkout HEAD file.txt
+
+Unstage a changed file from the index:
+  git reset HEAD file.txt
+
+Restore a file to it's state in a previous commit:
+  git checkout HEAD~2 file.txt
+  git add file.txt
+  git commit -m'restore file.txt to 2 commits ago'
+
+
+Branches:
+Drop all changes to working tree since last commit:
+  git reset --hard HEAD
+
+Reset current branch to an earlier commit:
+  git reset --hard HEAD~3
+
+Reset branch, but put intervening changes into the working tree:
+  git reset HEAD~3
+
+
+Merges:
+Undo a merge:
+  git reset --hard ORIG_HEAD
+
+Backout of a merge with conflicts:
+  git merge test
+  CONFLICT (content): Merge conflict in 55 files
+  (what a mess!  I'm too tired to sort this out)
+  git reset --merge
+
+					- 10 -
+
+_________________________
+Remote Repository Actions
+
+setup
+fetching
+remote branch tracking
+querying
+pushing
+pulling
+
+
+_____
+Setup
+
+Setting up a remote is simply defining a relationship to another git repository
+within the .git/config file of your local repo.  There are 2 ways to do this:
+
+Use 'git remote add' to create a remote definition in your local repo.
+
+Clone your local repo from another git repository.  Note - when you clone, the
+name of your remote is 'origin' by default.
+
+Example:
+  $ ~/tmp git init fje
+  Initialized empty Git repository in /home/agould/tmp/fje/.git/
+  $ ~/tmp/fje git remote add fje https://gitolite.ucop.edu/git/eas-corpsys/fje
+  
+  $ ~/tmp git clone git://github.com/puppetlabs/puppetlabs-puppetdb.git
+  Cloning into 'puppetlabs-puppetdb'...
+  remote: Counting objects: 2093, done.
+  remote: Total 2093 (delta 0), reused 0 (delta 0), pack-reused 2092
+  Receiving objects: 100% (2093/2093), 640.14 KiB | 0 bytes/s, done.
+  Resolving deltas: 100% (1065/1065), done.
+  Checking connectivity... done.
+
+
+________
+Fetching
+
+Run 'git fetch' to syncronize your local repository with a configured remote
+repostory.  This fetches all new commits and references from the remote repo
+into your local repo.  It does not update your local branches or alter your
+working tree.  To update a local branch after a fetch, merge the remote branch
+into your local branch
+
+					- 11 -
+
+Examples 'fetching'
+  $ ~/git-repos/unix git fetch origin
+  remote: Counting objects: 2859, done.
+  remote: Compressing objects: 100% (1853/1853), done.
+  remote: Total 1984 (delta 1160), reused 469 (delta 73)
+  Receiving objects: 100% (1984/1984), 583.57 KiB | 0 bytes/s, done.
+  Resolving deltas: 100% (1160/1160), completed with 477 local objects.
+  From git:puppet/modules/unix
+     2777325..557763c  master     -> origin/master
+     34ad975..23ed6f6  devqa      -> origin/devqa
+     132e5f3..21c562b  test       -> origin/test
+  
+  $ ~/git-repos/unix git checkout master
+  Switched to branch 'master'
+  Your branch is behind 'origin/master' by 120 commits, can be fast-forwarded.
+  
+  $ ~/git-repos/unix git merge origin/master 
+  Updating 2777325..557763c
+  Fast-forward
+   aig/lib/{puppet/facts => facter}/iis_version.rb    |    0
+   aig/lib/facter/websphere.rb                        |   25 +
+
+
+______________________
+Remote Branch Tracking
+
+A "remote tracking branch" is a local branch that corresponds to a branch on a
+remote repository (or "upstream branch").  When you fetch from a configured
+remote, git stores the remote repo's branch references in your local repo.  To
+configure a remote tracking branch, create a branch in your repo using one of
+these remote branch refs as its starting point.  This simplifies push and pull
+tasks and provides a mechanism to see differences between your local repo and
+the remote repo.
+
+In this example note that master is behind origin/master by 120 commits:
+
+$ ~/git-repos/unix git branch 
+* master
+
+$ ~/git-repos/unix git branch -av
+* master                2777325 [behind 120] sudo directive dba.sudo
+  remotes/origin/HEAD   -> origin/master
+  remotes/origin/devqa  23ed6f6 Merge branch 'sudoaudit' into devqa
+  remotes/origin/master 557763c added ers boxes to root report
+  remotes/origin/test   21c562b Merge branch 'sudoaudit' into test
+
+					- 12 -
+
+$ ~/git-repos/unix git branch devqa remotes/origin/devqa
+Branch devqa set up to track remote branch devqa from origin.
+$ ~/git-repos/unix git branch test remotes/origin/test
+Branch test set up to track remote branch test from origin.
+
+$ ~/git-repos/unix git branch -avv
+* master           2777325 [origin/master: behind 120] sudo directive dba.sudo
+  devqa            23ed6f6 [origin/devqa] Merge branch 'sudoaudit' into devqa
+  test             21c562b [origin/test] Merge branch 'sudoaudit' into test
+  remotes/origin/HEAD   -> origin/master
+  remotes/origin/devqa  23ed6f6 Merge branch 'sudoaudit' into devqa
+  remotes/origin/master 557763c added ers boxes to root report
+  remotes/origin/test   21c562b Merge branch 'sudoaudit' into test
+
+
+________
+Querying
+
+What remotes are defined in my repo?
+
+$ ~/git-repos/unix git remote -v
+origin  git@git:puppet/modules/unix (fetch)
+origin  git@git:puppet/modules/unix (push)
+
+What is the commit status of a remote in comparision to my repo?
+
+$ ~/git-repos/unix git remote show origin 
+* remote origin
+  Fetch URL: git@git:puppet/modules/unix
+  Push  URL: git@git:puppet/modules/unix
+  HEAD branch: master
+  Remote branches:
+    devqa  tracked
+    master tracked
+    test   tracked
+  Local branches configured for 'git pull':
+    devqa  merges with remote devqa
+    master merges with remote master
+    test   merges with remote test
+  Local refs configured for 'git push':
+    devqa  pushes to devqa  (up to date)
+    master pushes to master (local out of date)
+    test   pushes to test   (up to date)
+
+					- 13 -
+_______
+Pushing
+
+Use 'git push' to propogate local commits and refs to a remote repository.  The
+following command copies commits in 'local_br' onto the remote repo and updates
+the branch 'remote_br' on the remote repo to match the 'local_br'.  This is
+essentially a fast-forward merge.  If your local branch is behind the remote
+branch, the push gets rejected.
+
+  git push origin local_br:remote_br
+
+If you are pushing from a remote tracking branch, the remote name and the
+target branch are pre-configured and can be omitted:
+  git push
+
+If you omit the local branch in your push command, the branch on the remote
+repo gets deleted:
+  git push origin :bad_branch
+
+Push tags expliticly. This creates a tag ref on the remote repo, but does
+not merge the tag into a branch:
+  git push origin v0.05
+   -or-
+  git push --tags origin
+
+
+_______
+Pulling
+
+The git pull command is a shortcut for 'git fetch; git merge remote/branch'.
+It uses similar syntax to 'git push':  
+  git pull origin local_br:remote_br
+
+When you configure remote tracking branches, it is very convenient to keep your
+local branch in sync with the remote repo:
+  git pull
+
+
+
+
+
+
+
