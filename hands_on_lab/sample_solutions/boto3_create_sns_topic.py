@@ -52,8 +52,7 @@ def delete_sns_topic(topic_name):
         sns_client.delete_topic(TopicArn=topic_arn)
 
                 
-if __name__ == '__main__':
-
+def main():
     if len(sys.argv) > 2:
         action = sys.argv[1]
         topic_name = sys.argv[2]
@@ -71,3 +70,7 @@ if __name__ == '__main__':
 
     else:
         sys.exit(usage())
+
+
+if __name__ == '__main__':
+    main()
