@@ -1,0 +1,150 @@
+
+
+
+________________________________________________________________________________
+Ashley's Git Survival Guide
+
+
+This is a synopsis of lessons I've learned the hard way while trying to 
+manage our puppet code repositories.
+
+
+_______________
+Important Stuff
+
+Query your working tree always and often:
+  git branch - what branch is checked out?
+  git status - is my working tree dirty?
+
+Only commit new work into a local 'topic' branch.
+
+Verify what files are about to be committed. ('commit -a' can be dangerous)
+
+Verify all your remote tracking branches are up-to-date with remote before
+starting new work.
+  git remote show <remote_name>
+
+Create new topic branches only from the perminant branch you are targeting 
+(e.g. master, production).
+
+
+Always be sure what branch is currently checked out before merging.
+
+Only merge topic branches or tags into a perminant branch.
+
+Never merge perminant branches into one another.
+
+
+Verify your local branch is up-to-date with remote before pushing to remote.
+
+Specify both local and remote branches when pushing to a remote (unless you
+are pushing from a remote tracking branch).
+  git push origin topic1:topic1
+
+Never reset or rebase commits which have already been pushed to a remote.
+
+
+
+
+___________
+Good Advice
+
+When you are renaming or deleting files, use 'git mv' or 'git rm' to
+retain history.  If you forget, use 'git add -A <path>'.  This does the
+smart thing with name changes and deletes.
+
+Use meaningful commit messages.  Try to leave clues for someone looking
+at this message 2 years from now.  Keep the first line short (under 30
+chars).  Leave second line blank.
+
+Chose meaningful names for topic branches.  'TASK008592' is useless 2 months
+from now.
+
+Use .gitignore to prevent git from commiting files which should only be
+in the local working tree.  (e.g. per-environment configs, super secret
+cleartext ftp passwords)
+
+Use 'git log' to compare branches:
+  git log test..master
+  git log master..test
+  git log --no-merges master..test
+
+Keep notes about long running branches.  Create a 'repostatus' file in
+the root of your local repository.  Make sure it is listed in the
+.gitignore.
+  agould@unxpupd01:/data/puppet/modules/unix/agould> cat repostatus 
+  branch                  merged          notes
+  ------                  ------          -----
+  sp3_changes             test
+  new_iptables            test		only supports SuSE
+  rtc                     test		only config class so far
+  nimsoft_robot           
+  common_tweeks           test,devqa
+
+Delete fully merged branches regularly.  Use --merged flag to verify 
+merge status of topic branches:
+  git branch --merged master
+  git branch --merged staging
+  git branch --merged qa
+
+Name your remotes.  It's easy to push to the wrong remote when all remotes
+are called origin.
+  git remote rename origin modules_aig
+
+
+
+
+
+
+________________________________________________________________________________
+Some Git Gothcha's
+
+Git does not store empty directories.
+
+When you need to retain directory structures in the repo,
+touch an empty file in each empty dir:
+  touch mydir/.gitkeep
+
+
+Git does not store permissions except for whether a file is executible or not.
+Git does not store file ownerships.  
+
+Ownership and permissions are set in the working tree at checkout.  All
+files checkout as owned by the user doing the checkout.  Permissions are
+set based on that user's umask.  The workaround is to manage ownership
+and perms using a script called by the post-checkout or post-merge hook.
+
+
+
+
+__________________________
+Tricks for Common Problems
+
+Damn!  I mistakenly changed my blee.conf file 3 commits ago:
+  git checkout HEAD~3 blee.conf
+  git add blee.conf
+  git commit
+
+Oh, no!  I just committed to master!
+  git reset HEAD^
+  git checkout -b <topic> master
+  git commit -a
+
+Oh, no!  I want to commit but I'm checked out in master and git wont
+let me checkout my topic branch because my changes will conflict.
+  git stash
+  git checkout topic_branch
+  git stash pop
+  git add
+  git commit
+
+
+Oh, no!  I just merged a bad commit (wrong branch) into my local master
+branch!
+  git reset ORIG_HEAD
+
+
+Oh, no! Oh, no! Oh, NO!!  I just pushed a bad commit to my remote!  This
+one is tricky.  You cannot use git reset once you have pushed to a
+remote.  You must fix the issue locally, create a new commit, and then
+push to your remote.  See 'git checkout' and 'git revert'.

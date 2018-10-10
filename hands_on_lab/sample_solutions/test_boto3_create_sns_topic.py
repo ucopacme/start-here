@@ -1,3 +1,8 @@
+'''
+Usage Example:
+  pytest --no-print-log ./test_boto3_create_sns_topic.py
+'''
+
 import re
 from moto import mock_sns
 from boto3_create_sns_topic import (
