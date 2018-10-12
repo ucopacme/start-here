@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#  Commands to complete Lab one - subtask using the AWS CLI
+#
+
+# Creating IAM user 'IAM-davidr' via  AWS CLI
+
+aws iam create-user --user-name iam-davidr-user
+
+# Create IAM Group via AWS CLI
+aws iam create-group --group-name iam-davidr-group
+
+# Add IAM user to IAM Group via AWS CLI
+aws iam add-user-to-group --user-name iam-davidr-user --group-name iam-davidr-group
+
+# Create initial IAM GROUP Policy via AWS CLI
+#aws iam create-policy --policy-name iam-the-davids-group --policy-docuemnt file://david-policy-doc
+
+# Attach IAM GROUP Policy via AWS CLI
+#
+## to be done at a later date
+
+# Delete IAM group 'IAM-davidr-group' via AWS CLI
+aws iam list-groups-for-user --user-name iam-davidr-user
+aws iam remove-user-from-group --user-name iam-davidr-user --group-name iam-davidr-group
+
+# Delete IAM user 'IAM-davidr' via AWS CLI
+aws iam delete-user --user-name iam-davidr-user 

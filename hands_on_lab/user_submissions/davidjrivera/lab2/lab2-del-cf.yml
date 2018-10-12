@@ -1,0 +1,7 @@
+# Delete CloudFormation instance
+# Delete CloudFormation Template
+
+- name:
+cloudformation:
+  stack_name: "lab1-add-cf"
+  state: "absent"
