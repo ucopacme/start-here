@@ -1,4 +1,4 @@
-
+import boto3
 '''
 def jsonfmt(obj, default=to_serializable):
     if isinstance(obj, str):
@@ -51,3 +51,9 @@ def iam_delete_user(iam_client,OldUser):
       print('\t', key, ":", value)
    return iam_delete_user 
 
+
+if __name__ == "__main__":
+    iam_client   = boto3.client('iam')
+    NewUser = 'ashleytestingjhsu'
+    UserName = iam_create_user(iam_client, NewUser)
+    iam_delete_user(iam_client, UserName)
