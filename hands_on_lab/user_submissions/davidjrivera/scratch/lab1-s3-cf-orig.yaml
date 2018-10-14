@@ -1,0 +1,12 @@
+# CloudFormation to ADD S3 Bucket
+#
+# Usage: aws cloudformation create-stack --stack-name david-create-s3 --template-body file://lab1-s3-cf.yaml 
+#
+# Validate: aws cloudformation validate-template --template-body file://lab1-s3-cf.yaml
+#
+#
+Resources:
+  davids3bucket:
+      Type: 'AWS::S3::Bucket'
+      Properties: 
+        BucketName: 'david-s3-bucket-cf' 
