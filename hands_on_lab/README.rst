@@ -2,11 +2,21 @@ Hands-On Labs - From Console to Code
 ====================================
 
 The following is a series of self-paced lab exercises designed to introduce new
-users to management of AWS resources with code.  Emphasis is on AWSCLI,
+users to management of AWS resources with code.  Emphasis is on AWS CLI,
 CloudFormation, Boto3 the python AWS SDK, and unit-testing of python code.
 
-Although python is our programming language of choice, we would welcome
-feedback or contributions based on other AWS SDKs.
+
+Working the Labs
+----------------
+
+Work on each exercise using all of the following AWS deployment methods.
+See `sample solutions`_ for a complete example.
+
+- AWS console
+- AWS CLI_
+- CloudFormation_
+- `Boto3 SDK`_
+- `Boto3/Moto Unit Testing`_
 
 
 Intended Audience
@@ -16,6 +26,14 @@ Intended Audience
 - contributors to any of our UCOPACME projects
 - developers and application programmers working in the AWS space
 - anyone who wants to learn how to develop AWS infrastructure as code
+
+
+Estimated Time to Complete
+--------------------------
+
+These labs are hard.  If you are new to coding in the AWS space consider it
+could require 2 to 3 days to get through all five components of Lab 1.  But
+once you have done so, the other Level 1 labs will take much less time.
 
 
 Prerequisites
@@ -39,17 +57,8 @@ Optional preparation:
 - Install and configure aws-shelltools_
 
 
-Working the Labs
-----------------
-
-Work on each exercise using all of the following AWS deployment methods:
-
-- AWS console
-- AWSCLI_
-- CloudFormation_
-- `Boto3 SDK`_
-- `Boto3/Moto Unit Testing`_
-
+Peer Review
+-----------
 
 To post your solutions follow the `Contributing to GitHub`_ workflow.  Make a
 fork of this repository in your personal GitHub account.  Add a directory for
@@ -64,20 +73,6 @@ it.  AWS CLI solutions can be shell script or a cut-n-paste of your shell
 session.  For CloudFormation solutions, submit a yaml or json template file
 along with a script containing launch/delete instructions.  For boto3 and
 unit-test solutions, submit an executable python script with usage examples.  
-
-See `sample solutions`_ for a complete example.
-
-
-Estimated Time to Complete
---------------------------
-
-These labs are hard.  If you are new to coding in the AWS space consider it
-could require 2 to 3 days to get through all five components of Lab 1.  But
-once you have done so, the other Level 1 labs will take much less time.
-
-
-Peer Review
------------
 
 Once you have completed all five parts of a lab, open an issue and pull request in this
 GitHub repo to review your solutions: ``[Resolves #<issue_number>] peer review ashley's lab1 solutions``
@@ -155,8 +150,8 @@ Lab 6 - SSH to EC2 Instance
 Reference Documentation
 -----------------------
 
-AWSCLI
-******
+AWS CLI
+*******
 
 - https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html
 - https://docs.aws.amazon.com/cli/latest/reference/
