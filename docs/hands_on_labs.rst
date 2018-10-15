@@ -2,8 +2,47 @@ Hands-On Labs - From Console to Code
 ====================================
 
 The following is a series of self-paced lab exercises designed to introduce new
-users to management of AWS resources with code.  Work on each exercise using
-all of the following AWS deployment methods:
+users to management of AWS resources with code.  Emphasis is on AWSCLI,
+CloudFormation, Boto3 the python AWS SDK, and unit-testing of python code.
+
+Although python is our programming language of choice, we would welcome
+feedback or contributions based on other AWS SDKs.
+
+
+Intended Audiance
+-----------------
+
+- new members of the UCOP AWS Infrastructure Team 
+- contributors to any of our UCOPACME projects
+- developers and application programmers working in the AWS space
+- anyone who wants to learn how to develop AWS infrastructure as code
+
+
+Prerequisites
+-------------
+
+Skills:
+
+- a basic knowledge of AWS
+- familiarity with unix/Linux shell scripting
+- experience `programming in python`_
+
+Preparation:
+
+- Create a `github account`_
+- Set up `python 3 virtual environnment`_
+- Install and configure awscli_
+
+Optional preparation:
+
+- Create a `Cloud9 instance`_
+- Install and configure aws-shelltools_
+
+
+Working the Labs
+----------------
+
+Work on each exercise using all of the following AWS deployment methods:
 
 - AWS console
 - AWSCLI_
@@ -27,6 +66,14 @@ along with a script containing launch/delete instructions.  For boto3 and
 unit-test solutions, submit an executable python script with usage examples.  
 
 See `sample solutions`_ for a complete example.
+
+
+Estimated Time to Complete
+--------------------------
+
+These labs are hard.  If you are new to coding in the AWS space consider it
+could require 2 to 3 days to get through all five components of Lab 1.  But
+once you have done so, the other Level 1 labs will take much less time.
 
 
 Peer Review
@@ -105,16 +152,6 @@ Lab 6 - SSH to EC2 Instance
 - Delete your EC2 instance, SSH keypair and SecurityGroup
 
 
-
-Prerequisites
--------------
-
-- Create a `github account`_
-- Set up `python 3 virtual environnment`_
-- Install and configure awscli_
-- Install and configure aws-shelltools_
-
-
 Reference Documentation
 -----------------------
 
@@ -156,6 +193,7 @@ We recommend starting with pytest and moto for your unit-test labs.
 - http://docs.getmoto.org/en/latest/docs/getting_started.html
 
 
+.. _programming in python: https://github.com/ucopacme/start-here/blob/master/docs/learning_python.rst
 .. _Contributing to Github: https://github.com/ucopacme/start-here/blob/master/docs/contributing.rst
 .. _sample solutions: https://github.com/ucopacme/start-here/tree/master/hands_on_lab/sample_solutions
 .. _clients: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/clients.html
@@ -163,4 +201,5 @@ We recommend starting with pytest and moto for your unit-test labs.
 .. _github account: https://github.com/
 .. _python 3 virtual environnment: https://github.com/ucopacme/start-here/blob/master/docs/python_venv_setup.rst
 .. _awscli: https://docs.aws.amazon.com/cli/latest/userguide/installing.html
+.. _Cloud9 instance: https://github.com/ucopacme/start-here/blob/master/docs/getting_started_with_cloud9.rst
 .. _aws-shelltools: https://github.com/ashleygould/aws-shelltools
