@@ -46,3 +46,9 @@ https://github.com/rtfd/sphinx-autoapi
 
 testing aws resources:
 example: https://github.com/mozilla-services/autopush/blob/master/autopush/tests/__init__.py
+
+
+
+
+python style/composition conventions:
+https://cs61a.org/articles/composition.html
