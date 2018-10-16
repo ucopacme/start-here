@@ -20,6 +20,7 @@ def test_mock_create_use():
 @mock_iam
 def test_mock_delete_use():
    iam_client   = boto3.client('iam')
+   UserName = iam.iam_create_user(iam_client, NewUser)
    iam_delete_user_response = iam.iam_delete_user(iam_client, NewUser)
    print(iam_delete_user_response)
    assert iam_delete_user_response['ResponseMetadata']['HTTPStatusCode'] == 200
