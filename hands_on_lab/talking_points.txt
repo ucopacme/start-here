@@ -1,0 +1,49 @@
+Talking points for Hands-On Labs - From Console to Code
+
+
+
+what is business value of the hands-on-labs?
+
+- provide a systematic approach for Infra team members who are new to AWS to
+  master required skill sets.
+
+- incorporate 'best practice' development and collaboration techniques from
+  the outset of our activity.
+
+- provide corriculum for training TDS staff in the art of developing
+  infrastructure as code.
+
+
+why do unit-testing?
+
+- allows for automated delivery and deployment
+
+- ensures we are not introducing bugs into our code-base
+
+- gives us the confidence to refactor
+
+- ensures what we build is maintainable over the long haul
+
+
+why learn four deployment methods?
+
+- all four methods are widely used in the industry
+
+- some methods are more suited than others for a particular task
+
+- multiple deployment methods can be used in conjuction for optimum results
+
+
+demo prep:
+
+- open cloud9 instance already
+  - 2 consoles
+- open README in browser
+
+
+Demo flow:
+
+- display README in browser
+- in cloud9 walk through
+  - samples
+  - find user submissions
