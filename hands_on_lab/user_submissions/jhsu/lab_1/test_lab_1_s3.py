@@ -31,11 +31,3 @@ def test_mock_delete_bucket():
 #  assert False
 
 
-'''
-if __name__ == "__main__":
-   test_bucket= 'jhsu-s3-boto3-bucket1'
-   location_bucket= 'us-west-2'
-   test_mock_create_bucket(s3_client, test_bucket)
-   test_mock_delete_bucket(s3_client, test_bucket)
-'''
-
