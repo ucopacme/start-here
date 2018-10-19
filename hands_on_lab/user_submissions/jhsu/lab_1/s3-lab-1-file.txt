@@ -1,0 +1,1 @@
+This file is a sample text to be stored in lab-1 S3 bucket.

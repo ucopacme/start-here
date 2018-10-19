@@ -2,13 +2,13 @@
 """
 Create or delete a named SNS topic.
 
-Usage: ./boto3-create-sns-topic.py <action> <topic_name>
+Usage: ./boto3_create_sns_topic.py <action> <topic_name>
   where "action" is one of "create", "report" or "delete"
 
 Examples:
-  ./boto3-create-sns-topic.py create ashtest-01
-  ./boto3-create-sns-topic.py report ashtest-01
-  ./boto3-create-sns-topic.py delete ashtest-01
+  ./boto3_sns_topic.py create ashtest_01
+  ./boto3_sns_topic.py report ashtest_01
+  ./boto3_sns_topic.py delete ashtest_01
 
 """
 
@@ -23,6 +23,9 @@ def usage():
 
 
 def yamlfmt(obj):
+    """
+    Print complex object in nicely formatted yaml
+    """
     if isinstance(obj, str):
         return obj
     return yaml.dump(obj, default_flow_style=False)
