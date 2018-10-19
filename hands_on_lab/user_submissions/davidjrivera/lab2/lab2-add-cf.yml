@@ -1,0 +1,26 @@
+# AWS LAB 
+ # Tasks: Create IAM USER via CloudFormation
+ # Tasks: Delete IAM GROUP via CloudFormation
+ #
+ # Validate Usage: aws cloudformation validate-template --template-body file://lab2-add-cf.yml 
+ # Execute Usage: Usage: aws cloudformation create-stack --stack-name david-add-iam-user --template-body file://lab2-add-cf.yml --capabilities CAPABILITY_NAMED_IAM
+ #
+ #
+ 
+Resources:
+  iamuser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: 'iam-david-user'
+
+  iamgroup:
+    Type: 'AWS::IAM::Group'
+    Properties:
+      GroupName: 'iam-david-group'
+
+  iamassociation:
+    Type: 'AWS::IAM::UserToGroupAddition'
+    Properties:
+      GroupName: 'iam-david-group'
+      Users:   
+      - !Ref iamuser
