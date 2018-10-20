@@ -13,18 +13,18 @@ ResourceTypeFilters=[
 ]
 '''
 
-
+import click
 import boto3
 from organizer import crawlers, orgs, utils
 
-
-def get_tags(region, account):
-    client = boto3.client(
-        'resourcegroupstaggingapi', 
-        region_name=region, 
-        **account.credentials,
-    )
+def parse_filters(tags, resources):
     filters = dict()
+    if resources is not None:
+        filters['ResourceTypeFilters'] = resources.split(',')
+    if tags is not None:
+        filters['TagFilters'] = [dict(Key=k) for k in tags.split(',')]
+    return filters
+
     #filters = dict(
     #    TagFilters=[
     #        dict(Key='Name'),
@@ -33,6 +33,13 @@ def get_tags(region, account):
     #    ],
     #    ResourceTypeFilters=['ec2:instance'],
     #)
+
+def get_tags(region, account, filters):
+    client = boto3.client(
+        'resourcegroupstaggingapi', 
+        region_name=region, 
+        **account.credentials,
+    )
     response = client.get_resources(
         **filters,
     )
@@ -53,8 +60,8 @@ def get_crawler(org_access_role):
     my_crawler = crawlers.Crawler(
         my_org,
         access_role=org_access_role,
-        #accounts=['ait-poc', 'ashley-training'],
-        #regions=['us-west-2', 'us-east-1'],
+        accounts=['ait-poc', 'ashley-training'],
+        regions=['us-west-2', 'us-east-1'],
     )
     my_crawler.load_account_credentials()
     return my_crawler
@@ -90,12 +97,21 @@ def output_regions_per_account(execution):
     return(collector)
 
 
-def main():
-    org_access_role = 'awsauth/OrgAdmin'
-    crawler = get_crawler(org_access_role)
-    execution = crawler.execute(get_tags)
+@click.command()
+@click.option('--role', '-r', required=True,
+    help='IAM role for accessing AWS Organization accounts')
+@click.option('--tags',
+    help='comma separated list of key:value pairs')
+@click.option('--resources',
+    help='comma separated list of AWS resource names')
+def main(role, tags, resources):
+    #click.echo(role)
+    filters = parse_filters(tags, resources)
+    #click.echo(utils.yamlfmt(filters))
+    crawler = get_crawler(role)
+    execution = crawler.execute(get_tags, filters)
     output = output_regions_per_account(execution)
-    print(utils.yamlfmt(output))
+    click.echo(utils.yamlfmt(output))
 
 
 if __name__ == "__main__":
