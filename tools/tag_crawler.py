@@ -17,12 +17,24 @@ import click
 import boto3
 from organizer import crawlers, orgs, utils
 
-def parse_filters(tags, resources):
+
+def parse_tags(tag_tuple):
+    tag_filter = []
+    for tag in tag_tuple:
+        key, sep, value = tag.partition(',')
+        if value:
+            tag_filter.append(dict(Key=key, Values=[value]))
+        else:
+            tag_filter.append(dict(Key=key))
+    return tag_filter
+
+
+def parse_filters(tag_tuple, resource_tuple):
     filters = dict()
-    if resources is not None:
-        filters['ResourceTypeFilters'] = resources.split(',')
-    if tags is not None:
-        filters['TagFilters'] = [dict(Key=k) for k in tags.split(',')]
+    if tag_tuple is not None:
+        filters['TagFilters'] = parse_tags(tag_tuple)
+    if resource_tuple is not None:
+        filters['ResourceTypeFilters'] = list(resource_tuple)
     return filters
 
     #filters = dict(
@@ -34,7 +46,10 @@ def parse_filters(tags, resources):
     #    ResourceTypeFilters=['ec2:instance'],
     #)
 
-def get_tags(region, account, filters):
+def get_tagged_resources(region, account, filters):
+    """
+    orgcrawler payload function
+    """
     client = boto3.client(
         'resourcegroupstaggingapi', 
         region_name=region, 
@@ -96,20 +111,24 @@ def output_regions_per_account(execution):
         collector.append(d)
     return(collector)
 
+CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
-@click.command()
+@click.command(context_settings=CONTEXT_SETTINGS)
 @click.option('--role', '-r', required=True,
     help='IAM role for accessing AWS Organization accounts')
-@click.option('--tags',
-    help='comma separated list of key:value pairs')
-@click.option('--resources',
-    help='comma separated list of AWS resource names')
-def main(role, tags, resources):
-    #click.echo(role)
-    filters = parse_filters(tags, resources)
+@click.option('--tag', multiple=True, type=str,
+    help='Tag to filter by. Can be used multiple times. Must be a string. Can be either a key name or a key/value pair saparated by a comma. Tags containing spaces must be quoted.')
+@click.option('--resource', multiple=True, type=str,
+    help='AWS resource name to filter by. Can be used multiple times.')
+def main(role, tag, resource):
+    #click.echo(tag)
+    #click.echo(resource)
+    #tag_filter = parse_tags(tag)
+    #click.echo(utils.yamlfmt(tag_filter))
+    filters = parse_filters(tag, resource)
     #click.echo(utils.yamlfmt(filters))
     crawler = get_crawler(role)
-    execution = crawler.execute(get_tags, filters)
+    execution = crawler.execute(get_tagged_resources, filters)
     output = output_regions_per_account(execution)
     click.echo(utils.yamlfmt(output))
 
