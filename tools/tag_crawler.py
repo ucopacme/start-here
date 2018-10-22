@@ -18,37 +18,36 @@ import boto3
 from organizer import crawlers, orgs, utils
 
 
-def parse_tags(tag_tuple):
-    tag_filter = []
-    for tag in tag_tuple:
+def munge_tag_filter(tag_filter):
+    _filter = []
+    for tag in tag_filter:
         key, sep, value = tag.partition(',')
         if value:
-            tag_filter.append(dict(Key=key, Values=[value]))
+            _filter.append(dict(Key=key, Values=[value]))
         else:
-            tag_filter.append(dict(Key=key))
-    return tag_filter
+            _filter.append(dict(Key=key))
+    return _filter
 
 
-def parse_filters(tag_tuple, resource_tuple):
+def parse_filters(tag_filter, resource_filter):
     filters = dict()
-    if tag_tuple is not None:
-        filters['TagFilters'] = parse_tags(tag_tuple)
-    if resource_tuple is not None:
-        filters['ResourceTypeFilters'] = list(resource_tuple)
+    if tag_filter is not None:
+        filters['TagFilters'] = munge_tag_filter(tag_filter)
+    if resource_filter is not None:
+        filters['ResourceTypeFilters'] = list(resource_filter)
     return filters
 
-    #filters = dict(
-    #    TagFilters=[
-    #        dict(Key='Name'),
-    #        #dict(Key='24hourssh'),
-    #        #dict(Key='aws:cloudformation:stack-name'),
-    #    ],
-    #    ResourceTypeFilters=['ec2:instance'],
-    #)
 
-def get_tagged_resources(region, account, filters):
+def munge_tag_map(response, show_resource_only):
+    if show_resource_only:
+        return [tag_map['ResourceARN'] for tag_map in response['ResourceTagMappingList']]
+    else:
+        return response['ResourceTagMappingList']
+
+
+def get_tagged_resources(region, account, filters, show_resource_only):
     """
-    orgcrawler payload function
+    Crawler payload function
     """
     client = boto3.client(
         'resourcegroupstaggingapi', 
@@ -58,14 +57,15 @@ def get_tagged_resources(region, account, filters):
     response = client.get_resources(
         **filters,
     )
-    tag_mapping_list = response['ResourceTagMappingList']
+    tag_mapping_list = munge_tag_map(response, show_resource_only)
     while response['PaginationToken']:
         response = client.get_resources(
             **filters,
             PaginationToken=response['PaginationToken'],
         )
-        tag_mapping_list += response['ResourceTagMappingList']
-    return dict(ResourceTagMappingList=tag_mapping_list)
+        tag_mapping_list += munge_tag_map(response, show_resource_only)
+    label = 'ResourceARN' if show_resource_only else 'ResourceTagMappingList'
+    return {label: tag_mapping_list}
 
 
 def get_crawler(org_access_role):
@@ -75,7 +75,7 @@ def get_crawler(org_access_role):
     my_crawler = crawlers.Crawler(
         my_org,
         access_role=org_access_role,
-        accounts=['ait-poc', 'ashley-training'],
+        #accounts=['ait-poc', 'ashley-training', 'ucop-its'],
         regions=['us-west-2', 'us-east-1'],
     )
     my_crawler.load_account_credentials()
@@ -111,24 +111,35 @@ def output_regions_per_account(execution):
         collector.append(d)
     return(collector)
 
+
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
 @click.command(context_settings=CONTEXT_SETTINGS)
-@click.option('--role', '-r', required=True,
-    help='IAM role for accessing AWS Organization accounts')
-@click.option('--tag', multiple=True, type=str,
-    help='Tag to filter by. Can be used multiple times. Must be a string. Can be either a key name or a key/value pair saparated by a comma. Tags containing spaces must be quoted.')
-@click.option('--resource', multiple=True, type=str,
-    help='AWS resource name to filter by. Can be used multiple times.')
-def main(role, tag, resource):
-    #click.echo(tag)
-    #click.echo(resource)
-    #tag_filter = parse_tags(tag)
-    #click.echo(utils.yamlfmt(tag_filter))
-    filters = parse_filters(tag, resource)
+@click.option('--role', '-r', 
+    required=True,
+    help='IAM role for accessing AWS Organization accounts',
+)
+@click.option('--resource-filter', '-rf', 'resource_filter',
+    multiple=True,
+    help='AWS resource name to filter by. Can be used multiple times.'
+)
+@click.option('--tag-filter', '-tf', 'tag_filter',
+    multiple=True,
+    help='Tag to filter by. Can be used multiple times. Must be a string. '
+    'Can be either a key name or a key/value pair saparated by a comma. '
+    'Tags containing spaces must be quoted.'
+)
+@click.option('--show-resource-only', 
+    is_flag=True,
+    help='Display only the ARN of matching resources.'
+)
+def main(role, tag_filter, resource_filter, show_resource_only):
+    #click.echo(tag_filter)
+    #click.echo(resource_filter)
+    filters = parse_filters(tag_filter, resource_filter)
     #click.echo(utils.yamlfmt(filters))
     crawler = get_crawler(role)
-    execution = crawler.execute(get_tagged_resources, filters)
+    execution = crawler.execute(get_tagged_resources, filters, show_resource_only)
     output = output_regions_per_account(execution)
     click.echo(utils.yamlfmt(output))
 
