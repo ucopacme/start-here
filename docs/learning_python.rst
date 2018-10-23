@@ -20,7 +20,12 @@ we are using 3.6:
 
 This is a nice listing of on-line learning sites.  Let us know if you find
 one which is particularly useful to you:
-https://docs.python-guide.org/intro/learning/
+
+- https://docs.python-guide.org/intro/learning/
+
+my current fav:
+
+- https://pymbook.readthedocs.io/en/latest/
 
 
 On-line Classes
@@ -29,8 +34,14 @@ On-line Classes
 - https://cs61a.org/
 - https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00sc-introduction-to-computer-science-and-programming-spring-2011/index.htm
 
+
 Books
 -----
 
 - https://learnpythonthehardway.org/python3/
 - https://realpython.com/best-python-books/
+
+
+unvetted
+--------
+
