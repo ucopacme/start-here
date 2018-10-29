@@ -1,0 +1,11 @@
+aws cloudformation validate-template --template-body file://aws_cf_lab_3_ec2.json
+aws cloudformation create-stack --stack-name lab-3-ec2-stack --template-body file://aws_cf_lab_3_ec2.json
+aws cloudformation update-stack --stack-name lab-3-ec2-stack
+aws cloudformation list-stacks
+aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE
+aws cloudformation get-template --stack-name lab-3-ec2-stack
+aws cloudformation describe-stacks --stack-name lab-3-ec2-stack
+aws cloudformation describe-stack-events --stack-name lab-3-ec2-stack
+aws cloudformation list-stack-resources  --stack-name lab-3-ec2-stack
+
+
