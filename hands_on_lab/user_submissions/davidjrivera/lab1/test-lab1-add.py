@@ -24,9 +24,10 @@ def test_creates3():
      s3 = boto3.client('s3')
      new_bucket = 'lab1davidpythons3'
      response =  s3.create_bucket( Bucket=new_bucket,  CreateBucketConfiguration={'LocationConstraint': 'us-west-2'})
-     test = (response['Location'])
-     assert test == 'http://lab1davidpythons3.s3.amazonaws.com/'
-     return response
+     #test = (response['Location'])
+     #assert test == 'http://lab1davidpythons3.s3.amazonaws.com/'
+     assert response['ResponseMetadata']['HTTPStatusCode'] == 200
+     #return response
  
 @mock_s3
 def test_dels3():
@@ -34,6 +35,7 @@ def test_dels3():
       new_bucket = 'lab1davidpythons3'
       response =  s3.create_bucket( Bucket=new_bucket,  CreateBucketConfiguration={'LocationConstraint': 'us-west-2'})
       delbuck = s3.delete_bucket(Bucket=new_bucket)
-      print(delbuck)
-      return delbuck
+      assert response['ResponseMetadata']['HTTPStatusCode'] == 404
+   #   print(delbuck)
+      #return delbuck
 
