@@ -21,7 +21,8 @@ def test_mock_delete_bucket():
    s3_client = boto3.client('s3')
    s3_bucket_url = s3.s3_create_bucket(s3_client, test_bucket)
    s3_pass_pattern = 's3_delete_bucket_passed'
-   s3_delete_bucket_response = s3.s3_delete_bucket(s3_client,test_bucket)
+   s3_bucket_url = s3.s3_create_bucket(s3_client, test_bucket)
+   s3_delete_bucket_response = s3.s3_delete_bucket(s3_client, test_bucket)
    print()
    print(s3_delete_bucket_response)
    final_s3_pass_pattern = s3_pass_pattern + '_' + str(s3_delete_bucket_response)
