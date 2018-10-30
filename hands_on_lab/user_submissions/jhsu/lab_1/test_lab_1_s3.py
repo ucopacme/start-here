@@ -11,24 +11,21 @@ test_bucket= 'jhsu-s3-boto3-bucket1'
 @mock_s3
 def test_mock_create_bucket():
    s3_client = boto3.client('s3')
-   s3_bucket_url = s3.s3_create_bucket(s3_client, test_bucket)
-   print(s3_bucket_url)
-   assert s3_bucket_url.find('https://')
+   s3_create_bucket_response = s3.s3_create_bucket(s3_client, test_bucket)
+   print(s3_create_bucket_response)
+   assert s3_create_bucket_response['ResponseMetadata']['HTTPStatusCode'] == 200
 #  assert False
+
 
 @mock_s3
 def test_mock_delete_bucket():
    s3_client = boto3.client('s3')
-   s3_bucket_url = s3.s3_create_bucket(s3_client, test_bucket)
+   s3_create_bucket_response = s3.s3_create_bucket(s3_client, test_bucket)
+   print(s3_create_bucket_response)
    s3_pass_pattern = 's3_delete_bucket_passed'
-   s3_bucket_url = s3.s3_create_bucket(s3_client, test_bucket)
    s3_delete_bucket_response = s3.s3_delete_bucket(s3_client, test_bucket)
-   print()
    print(s3_delete_bucket_response)
-   final_s3_pass_pattern = s3_pass_pattern + '_' + str(s3_delete_bucket_response)
-   print()
-   print(final_s3_pass_pattern)
-   assert final_s3_pass_pattern == s3_pass_pattern +'_None'
+   assert s3_delete_bucket_response['HTTPStatusCode'] == 204
 #  assert False
 
 

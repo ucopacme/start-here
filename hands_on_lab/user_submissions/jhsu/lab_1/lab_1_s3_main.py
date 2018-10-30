@@ -1,4 +1,4 @@
-#! /home/jhsu/python/python3/bin/python3
+#! /home/jhsu/python/py3/bin/python3
 
 import time
 import boto3
@@ -7,35 +7,33 @@ import yaml
 
 import lab_1_s3_def as s3
 
-def main():
+
+if __name__ == "__main__":
+
    s3_resource = boto3.resource('s3')
    s3_client   = boto3.client('s3')
 
-   print( 2 * '\n')
-   print('s3_clent object:')
-   print(s3_client)
-   print()
-
    test_bucket= 'jhsu-s3-boto3-bucket1'
    test_file  = 'jhsu-s3-boto3-file1'
+   print()
   
+   print("--- original S3 bucket list ---")
+   (s3_bucket_list, s3_bucket_cnt) = s3.s3_list_buckets(s3_client)
+   s3.s3_print_bucket_list(s3_bucket_list)
 
-   s3_bucket_list = []
-   s3.s3_list_buckets(s3_client)
+   print("--- S3 create bucket ---")
+   s3_create_bucket_response = s3.s3_create_bucket(s3_client, test_bucket)
 
-   print()
-   s3_bucket_url = s3.s3_create_bucket(s3_client, test_bucket)
-   print(s3_bucket_url)
-   print()
-   (s3_bucket_list, s3_bucket_count) = s3_bucket_list = s3.s3_list_buckets(s3_client)
+   print("--- Validate bucket creation ---")
+   s3.s3_check_bucket_in_list(s3_create_bucket_response, test_bucket)
+   (s3_bucket_list, s3_bucket_cnt) = s3.s3_list_buckets(s3_client)
+   s3.s3_print_bucket_list(s3_bucket_list)
 
-   print()
-   s3_bucket_deleted = s3.s3_delete_bucket(s3_client, test_bucket)
-   print(type(s3_bucket_deleted))
-   print()
-   s3.s3_list_buckets(s3_client)
-   print()
+   print("--- S3 delete bucket ---")
+   s3_delete_bucket_response = s3.s3_delete_bucket(s3_client, test_bucket)
 
-   return
-
-main()
+   print("--- Validate bucket deletion ---")
+   s3.s3_check_bucket_deleteion(s3_delete_bucket_response)
+   (s3_bucket_list, s3_bucket_cnt) = s3.s3_list_buckets(s3_client)
+   s3.s3_print_bucket_list(s3_bucket_list)
+   
