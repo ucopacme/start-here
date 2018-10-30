@@ -1,6 +1,6 @@
+import boto3
 import json
 import yaml
-import boto3
 
 from moto import mock_s3
 

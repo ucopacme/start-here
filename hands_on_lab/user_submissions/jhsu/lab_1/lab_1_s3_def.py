@@ -1,4 +1,3 @@
-
 '''
 def jsonfmt(obj, default=to_serializable):
     if isinstance(obj, str):
@@ -12,6 +11,8 @@ def jsonfmt(obj, default=to_serializable):
 '''
 
 #def jsonfmt(obj, default=to_serializable):
+
+
 def jsonfmt(obj):
     if isinstance(obj, str):
         return obj
