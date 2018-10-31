@@ -1,12 +1,12 @@
-#! /home/jhsu/python/py3/bin/python3
+#! /usr/bin/env python
 
 import time
 import boto3
 import json
 import yaml
 
+import myutil as util
 import lab_1_s3_def as s3
-
 
 if __name__ == "__main__":
 
@@ -19,21 +19,30 @@ if __name__ == "__main__":
   
    print("--- original S3 bucket list ---")
    (s3_bucket_list, s3_bucket_cnt) = s3.s3_list_buckets(s3_client)
-   s3.s3_print_bucket_list(s3_bucket_list)
+   util.s3_print_bucket_list(s3_bucket_list)
 
    print("--- S3 create bucket ---")
    s3_create_bucket_response = s3.s3_create_bucket(s3_client, test_bucket)
 
    print("--- Validate bucket creation ---")
-   s3.s3_check_bucket_in_list(s3_create_bucket_response, test_bucket)
+   if s3.s3_check_bucket_in_list(s3_client, test_bucket):
+      print(" Bucket creation passed! ")
+   else: 
+      print(" Bucket creation failed! ")
+
    (s3_bucket_list, s3_bucket_cnt) = s3.s3_list_buckets(s3_client)
-   s3.s3_print_bucket_list(s3_bucket_list)
+   util.s3_print_bucket_list(s3_bucket_list)
 
    print("--- S3 delete bucket ---")
    s3_delete_bucket_response = s3.s3_delete_bucket(s3_client, test_bucket)
+   print(s3_delete_bucket_response)
 
    print("--- Validate bucket deletion ---")
-   s3.s3_check_bucket_deleteion(s3_delete_bucket_response)
+   if s3.s3_check_bucket_in_list(s3_client, test_bucket):
+      print(" Bucket deletion failed! ")
+   else:
+      print(" Bucket deletion passed! ")
+
    (s3_bucket_list, s3_bucket_cnt) = s3.s3_list_buckets(s3_client)
-   s3.s3_print_bucket_list(s3_bucket_list)
+   util.s3_print_bucket_list(s3_bucket_list)
    
