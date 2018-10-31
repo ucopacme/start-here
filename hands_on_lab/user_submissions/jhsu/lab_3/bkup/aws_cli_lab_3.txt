@@ -1,0 +1,241 @@
+aws ec2 run-instances --image-id ami-xxxxxxxx --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-xxxxxxxx --subnet-id subnet-xxxxxxxx
+
+aws ec2 run-instances --image-id ami-0bbe6b35405ecebdb --count 1 --instance-type t2.micro --subnet-id subnet-05eb39a9c6f4bbe33
+
+
+aws ec2 describe-images --image-ids ami-0bbe6b35405ecebdb
+{
+    "Images": [
+        {
+            "Architecture": "x86_64",
+            "ImageId": "ami-0bbe6b35405ecebdb",
+            "CreationDate": "2018-09-12T21:04:47.000Z",
+            "OwnerId": "099720109477",
+            "EnaSupport": true,
+            "SriovNetSupport": "simple",
+            "BlockDeviceMappings": [
+                {
+                    "Ebs": {
+                        "SnapshotId": "snap-0576704bcf883d5ee",
+                        "VolumeSize": 8,
+                        "VolumeType": "gp2",
+                        "DeleteOnTermination": true,
+                        "Encrypted": false
+                    },
+                    "DeviceName": "/dev/sda1"
+                },
+                {
+                    "DeviceName": "/dev/sdb",
+                    "VirtualName": "ephemeral0"
+                },
+                {
+                    "DeviceName": "/dev/sdc",
+                    "VirtualName": "ephemeral1"
+                }
+            ],
+            "Public": true,
+            "ImageLocation": "099720109477/ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-20180912",
+            "ImageType": "machine",
+            "VirtualizationType": "hvm",
+            "RootDeviceName": "/dev/sda1",
+            "RootDeviceType": "ebs",
+            "State": "available",
+            "Hypervisor": "xen",
+            "Description": "Canonical, Ubuntu, 18.04 LTS, amd64 bionic image build on 2018-09-12",
+            "Name": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-20180912"
+        }
+    ]
+}
+
+
+
+aws ec2 describe-vpcs
+{
+    "Vpcs": [
+        {
+            "CidrBlock": "172.31.0.0/16",
+            "VpcId": "vpc-0e804376",
+            "CidrBlockAssociationSet": [
+                {
+                    "CidrBlock": "172.31.0.0/16",
+                    "CidrBlockState": {
+                        "State": "associated"
+                    },
+                    "AssociationId": "vpc-cidr-assoc-d2f06eb8"
+                }
+            ],
+            "InstanceTenancy": "default",
+            "IsDefault": true,
+            "State": "available",
+            "DhcpOptionsId": "dopt-39b14941"
+        }
+    ]
+}
+
+aws ec2 describe-vpcs
+aws ec2 create-vpc --cidr-block 191.168.1.0/24
+aws ec2 delete-vpc --vpc-id vpc-0d44747996ed4d54d
+aws ec2 create-vpc --cidr-block 192.168.1.0/24
+{
+    "Vpc": {
+        "IsDefault": false,
+        "Tags": [],
+        "State": "pending",
+        "CidrBlock": "192.168.1.0/24",
+        "DhcpOptionsId": "dopt-39b14941",
+        "InstanceTenancy": "default",
+        "Ipv6CidrBlockAssociationSet": [],
+        "CidrBlockAssociationSet": [
+            {
+                "AssociationId": "vpc-cidr-assoc-04af6ed7275adb21d",
+                "CidrBlockState": {
+                    "State": "associated"
+                },
+                "CidrBlock": "192.168.1.0/24"
+            }
+        ],
+        "VpcId": "vpc-0d5d326499b6fdb24"
+    }
+}
+aws ec2 create-subnet --vpc-id vpc-0d5d326499b6fdb24 --cidr-block 192.168.1.0/26
+{
+    "Subnet": {
+        "AssignIpv6AddressOnCreation": false,
+        "VpcId": "vpc-0d5d326499b6fdb24",
+        "AvailableIpAddressCount": 59,
+        "AvailabilityZone": "us-west-2b",
+        "CidrBlock": "192.168.1.0/26",
+        "Ipv6CidrBlockAssociationSet": [],
+        "MapPublicIpOnLaunch": false,
+        "DefaultForAz": false,
+        "SubnetId": "subnet-05eb39a9c6f4bbe33",
+        "State": "pending"
+    }
+}
+
+aws ec2 describe-subnets --subnet-id subnet-05eb39a9c6f4bbe33
+{
+    "Subnets": [
+        {
+            "State": "available",
+            "SubnetId": "subnet-05eb39a9c6f4bbe33",
+            "Ipv6CidrBlockAssociationSet": [],
+            "AssignIpv6AddressOnCreation": false,
+            "MapPublicIpOnLaunch": false,
+            "AvailabilityZone": "us-west-2b",
+            "AvailableIpAddressCount": 59,
+            "CidrBlock": "192.168.1.0/26",
+            "DefaultForAz": false,
+            "VpcId": "vpc-0d5d326499b6fdb24"
+        }
+    ]
+}
+
+aws ec2 run-instances --image-id ami-0bbe6b35405ecebdb --count 1 --instance-type t2.micro --subnet-id subnet-05eb39a9c6f4bbe33
+{
+    "ReservationId": "r-064ff385f41b43b0c",
+    "Groups": [],
+    "Instances": [
+        {
+            "PrivateDnsName": "ip-192-168-1-62.us-west-2.compute.internal",
+            "CpuOptions": {
+                "ThreadsPerCore": 1,
+                "CoreCount": 1
+            },
+            "PublicDnsName": "",
+            "LaunchTime": "2018-10-22T01:56:22.000Z",
+            "Placement": {
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-west-2b"
+            },
+            "SecurityGroups": [
+                {
+                    "GroupName": "default",
+                    "GroupId": "sg-09603b176229bbb2a"
+                }
+            ],
+            "ClientToken": "",
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "VpcId": "vpc-0d5d326499b6fdb24",
+            "EbsOptimized": false,
+            "SourceDestCheck": true,
+            "Architecture": "x86_64",
+            "InstanceId": "i-0eb4f199d8cb51d33",
+            "NetworkInterfaces": [
+                {
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateIpAddress": "192.168.1.62"
+                        }
+                    ],
+                    "Status": "in-use",
+                    "VpcId": "vpc-0d5d326499b6fdb24",
+                    "NetworkInterfaceId": "eni-01e973d764451d0ab",
+                    "Groups": [
+                        {
+                            "GroupName": "default",
+                            "GroupId": "sg-09603b176229bbb2a"
+                        }
+                    ],
+                    "OwnerId": "217985836260",
+                    "Description": "",
+                    "MacAddress": "02:59:ca:46:bc:48",
+                    "SubnetId": "subnet-05eb39a9c6f4bbe33",
+                    "SourceDestCheck": true,
+                    "Attachment": {
+                        "Status": "attaching",
+                        "DeleteOnTermination": true,
+                        "AttachmentId": "eni-attach-080eac04d700b39cd",
+                        "DeviceIndex": 0,
+                        "AttachTime": "2018-10-22T01:56:22.000Z"
+                    },
+                    "Ipv6Addresses": [],
+                    "PrivateIpAddress": "192.168.1.62"
+                }
+            ],
+            "InstanceType": "t2.micro",
+            "ImageId": "ami-0bbe6b35405ecebdb",
+            "RootDeviceName": "/dev/sda1",
+            "RootDeviceType": "ebs",
+            "BlockDeviceMappings": [],
+            "AmiLaunchIndex": 0,
+            "State": {
+                "Name": "pending",
+                "Code": 0
+            },
+            "SubnetId": "subnet-05eb39a9c6f4bbe33",
+            "StateReason": {
+                "Message": "pending",
+                "Code": "pending"
+            },
+            "ProductCodes": [],
+            "PrivateIpAddress": "192.168.1.62",
+            "VirtualizationType": "hvm",
+            "Hypervisor": "xen",
+            "StateTransitionReason": ""
+        }
+    ],
+    "OwnerId": "217985836260"
+}
+
+aws ec2 terminate-instances --instance-ids i-0eb4f199d8cb51d33 
+{
+    "TerminatingInstances": [
+        {
+            "CurrentState": {
+                "Code": 32,
+                "Name": "shutting-down"
+            },
+            "InstanceId": "i-0eb4f199d8cb51d33",
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
+
