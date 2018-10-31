@@ -1,19 +1,11 @@
-import boto3
-
-def yamlfmt(obj):
-    if isinstance(obj, str):
-        return obj
-    return yaml.dump(obj, default_flow_style=False)
-
 
 def iam_list_users(iam_client):
    iam_list_users_response = iam_client.list_users()
    user_list = []
    for User in iam_list_users_response['Users']:
       user_list.append(User['UserName'])
-   print(user_list)
-   print()
-   return
+   list_count = len(user_list)
+   return (user_list, list_count)
 
 
 def iam_create_user(iam_client,NewUser):
@@ -21,10 +13,16 @@ def iam_create_user(iam_client,NewUser):
    return iam_create_user_response
 
 
-def iam_check_user_in_list(iam_response, test_user):
-   iam_user_list = iam_response['User']
-   print('iam user:  ' + iam_user_list)
-   return
+def iam_check_user_in_list(iam_client, test_user):
+   iam_list_users_response = iam_client.list_users()
+   user_list = []
+   for User in iam_list_users_response['Users']:
+      user_list.append(User['UserName'])
+   list_count = len(user_list)
+   if test_user in user_list:
+      return True
+   else:
+      return False
 
 
 def iam_delete_user(iam_client,OldUser):

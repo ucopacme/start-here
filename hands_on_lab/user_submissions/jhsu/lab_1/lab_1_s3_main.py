@@ -17,7 +17,7 @@ if __name__ == "__main__":
    test_file  = 'jhsu-s3-boto3-file1'
    print()
   
-   print("--- original S3 bucket list ---")
+   print("--- S3 bucket list ---")
    (s3_bucket_list, s3_bucket_cnt) = s3.s3_list_buckets(s3_client)
    util.s3_print_bucket_list(s3_bucket_list)
 
@@ -30,6 +30,7 @@ if __name__ == "__main__":
    else: 
       print(" Bucket creation failed! ")
 
+   print("--- S3 bucket list ---")
    (s3_bucket_list, s3_bucket_cnt) = s3.s3_list_buckets(s3_client)
    util.s3_print_bucket_list(s3_bucket_list)
 
@@ -42,6 +43,7 @@ if __name__ == "__main__":
    else:
       print(" Bucket deletion passed! ")
 
+   print("--- S3 bucket list ---")
    (s3_bucket_list, s3_bucket_cnt) = s3.s3_list_buckets(s3_client)
    util.s3_print_bucket_list(s3_bucket_list)
    

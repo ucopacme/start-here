@@ -4,7 +4,7 @@
      "S3BucketLab1" : {
         "Type": "AWS::S3::Bucket",
         "Properties" : {
-        "BucketName" : "jhsu-s3-cf-bucket1"
+        "BucketName" : "jhsu-cf-s3-bucket1"
 	}
      } 
   }

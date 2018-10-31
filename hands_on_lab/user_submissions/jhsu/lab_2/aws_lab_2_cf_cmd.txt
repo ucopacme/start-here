@@ -1,6 +1,6 @@
-aws cloudformation validate-template --template-body file://lab_2_user.json
+aws cloudformation validate-template --template-body file://lab_2_cf_user.json
 
-aws cloudformation create-stack --stack-name lab-2-user-stack --template-body file://lab_2_user.json --capabilities CAPABILITY_NAMED_IAM
+aws cloudformation create-stack --stack-name lab-2-user-stack --template-body file://lab_2_cf_user.json --capabilities CAPABILITY_NAMED_IAM
 
 aws cloudformation update-stack --stack-name lab-2-user-stack
 

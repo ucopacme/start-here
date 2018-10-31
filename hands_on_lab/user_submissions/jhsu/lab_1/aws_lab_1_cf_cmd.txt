@@ -1,6 +1,6 @@
-aws cloudformation validate-template --template-body file://lab_1_s3.json
+aws cloudformation validate-template --template-body file://lab_1_cf_s3.json
 
-aws cloudformation create-stack --stack-name lab-1-s3-stack --template-body file://lab_1_s3.json 
+aws cloudformation create-stack --stack-name lab-1-s3-stack --template-body file://lab_1_cf_s3.json 
 
 aws cloudformation update-stack --stack-name lab-1-s3-stack
 

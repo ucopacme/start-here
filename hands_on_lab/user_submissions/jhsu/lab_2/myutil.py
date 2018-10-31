@@ -14,3 +14,13 @@ def s3_check_bucket_deleteion(s3_resonse):
       print(" Bucket deletion failed! ")
    return
 
+
+def iam_print_user_list(user_list):
+   print('User cnt is ' + str(len(user_list)))
+   for user in user_list:
+      print('\t', user)
+   print()
+   return
+
+
+

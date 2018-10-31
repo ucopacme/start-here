@@ -1,0 +1,110 @@
+import boto3
+'''
+def jsonfmt(obj, default=to_serializable):
+    if isinstance(obj, str):
+        return obj
+    return json.dumps(
+        obj,
+        indent=4,
+        separators=(',', ': '),
+        default=default,
+)
+'''
+
+#def jsonfmt(obj, default=to_serializable):
+def jsonfmt(obj):
+    if isinstance(obj, str):
+        return obj
+    return json.dumps(
+        obj,
+        indent=4,
+        separators=(',', ': ')
+#       default=default 
+    )
+
+def yamlfmt(obj):
+    if isinstance(obj, str):
+        return obj
+    return yaml.dump(obj, default_flow_style=False)
+
+
+def iam_list_users(iam_client):
+   iam_list_users_response = iam_client.list_users()
+   print(iam_list_users_response)
+   user_list = []
+   for item in iam_list_users_response.items():
+      (key, value) = item
+      print("-- ", key, ":", value)
+   for User in iam_list_users_response['Users']:
+      user_list.append(User['UserName'])
+   print()
+   print(user_list)
+   print()
+   return
+
+
+def iam_create_user(iam_client,NewUser):
+   iam_create_user_response = iam_client.create_user(UserName = NewUser)
+   return iam_create_user_response
+
+
+def iam_check_user_in_list(iam_response, test_user):
+   iam_user_list = iam_response['User']
+   print('iam user:  ' + iam_user_list)
+   return
+
+#  print()
+#  print('iam create_user() response:')
+#  for item in list(iam_create_user.items()):
+#     (key, value) = item
+#     print('\t', key, ":", value)
+#  print()
+#  return iam_create_user['User']['UserName']
+
+#def iam_create_user(iam_client,NewUser):
+#   iam_create_user = iam_client.create_user(UserName = NewUser)
+#   print()
+#   print('iam create_user() response:')
+#   for item in list(iam_create_user.items()):
+#      (key, value) = item
+#      print('\t', key, ":", value)
+#   print()
+#   return iam_create_user['User']['UserName']
+
+def iam_delete_user(iam_client,OldUser):
+#  OldUser = 'jhsu-iam-boto3-user1'
+   print()
+   print("--- IAM deleter user:", OldUser, "---")
+   iam_delete_user = iam_client.delete_user(UserName = OldUser)
+   print()
+   print('iam_delete_user() response:')
+   for item in list(iam_delete_user.items()):
+      (key, value) = item
+      print('\t', key, ":", value)
+   return iam_delete_user 
+
+
+if __name__ == "__main__":
+
+    iam_client   = boto3.client('iam')
+
+    User1 = 'John'
+    User2 = 'Michael'
+
+    print("--- IAM create user:", User1, "---")
+    iam_create_user_response  = iam_create_user(iam_client, User1)
+    print(iam_create_user_response)
+
+    print("--- IAM list users: ---")
+    iam_list_users_response = iam_list_users(iam_client)
+    print(iam_create_user_response)
+ 
+    print("--- IAM create user:", User2, "---")
+    iam_create_user_response  = iam_create_user(iam_client, User2)
+    print(iam_create_user_response)
+
+    print("--- IAM list users: ---")
+    iam_list_users_response = iam_list_users(iam_client)
+    print(iam_create_user_response)
+ 
+#   iam_delete_user(iam_client, UserName)

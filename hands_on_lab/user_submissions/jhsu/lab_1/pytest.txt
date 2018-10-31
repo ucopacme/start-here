@@ -1,0 +1,2 @@
+
+pytest --cov=lab_1_s3_def --cov-report term-missing --cov-fail-under=100 test_lab_1_s3.py
