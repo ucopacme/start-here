@@ -15,6 +15,6 @@ aws cloudformation describe-stack-events --stack-name lab-2-user-stack
 
 aws cloudformation list-stack-resources  --stack-name lab-2-user-stack
 
-aws cloudformation delete-stacks --stack-name lab-2-user-stack
+aws cloudformation delete-stack --stack-name lab-2-user-stack
 
 

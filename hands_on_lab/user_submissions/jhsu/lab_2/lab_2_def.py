@@ -1,26 +1,4 @@
 import boto3
-'''
-def jsonfmt(obj, default=to_serializable):
-    if isinstance(obj, str):
-        return obj
-    return json.dumps(
-        obj,
-        indent=4,
-        separators=(',', ': '),
-        default=default,
-)
-'''
-
-#def jsonfmt(obj, default=to_serializable):
-def jsonfmt(obj):
-    if isinstance(obj, str):
-        return obj
-    return json.dumps(
-        obj,
-        indent=4,
-        separators=(',', ': ')
-#       default=default 
-    )
 
 def yamlfmt(obj):
     if isinstance(obj, str):
@@ -53,35 +31,4 @@ def iam_delete_user(iam_client,OldUser):
    iam_delete_user = iam_client.delete_user(UserName = OldUser)
    return 
 
-'''
-if __name__ == "__main__":
-
-    iam_client   = boto3.client('iam')
-
-    User1 = 'John'
-    User2 = 'Michael'
-
-    print("--- IAM list users: ---")
-    iam_list_users_response = iam_list_users(iam_client)
- 
-    print("--- IAM create user:", User1, "---")
-    iam_create_user_response  = iam_create_user(iam_client, User1)
-
-    print("--- IAM list users: ---")
-    iam_list_users_response = iam_list_users(iam_client)
- 
-    print("--- IAM create user:", User2, "---")
-    iam_create_user_response  = iam_create_user(iam_client, User2)
-
-    print("--- IAM list users: ---")
-    iam_list_users_response = iam_list_users(iam_client)
- 
-    print("--- IAM delete user: ---")
-    iam_delete_user(iam_client, User1)
-    print("--- IAM delete user: ---")
-    iam_delete_user(iam_client, User2)
-
-    print("--- IAM list users: ---")
-    iam_list_users_response = iam_list_users(iam_client)
-''' 
 
