@@ -33,8 +33,6 @@ def test_mock_list_use():
    assert iam.iam_check_user_in_list(iam_client, NewUser) and \
           not iam.iam_check_user_in_list(iam_client, 'non_user')
 
-#  UserName = iam.iam_create_user(iam_client, NewUser)
-#  assert iam.iam_list_users(iam_client) is None
 
 
 
