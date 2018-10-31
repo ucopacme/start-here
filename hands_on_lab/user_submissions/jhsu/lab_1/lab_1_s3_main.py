@@ -35,7 +35,6 @@ if __name__ == "__main__":
 
    print("--- S3 delete bucket ---")
    s3_delete_bucket_response = s3.s3_delete_bucket(s3_client, test_bucket)
-   print(s3_delete_bucket_response)
 
    print("--- Validate bucket deletion ---")
    if s3.s3_check_bucket_in_list(s3_client, test_bucket):
