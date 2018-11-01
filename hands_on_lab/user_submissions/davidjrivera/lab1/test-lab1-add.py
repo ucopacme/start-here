@@ -32,5 +32,4 @@ def test_dels3():
       new_bucket = 'lab1davidpythons3'
       response =  s3.create_bucket( Bucket=new_bucket,  CreateBucketConfiguration={'LocationConstraint': 'us-west-2'})
       delbuck = s3.delete_bucket(Bucket='lab1davidpythons3')
-      print(delbuck)
       assert delbuck['ResponseMetadata']['HTTPStatusCode'] == 204
