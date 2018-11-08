@@ -42,3 +42,14 @@ Installing python packages into your venv::
   py3
   pip install -U pip
   pip install awscli boto3
+
+
+On-Line Tutorial
+----------------
+
+intro to virtual environments
+
+https://www.youtube.com/watch?v=N5vscPTWKOk
+
+
+
