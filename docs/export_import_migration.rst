@@ -223,7 +223,6 @@ GUID Partition Table (GPT) partitioned volumes are not supported
 
 
 
-
 Licensing:
 ---------
 
