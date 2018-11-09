@@ -27,3 +27,20 @@ Types of VM Import/Export:
 - Instance import ( Multi-disk imports and Windows BYOL)
 - Snapshot Import ( Import a VMDK and create and EBS volume than attach to an EC2 Instance)
 
+**Walk-thru** of utilizing VM Import/Export - Image Version:
+--------------------------------------------
+
+- On our On-Premise VMWare farm - create an OVA based off the VMWare Virtual Machine required to be migrated. *(refer to Vsphere documentations on creating the proper export data)*
+
+Create an S3 Bucket within the region you wish to store your VM data.
+::
+    aws s3 mb s3://ait-migrate-aws
+
+Copy the OVA to an S3 Bucket
+::
+    aws s3 cp scrappy-clone.ova s3://ait-migrate-aws
+
+Create a trust Policy - which trusted account members are allowed to assume the role.
+::
+    vi trust-policy.json
+
