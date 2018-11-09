@@ -28,6 +28,10 @@ Config
 - https://docs.aws.amazon.com/config/index.html?id=docs_gateway#lang/en_us
 - https://www.sumologic.com/blog/amazon-web-services/aws-config-rules/
 
+- https://aws.amazon.com/blogs/mt/category/management-tools/aws-config/
+- https://aws.amazon.com/blogs/mt/aws-config-best-practices/
+- https://aws.amazon.com/blogs/mt/how-to-query-your-aws-resource-configuration-states-using-aws-config-and-amazon-athena/
+
 
 Billing and Cost Management
 ---------------------------
