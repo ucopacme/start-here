@@ -2,13 +2,11 @@ VM Import/Export Solution Migration
 ===================================
 
 **Context:**
- Facilitating the Import of a Virtual Machines into AWS as a way to satisfy multiple requirements such as migrations of smalle
-r scoped environments,  ensure Disaster Recovery and/or Backup of systems or application data.
+ Facilitating the Import of a Virtual Machines into AWS as a way to satisfy multiple requirements such as migrations of smaller scoped environments,  ensure Disaster Recovery and/or Backup of systems or application data.
 
 
 **Goals:**
- This initial draft seeks to discover a methods of moving Virtual Machines or application data from an On-Premise farm
- to and AWS account.
+ This initial draft seeks to discover a methods of moving Virtual Machines or application data from an On-Premise farm to an AWS account.
 
 What is VM Import/Export:
 -------------------------
