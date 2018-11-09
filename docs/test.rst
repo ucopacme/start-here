@@ -161,34 +161,29 @@ Prerequisite Information
 
  OS Supported:
 ------------
-*Microsoft Windows Server 2003 (Standard, Datacenter, Enterprise) with Service Pack 1 (SP1) or later (32- and 64-bit)*
+- *Microsoft Windows Server 2003 (Standard, Datacenter, Enterprise) with Service Pack 1 (SP1) or later (32- and 64-bit)*
 
-*Microsoft Windows Server 2003 R2 (Standard, Datacenter, Enterprise) (32- and 64-bit)*
+- *Microsoft Windows Server 2003 R2 (Standard, Datacenter, Enterprise) (32- and 64-bit)*
 
-*Microsoft Windows Server 2008 (Standard, Datacenter, Enterprise) (32- and 64-bit)*
+- *Microsoft Windows Server 2008 (Standard, Datacenter, Enterprise) (32- and 64-bit)*
 
-*Microsoft Windows Server 2008 R2 (Standard, Datacenter, Enterprise) (64-bit only)*
+- *Microsoft Windows Server 2008 R2 (Standard, Datacenter, Enterprise) (64-bit only)*
 
-*Microsoft Windows Server 2012 (Standard, Datacenter) (64-bit only)*
+- *Microsoft Windows Server 2012 (Standard, Datacenter) (64-bit only)*
 
-*Microsoft Windows Server 2012 R2 (Standard, Datacenter) (64-bit only) (Nano Server installation not supported)*
+- *Microsoft Windows Server 2012 R2 (Standard, Datacenter) (64-bit only) (Nano Server installation not supported)*
 
-*Microsoft Windows Server 2016 (Standard, Datacenter) (64-bit only)*
+- *Microsoft Windows Server 2016 (Standard, Datacenter) (64-bit only)*
 
-*Red Hat Enterprise Linux (RHEL) 5.1-5.11, 6.1-6.9, 7.0-7.3 (6.0 lacks required drivers)*
+- *Red Hat Enterprise Linux (RHEL) 5.1-5.11, 6.1-6.9, 7.0-7.3 (6.0 lacks required drivers)*
 
-*SUSE Linux Enterprise Server 11 with Service Pack 1 and kernel 2.6.32.12-0.7*
+- *SUSE Linux Enterprise Server 11 with Service Pack 1 and kernel 2.6.32.12-0.7*
 
-*SUSE Linux Enterprise Server 11 with Service Pack 2 and kernel 3.0.13-0.27*
+- *SUSE Linux Enterprise Server 11 with Service Pack 2 and kernel 3.0.13-0.27*
 
-*SUSE Linux Enterprise Server 11 with Service Pack 3 and kernel 3.0.76-0.11, 3.0.101-0.8, or 3.0.101-0.15*
+- *SUSE Linux Enterprise Server 11 with Service Pack 3 and kernel 3.0.76-0.11, 3.0.101-0.8, or 3.0.101-0.15*
 
-*SUSE Linux Enterprise Server 11 with Service Pack 4 and kernel 3.0.101-63*
+- *SUSE Linux Enterprise Server 11 with Service Pack 4 and kernel 3.0.101-63*
 
-Formats Supported:
------------------
-- OVA *(Open Virtual Appliance)*
-- VMDK *(Virtual Machine Disk)*
-- VHD/VHDX *(Fixed and Dynamic Virtual Hard Disk)*
 
 
