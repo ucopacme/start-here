@@ -63,3 +63,50 @@ Create an IAM Role utilizing the trust policy
 ::
    aws iam create-role --role-name vmimport --assume-role-policy-document file://trust-policy.json
 
+Create a Role Policy
+::
+
+    vi  role-policy.json
+
+
+        {
+   "Version": "2012-10-17",
+   "Statement": [
+      {
+         "Effect": "Allow",
+         "Action": [
+            "s3:ListBucket",
+            "s3:GetBucketLocation",
+            "s3:FullAccess"
+         ],
+         "Resource": [
+            "arn:aws:s3:::ait-migrate-aws"
+         ]
+      },
+      {
+         "Effect": "Allow",
+         "Action": [
+            "s3:GetObject"
+         ],
+         "Resource": [
+            "arn:aws:s3:::ait-migrate-aws/*"
+         ]
+      },
+      {
+         "Effect": "Allow",
+         "Action":[
+            "ec2:ModifySnapshotAttribute",
+            "ec2:CopySnapshot",
+            "ec2:RegisterImage",
+            "ec2:Describe*",
+            "ec2:FullAccess"
+         ],
+         "Resource": "*"
+      }
+   ]
+}
+
+
+Update Inline IAM Policy to use the new **role-policy.json** file
+::
+   aws iam put-role-policy --role-name vmimport --policy-name vmimport --policy-document file://role-policy.json
