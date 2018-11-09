@@ -43,4 +43,23 @@ Copy the OVA to an S3 Bucket
 Create a trust Policy - which trusted account members are allowed to assume the role.
 ::
     vi trust-policy.json
+       {
+   "Version": "2012-10-17",
+   "Statement": [
+      {
+         "Effect": "Allow",
+         "Principal": { "Service": "vmie.amazonaws.com" },
+         "Action": "sts:AssumeRole",
+         "Condition": {
+            "StringEquals":{
+               "sts:Externalid": "vmimport"
+            }
+         }
+      }
+   ]
+}
+
+Create an IAM Role utilizing the trust policy
+::
+   aws iam create-role --role-name vmimport --assume-role-policy-document file://trust-policy.json
 
