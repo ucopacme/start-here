@@ -2,14 +2,13 @@ VM Import/Export Solution Migration
 ===================================
 
 **Context:**
- Facilitating the Import of a Virtual Machines into AWS as a way to satisfy multiple requirements such as migrations of smaller scoped environments,  ensure Disaster Recovery and/or Backups of system or application data is captured.
+ Facilitating the Import of a Virtual Machines into AWS as a way to satisfy multiple requirements such as migrations of smalle
+r scoped environments,  ensure Disaster Recovery and/or Backup of systems or application data.
 
 
 **Goals:**
- This initial draft seeks to discover different methos of moving Virtual Machines or application data from an On-Premise farm to aand AWS account.
-
-   
-
+ This initial draft seeks to discover a methods of moving Virtual Machines or application data from an On-Premise farm
+ to and AWS account.
 
 What is VM Import/Export:
 -------------------------
@@ -28,9 +27,6 @@ Types of VM Import/Export:
 - Instance import ( Multi-disk imports and Windows BYOL)
 - Snapshot Import ( Import a VMDK and create and EBS volume than attach to an EC2 Instance)
 
-
-
-
 **Walk-thru** of utilizing VM Import/Export - Image Version:
 --------------------------------------------
 
@@ -46,10 +42,8 @@ Copy the OVA to an S3 Bucket
 
 Create a trust Policy - which trusted account members are allowed to assume the role.
 ::
-    vi trust-policy.json 
-
-
-	{
+    vi trust-policy.json
+       {
    "Version": "2012-10-17",
    "Statement": [
       {
@@ -72,10 +66,10 @@ Create an IAM Role utilizing the trust policy
 Create a Role Policy
 ::
 
-    vi 	role-policy.json
+    vi  role-policy.json
 
 
-	{
+        {
    "Version": "2012-10-17",
    "Statement": [
       {
@@ -167,29 +161,30 @@ Prerequisite Information
 
  OS Supported:
 ------------
-*Microsoft Windows Server 2003 (Standard, Datacenter, Enterprise) with Service Pack 1 (SP1) or later (32- and 64-bit)*
 
-*Microsoft Windows Server 2003 R2 (Standard, Datacenter, Enterprise) (32- and 64-bit)*
+- Microsoft Windows Server 2003 (Standard, Datacenter, Enterprise) with Service Pack 1 (SP1) or later (32- and 64-bit)*
 
-*Microsoft Windows Server 2008 (Standard, Datacenter, Enterprise) (32- and 64-bit)*
+- Microsoft Windows Server 2003 R2 (Standard, Datacenter, Enterprise) (32- and 64-bit)*
 
-*Microsoft Windows Server 2008 R2 (Standard, Datacenter, Enterprise) (64-bit only)*
+- Microsoft Windows Server 2008 (Standard, Datacenter, Enterprise) (32- and 64-bit)*
 
-*Microsoft Windows Server 2012 (Standard, Datacenter) (64-bit only)*
+- Microsoft Windows Server 2008 R2 (Standard, Datacenter, Enterprise) (64-bit only)*
 
-*Microsoft Windows Server 2012 R2 (Standard, Datacenter) (64-bit only) (Nano Server installation not supported)*
+- Microsoft Windows Server 2012 (Standard, Datacenter) (64-bit only)*
 
-*Microsoft Windows Server 2016 (Standard, Datacenter) (64-bit only)*
+- Microsoft Windows Server 2012 R2 (Standard, Datacenter) (64-bit only) (Nano Server installation not supported)*
 
-*Red Hat Enterprise Linux (RHEL) 5.1-5.11, 6.1-6.9, 7.0-7.3 (6.0 lacks required drivers)*
+- Microsoft Windows Server 2016 (Standard, Datacenter) (64-bit only)*
 
-*SUSE Linux Enterprise Server 11 with Service Pack 1 and kernel 2.6.32.12-0.7*
+- Red Hat Enterprise Linux (RHEL) 5.1-5.11, 6.1-6.9, 7.0-7.3 (6.0 lacks required drivers)*
 
-*SUSE Linux Enterprise Server 11 with Service Pack 2 and kernel 3.0.13-0.27*
+- SUSE Linux Enterprise Server 11 with Service Pack 1 and kernel 2.6.32.12-0.7*
 
-*SUSE Linux Enterprise Server 11 with Service Pack 3 and kernel 3.0.76-0.11, 3.0.101-0.8, or 3.0.101-0.15*
+- SUSE Linux Enterprise Server 11 with Service Pack 2 and kernel 3.0.13-0.27*
 
-*SUSE Linux Enterprise Server 11 with Service Pack 4 and kernel 3.0.101-63*
+- SUSE Linux Enterprise Server 11 with Service Pack 3 and kernel 3.0.76-0.11, 3.0.101-0.8, or 3.0.101-0.15*
+
+- SUSE Linux Enterprise Server 11 with Service Pack 4 and kernel 3.0.101-63*
 
 Formats Supported:
 -----------------
@@ -232,7 +227,7 @@ GUID Partition Table (GPT) partitioned volumes are not supported
 Licensing:
 ---------
 
-Auto (default) Detects the source-system operating system and applies the appropriate license to the migrated virtual machine 
+Auto (default) Detects the source-system operating system and applies the appropriate license to the migrated virtual machine
 
 - AWS -  Replaces the source-system license with an AWS license, if appropriate, on the migrated VM.
 - BYOL - Retains the source-system license, if appropriate, on the migrated VM.
@@ -245,4 +240,4 @@ Auto (default) Detects the source-system operating system and applies the approp
 
 **Note: Windows server operating systems support either BYOL or AWS licenses.**
 
-- If you choose Auto (the default), the AWS license will be used if the VM has a server OS. Otherwise, the BYOL license is used.
+- If you choose Auto (the default), the AWS license will be used if the VM has a server OS. Otherwise, the BYOL license is use
