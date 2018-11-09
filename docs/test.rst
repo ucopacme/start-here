@@ -110,3 +110,42 @@ Create a Role Policy
 Update Inline IAM Policy to use the new **role-policy.json** file
 ::
    aws iam put-role-policy --role-name vmimport --policy-name vmimport --policy-document file://role-policy.json
+
+Create a **containers-json** file that will  be used to define:
+
+- Format of VM to be imported into AWS
+- S3 Bucket Location
+- Virtual Machine (key)
+
+
+::
+
+    vi containers-scrappy.json
+
+    [
+       {
+         "Description": "migrate from SDSC to AWS",
+         "Format": "ova",
+         "UserBucket": {
+             "S3Bucket": "ait-migrate-aws",
+             "S3Key": "scrappy-clone1.ova"
+         }
+     }]
+
+Copy the **containers-json** file to the S3 Bucket utilized as a staging point for the VM inports
+::
+   aws s3 cp container-scrappy.json s3://ait-migrate-aws
+
+With the VMWare image located in the S3 bucket, initiate the import:
+::
+   aws ec2 import-image --description "Scrappy-Clone OVA"  --disk-containers file://container-scrappy.json
+
+List the state of the Import using the  'import-ami-###'
+::
+   aws ec2 describe-import-image-tasks --import-task-ids import-ami-08d161af9f9ede8aa
+
+**OPTIONAL** - Cancelling the import task:
+::
+   aws ec2 cancel-import-task --import-task-id import-ami-08d161af9f9ede8aa
+
+      -----------  AMI COMPLETED ---------
