@@ -1,4 +1,4 @@
-Server Migration Service
+AWS Server Migration Service (SMS)
 ===================================
 
 **Context:**
