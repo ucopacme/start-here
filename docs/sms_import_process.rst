@@ -34,10 +34,12 @@ How is SMS used:
 
 - Import catalog of virtual machines from the on-premise VMWare environment setup
 ::
+
 	aws sms import-server-catalog --region us-west-2
 	
 - Find Virtual machine you want to migrate
 ::
+
 	aws sms get-servers  |grep -B 10 awsscrum-lnx1
             }
         },
@@ -56,6 +58,7 @@ How is SMS used:
 
 - Locate *server-Id*
 ::
+
 	"serverId": "s-4e856027",
 
 - Start initial seed replication of virtual machine
@@ -102,22 +105,27 @@ Additional pertantent and useful commands
 
 - Update replication after initial seed has completed
 ::
+
 	 aws sms update-replication-job --region us-west-2 --replication-job-id sms-job-436r4372 --frequency 24 --next-replication-run-start-time 2018-11-06T15:30:00-07:00
 
 - Initiate *on-demand* replication
 ::
+
 	aws sms start-on-demand-replication-run --replication-job-id sms-job-436r4372 --region us-west-2
 
 - Delete replication jobs no longer required - house keeping cleanup
 ::
+
 	aws sms delete-replication-job --region us-west-2 --replication-job-id sms-job-436r4372
 
 - Delete server catalog tht has been pulled from the on-premise datacenter(SDSC)
 ::
+
 	aws sms delete-server-catalog --region us-west-2
 
 - Disassociate connector from the on-premise datacenter (SDSC)
-:
+::
+
 	aws sms disassociate-connector --region us-east-1 --connector-id c-415fef98f4c66c487 
 
 
