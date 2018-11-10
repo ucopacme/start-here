@@ -68,6 +68,7 @@ How is SMS used:
 
 - Verify replication runs based of *replication job id*
 ::
+
 	aws sms get-replication-runs --replication-job-id "sms-job-5691743f" --region us-west-2
 	{
     "replicationRunList": [
