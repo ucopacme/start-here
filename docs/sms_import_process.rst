@@ -52,7 +52,7 @@ How is SMS used:
                     "vmId": "vm-188760"
                 },
                 "vmName": "awsscrum-lnx1",
-                "vmManagerName": "p-sdsc-vcenter1.ucop.edu",
+                "vmManagerName": "p-sdsc-vcenter1.xxxx.xxx",
                 "vmManagerType": "vSphere",
                 "vmPath": "/Datacenters/SDSC/vm/awsscrum-lnx1"
 
@@ -134,7 +134,7 @@ Pre-requirements for using the Server Migration Service (SMS)
 ==========================================================
 
 
-OS Supported based off UCOP's current list
+OS Supported 
 ------------------------------------------
 - Microsoft Windows Server 2003 (Standard, Datacenter, Enterprise) with Service Pack 1 (SP1) or later (32- and 64-bit)
 - Microsoft Windows Server 2003 R2 (Standard, Datacenter, Enterprise) (32- and 64-bit)
