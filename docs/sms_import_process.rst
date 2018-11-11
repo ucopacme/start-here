@@ -2,15 +2,15 @@ AWS Server Migration Service (SMS)
 ===================================
 
 **Context:**
- Facilitating the Import of a Virtual Machines into AWS with the emphisis on mass migration of all of UCOP VM environment located on-premise.
+ Facilitating the Import of a Virtual Machines into AWS with the emphisis on mass migration of all of UCOP's virtual environment located on-premise.
 
 
 **Goals:**
- This initial draft seeks seeks to explain  the migration process of AWS Server Migration Service and how it will help with the ability to do a 'lift and shit of On-Premise farm to an AWS account.
+ This initial draft seeks to explain the migration process of AWS Server Migration Service and how it will help with the ability to do a 'lift and shit' of an On-Premise virtual environment to an AWS environment.
 
 What is SMS:
 -------------------------
-- AWS Server Migration Service (SMS) is an agentless service which makes it easier and faster for you to migrate thousands of on-premises workloads to AWS. AWS SMS allows you to automate, schedule, and track incremental replications of live server volumes, making it easier for you to coordinate large-scale server migrations. 
+- AWS Server Migration Service (SMS) is an agentless service which makes it easier and faster for you to migrate thousands of on-premises workloads to AWS. AWS SMS allows you to automate, schedule, and track incremental replications of live server volumes, making it easier for you to coordinate large-scale server migrations.
 
 
 What functionality is provided:
@@ -97,9 +97,9 @@ How is SMS used:
     ]
 }
 
-- *NOTE* The above will take many hours to complete, therefore this process must be done with a possible significant delay between steps. depending on the number of concurent replications.
+- *NOTE* The above will take an undetermined amount of time to complete, therefore this process must be done with a possible significant delay between steps depending on the number of concurent replications.
 
-Additional pertantent and useful commands
+Additional pertinent and useful commands
 --------------------------------------
 
 - *NOTE* - Per the AWS documentation there are *NO* CLI commands available to install and configure the connector
@@ -130,7 +130,7 @@ Additional pertantent and useful commands
 	aws sms disassociate-connector --region us-east-1 --connector-id c-415fef98f4c66c487 
 
 
-Prerequirement for using the Server Migration Service (SMS)
+Pre-requirements for using the Server Migration Service (SMS)
 ==========================================================
 
 
