@@ -120,21 +120,21 @@ delegations-spec.yml - delegation definition file. Structure of file is as follo
 
 
 # supers
-  - RoleName: SuperAdmin
-    Ensure: present
-    Description:  developer access
-    TrustingAccount:
-      - goofy-dev
-      - pluto-qa
-      - mydatacenter
-    TrustedGroup: admins
-    RequireMFA: True
-    Policies:
-      - PowerUserAccess
-      - LimitedIAM
-      - LimitedRoute53
-      - ServiceCatalogEndUserFullAccess
-      - CascadeServiceUserAccessKeys
+- RoleName: SuperAdmin
+  Ensure: present
+  Description:  developer access
+  TrustingAccount:
+    - goofy-dev
+    - pluto-qa
+    - mydatacenter
+  TrustedGroup: admins
+  RequireMFA: True
+  Policies:
+    - PowerUserAccess
+    - LimitedIAM
+    - LimitedRoute53
+    - ServiceCatalogEndUserFullAccess
+    - CascadeServiceUserAccessKeys
 
 
 Org-spec.yml - Organization location file. Structure file as follows.
