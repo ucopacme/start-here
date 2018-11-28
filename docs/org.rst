@@ -86,8 +86,7 @@ groups-spec.yml file - groups definition file. Structure of file is as follows.
 - NOTE: All IAM Users are automatically inherited into the group "UserSelfService" by the definiion of the coding that has been done. This group however only allows IAM users to do such things as (change password, MFA, create keys..)
 ::
 
-
-# AWS Auth Groups Specification
+AWS Auth Groups Specification
 groups:
   # seg
   - Name: all-users
