@@ -64,17 +64,17 @@ The purpose of this file is to CREATE an IAM user in AWS for team members. These
 - Lets add the new team member Scooby Doo to AWS. His username is: sdoo
 ::
 
-users:
-  # 
-  - Name: scrappy
-    Email: scrappy@company.com
-    Team: buildops
-  - Name: dopey
-    Email: dopey@company.com
-    Team: TechSupport
-  - Name: sdoo     < --- New user added
-    Email: sdoo@company.com  < --- important that the users VALID email is here
-    Team: operations   < -- member of team 
+  users:
+    # 
+    - Name: scrappy
+      Email: scrappy@company.com
+      Team: buildops
+    - Name: dopey
+      Email: dopey@company.com
+      Team: TechSupport
+    - Name: sdoo     < --- New user added
+      Email: sdoo@company.com  < --- important that the users VALID email is here
+      Team: operations   < -- member of team 
 
 
 Groups
@@ -86,19 +86,19 @@ groups-spec.yml file - groups definition file. Structure of file is as follows.
 - NOTE: All IAM Users are automatically inherited into the group "UserSelfService" by the definiion of the coding that has been done. This group however only allows IAM users to do such things as (change password, MFA, create keys..)
 ::
 
-AWS Auth Groups Specification
-groups:
-  # seg
-  - Name: all-users
-    Members: ALL
-    Policies:
-      - UserSelfService
-  - Name: admins
-    Ensure: present
-    Members:
-      - dopey
-      - scrappy
-      - sdoo    < -- Added new user to group (admins)
+  AWS Auth Groups Specification
+  groups:
+    # seg
+    - Name: all-users
+      Members: ALL
+      Policies:
+        - UserSelfService
+    - Name: admins
+      Ensure: present
+      Members:
+        - dopey
+        - scrappy
+        - sdoo    < -- Added new user to group (admins)
 
 
 Delegations
@@ -113,26 +113,25 @@ delegations-spec.yml - delegation definition file. Structure of file is as follo
 - TrustedGroup: The IAM group that has IAM user witin it, this group has policies created in it that define Roles which allow a user who is part of that group to Assume a role into another member account.
 - RequiredMFA:  ensures it is utilized
 - Policies: Service Control Policies as they are called in an organization setup. The services listed and only those services listed are alowed to be used. An explicit allow is used, therefore, all other services are dneied. This is done in a 'whitelisting' of services format. IMPORTANT NOTE: An IAM User or IAM Group that has FULL Administration access are still bound by these policies. The Service Control Policies SUPERCEDES orginal IAM USER and Group permissions.
-
 ::
 
 
-# supers
-- RoleName: SuperAdmin
-  Ensure: present
-  Description:  developer access
-  TrustingAccount:
-    - goofy-dev
-    - pluto-qa
-    - mydatacenter
-  TrustedGroup: admins
-  RequireMFA: True
-  Policies:
-    - PowerUserAccess
-    - LimitedIAM
-    - LimitedRoute53
-    - ServiceCatalogEndUserFullAccess
-    - CascadeServiceUserAccessKeys
+  # supers
+    - RoleName: SuperAdmin
+    Ensure: present
+    Description:  developer access
+    TrustingAccount:
+      - goofy-dev
+      - pluto-qa
+      - mydatacenter
+    TrustedGroup: admins
+    RequireMFA: True
+    Policies:
+      - PowerUserAccess
+      - LimitedIAM
+      - LimitedRoute53
+      - ServiceCatalogEndUserFullAccess
+      - CascadeServiceUserAccessKeys
 
 
 Org-spec.yml - Organization location file. Structure file as follows.
@@ -155,38 +154,38 @@ Example of the file is:
 ::
 
 
-organizational_units:
-  - Name: root
-    Accounts:
-      -Master
-    Child_OU:
-      - Name: authentication
-        SC_Policies:
-          - auth-only
-        Accounts:
-          - Auth
-      - Name: datacenter
-        SC_Policies:
-        Accounts:
-          - mydatacenter
-      - Name: poc-accounts
-        SC_Policies:
-        Accounts:
-          - test-poc
-          - test1-poc
-          - device-poc
-          - administrator-poc
-          - disney-poc     < -- Added this account to the organization.
-      - Name: build-accounts
-        SC_Policies:
-          - build-account-policy
-        Accounts:
-          - junkdev
-          - hacksville
-      - Name: prod
-        SC_Policies:
-        Accounts:
-          - hack-prod
+  organizational_units:
+    - Name: root
+      Accounts:
+        -Master
+      Child_OU:
+        - Name: authentication
+          SC_Policies:
+            - auth-only
+          Accounts:
+            - Auth
+        - Name: datacenter
+          SC_Policies:
+          Accounts:
+            - mydatacenter
+        - Name: poc-accounts
+          SC_Policies:
+          Accounts:
+            - test-poc
+            - test1-poc
+            - device-poc
+            - administrator-poc
+            - disney-poc     < -- Added this account to the organization.
+        - Name: build-accounts
+          SC_Policies:
+            - build-account-policy
+          Accounts:
+            - junkdev
+            - hacksville
+        - Name: prod
+          SC_Policies:
+          Accounts:
+            - hack-prod
 
 
 
@@ -196,15 +195,15 @@ Account-specs.yml file - Structure of file. Note read discription at top of file
 - To add a new account follow the example, reqired fields are (Name, Team, Alias) note reference to Email in decription of file.
 ::
 
-accounts:
-  - Name: widget
-    Team: operations
-    Alias: widgetops
-    Email: wo@company.com
-  - Name: mydatacenter  < --- We are adding this new account
-    Team: operations    < -- what team is using this account
-    Alias: datacenter01 < -- the alias for the new account. you can use this alias to assume role
-    Email:awsaccount@company.com  < -- Although this email address really does not matter, it must be 100% unique within AWS.
+  accounts:
+    - Name: widget
+      Team: operations
+      Alias: widgetops
+      Email: wo@company.com
+    - Name: mydatacenter  < --- We are adding this new account
+      Team: operations    < -- what team is using this account
+      Alias: datacenter01 < -- the alias for the new account. you can use this alias to assume role
+      Email:awsaccount@company.com  < -- Although this email address really does not matter, it must be 100% unique within AWS.
 
 
 
@@ -229,30 +228,30 @@ Required info:
 These commands will create the new member account based off the information you have supplied in the files lsted above in "Required info"
 ::
 
-# Create Account
+  # Create Account
 
 
-$ awsaccounts create --config /home/djr/.awsorgs/config.yaml --spec-dir /home/djr/.awsorgs/spec.d --master-account-id "222222222222" --auth-account-id "3333333333333" --org-access-role SuperAdmin    < -- dryrun only
+  $ awsaccounts create --config /home/djr/.awsorgs/config.yaml --spec-dir /home/djr/.awsorgs/spec.d --master-account-id "222222222222" --auth-account-id "3333333333333" --org-access-role SuperAdmin    < -- dryrun only
 
 
-$ awsaccounts create --config /home/djr/.awsorgs/config.yaml --spec-dir /home/djr/.awsorgs/spec.d --master-account-id "222222222222" --auth-account-id "3333333333333" --org-access-role SuperAdmin    < --  execute command
+  $ awsaccounts create --config /home/djr/.awsorgs/config.yaml --spec-dir /home/djr/.awsorgs/spec.d --master-account-id "222222222222" --auth-account-id "3333333333333" --org-access-role SuperAdmin    < --  execute command
 
 
-# Delegation 
-$ awsauth delegations  < --  dryrun only
-$ awsauth delegations --exec   < -- execute command 
+  # Delegation 
+  $ awsauth delegations  < --  dryrun only
+  $ awsauth delegations --exec   < -- execute command 
 
 
-# LoginProfile for users created
-$ awsloginprofile --new sdoo   < --- dry run only
-$ awsloginprofile --new sdoo --exec    < -- execute command
+  # LoginProfile for users created
+  $ awsloginprofile --new sdoo   < --- dry run only
+  $ awsloginprofile --new sdoo --exec    < -- execute command
 
-#OOOPS I messed up on the person email address in the 'users-spec.yml'
+  #OOOPS I messed up on the person email address in the 'users-spec.yml'
 
-# will rerun and update loginprofile
+  # will rerun and update loginprofile
 
-$ awsloginprofile --update sdoo   < --- dry run only
-$ awsloginprofile --update sdoo --exec    < -- execute command
+  $ awsloginprofile --update sdoo   < --- dry run only
+  $ awsloginprofile --update sdoo --exec    < -- execute command
 
 
 You should of received an email with the steps needed to complete the process and login to your new account!!!
