@@ -44,12 +44,12 @@ teams-spec.yml file - team definition file, this file is for ease of understandi
 - make note of the NAME of the team that best fits the REAL USER.  Note if none of the TEAMS fit, a new team can be added. All fields must be filled out.
 ::
 
-- Name: operations     <--- make this name meaningful with good.    
-    Description: Widget Administrators 
-    BusinessContacts:
-      - mickey.mouse@company.com
-    TechnicalContacts:
-      - dumbo@company.com
+  - Name: operations     <--- make this name meaningful with good.    
+      Description: Widget Administrators 
+      BusinessContacts:
+        - mickey.mouse@company.com
+      TechnicalContacts:
+        - dumbo@company.com
 
 
 Users
