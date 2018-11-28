@@ -88,7 +88,6 @@ groups-spec.yml file - groups definition file. Structure of file is as follows.
 
 
 # AWS Auth Groups Specification
-
 groups:
   # seg
   - Name: all-users
