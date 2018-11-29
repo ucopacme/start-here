@@ -250,8 +250,8 @@ Walk-thru on creating IAM Users and IAM Groups
  
   On the next pass of trying to create the account, use the following syntax instead.
 
-  awsloginprofile --update sdoo   < --- dry run only
-  awsloginprofile --update sdoo --exec    < -- execute command
+  awsloginprofile --reset sdoo   < --- dry run only
+  awsloginprofile --reset sdoo --exec    < -- execute command
 
 
 Example **loginprofile** email
@@ -279,7 +279,13 @@ Example **loginprofile** email
   Login URL:            https://mydatacenter.signin.aws.amazon.com/console
 
 
+Modifying OU Setup
+==================
+::
 
+  $ awsorgs organization
+
+  $ awsorgs organization --exec
 
 Creating Member Accounts
 ========================
@@ -304,7 +310,7 @@ These commands will create the new member account based off the information you 
 
   # Create Account
 
-
+  
   $ awsaccounts create --config /home/djr/.awsorgs/config.yaml --spec-dir /home/djr/.awsorgs/spec.d --master-account-id "222222222222" --auth-account-id "3333333333333" --org-access-role SuperAdmin    < -- dryrun only
 
 
