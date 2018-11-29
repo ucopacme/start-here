@@ -238,6 +238,14 @@ Walk-thru on creating IAM Users and IAM Groups
 
   (python36) [djr@hostname spec.d]$ awsloginprofile --new sdoo  < -- This will create your loginprofile and send you and email with further steps.
 
+  NOTE: if you make an OOPS: you nad maybe do a type in one of the User/Group Spec files and you receive an error upon trying to create the User.
+ 
+  On the next pass of trying to create the account, use the following syntax instead.
+
+  awsloginprofile --update sdoo   < --- dry run only
+  awsloginprofile --update sdoo --exec    < -- execute command
+
+
 Example **loginprofile** email
 ::
 
@@ -258,7 +266,7 @@ Example **loginprofile** email
 
   IMPORTANT: your one time password will expire after 24 hours.
 
-  IAM User Name:       **sdoo**
+  IAM User Name:       sdoo
   One Time Password:    Unedited:Pierced*Desirous+158
   Login URL:            https://mydatacenter.signin.aws.amazon.com/console
 
