@@ -52,7 +52,7 @@ teams-spec.yml file - team definition file, this file is for ease of understandi
         - dumbo@company.com
 
 
-Users
+IAM Users
 =====
 users-spec.yml file - User definition file. Structure of file is as follows.
 
@@ -77,7 +77,7 @@ The purpose of this file is to CREATE an IAM user in AWS for team members. These
       Team: operations   < -- member of team 
 
 
-Groups
+IAM Groups
 ======
 
 groups-spec.yml file - groups definition file. Structure of file is as follows.
@@ -133,6 +133,8 @@ delegations-spec.yml - delegation definition file. Structure of file is as follo
       - ServiceCatalogEndUserFullAccess
       - CascadeServiceUserAccessKeys
 
+ORGS
+====
 
 Org-spec.yml - Organization location file. Structure file as follows.
 
@@ -189,6 +191,10 @@ Example of the file is:
 
 
 
+
+
+Accounts
+========
   
 Account-specs.yml file - Structure of file. Note read discription at top of file. 
 
@@ -238,7 +244,7 @@ Walk-thru on creating IAM Users and IAM Groups
 
   (python36) [djr@hostname spec.d]$ awsloginprofile --new sdoo  < -- This will create your loginprofile and send you and email with further steps.
 
-  NOTE: if you make an OOPS: you and maybe do a type in one of the User/Group Spec files and you receive an error upon trying to create the User.
+  NOTE: if you make an OOPS: you and maybe make a typo in one of the User/Group Spec files and you receive an error upon trying to create the User.
  
   On the next pass of trying to create the account, use the following syntax instead.
 
