@@ -30,12 +30,12 @@ What functionality is provided:
 Files needed to be updated to create new account.
 ::
 
-/home/djr/.awsorgs/spec.d
-[djr@hostname .awsorgs]$ cd spec.d/
+  /home/djr/.awsorgs/spec.d
+  [djr@hostname .awsorgs]$ cd spec.d/
 
-[djr@hostname spec.d]$ ls
-accounts-specs.yml  custom-policy-spec.yml  groups-spec.yml       orgs-spec.yml  teams-spec.yml
-common.yml          delegations-spec.yml    local-users-spec.yml  sc_policy.yml  users-spec.yml
+  [djr@hostname spec.d]$ ls
+  accounts-specs.yml  custom-policy-spec.yml  groups-spec.yml       orgs-spec.yml  teams-spec.yml
+  common.yml          delegations-spec.yml    local-users-spec.yml  sc_policy.yml  users-spec.yml
 
 Teams
 =====
