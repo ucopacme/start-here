@@ -145,7 +145,7 @@ Org-spec.yml - Organization location file. Structure file as follows.
 The following file is basically the 'tree' structure of the Organization. There are parent and child OU's. Beneath both, accounts can be created. Depending on where you define your new account in this file is where it will be created based off the tree structure.
 
 IMPORTANT NOTES TO UNDERSTAND
-- If you look at the organizational tree, you will notice that there is a ROOT OU and many CHILD OU's. Notice there is only one account in the ROOT OU, and all others are in a CHILD OU. There can be up to 5 level's of CHILD OU's, but as of now we only go down one level. There can also be N+1 member accounts in any given OU, root or child.
+- If you look at the organizational tree, you will notice that there is a ROOT OU and many CHILD OU's. There can be up to 5 level's deep (nested) of CHILD OU's, but as of now we only go down one level. There can also be N+1 member accounts in any given OU, root or child.
 
 - So to add a new account to the Organization we would modify this file and place the necessary information in the proper location. We are going to add a new account in the child OU (poc-accounts) 
 
