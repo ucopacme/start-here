@@ -210,9 +210,9 @@ Walk-thru on creating IAM Users and IAM Groups
 ::
 
 (python36) [djr@hostname spec.d]$ awsauth users --users
-[dryrun] awsorgs.utils: INFO     Creating user 'sdoo'
-[dryrun] awsorgs.utils: INFO     Adding user 'sdoo' to group 'all-users'
-[dryrun] awsorgs.utils: INFO     Adding user 'sdoo' to group 'admins'
+  [dryrun] awsorgs.utils: INFO     Creating user 'sdoo'
+  [dryrun] awsorgs.utils: INFO     Adding user 'sdoo' to group 'all-users'
+  [dryrun] awsorgs.utils: INFO     Adding user 'sdoo' to group 'admins'
 #
 #
 python36) [djr@hostname spec.d]$ awsauth users --users --exec
