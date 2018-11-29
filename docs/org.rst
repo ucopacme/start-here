@@ -5,7 +5,7 @@ AWS Organizations
  Document to give an easy to read overview of what an AWS Organization is, and how to create additional OU's and accounts along with Users and Groups.
 
 **Goals:**
- After traversing this document, you should have the initial knowledge needed to create an account within our organizations. 
+ After traversing this document, you should have the initial knowledge and ability needed to create an OU, Account, IAM User, IAM Group within our organizations. 
    
 
 
