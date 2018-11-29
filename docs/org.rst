@@ -13,11 +13,11 @@ What is an AWS Organization:
 -------------------------
 - It is an account management services that allows you to consolidate multiple accounts into an Organization that you create and centrally manage them.
 
-By **default** when an AWS account is opened, it is a **standalone** account. When it is converted to use Organizations. That same initial standalone account now becomes the **master** account. Any other accounts created now within the organization have the heiarchy of being **member** aacounts. This will be referenced below. 
+By **default** when an AWS account is opened, it is a **standalone** account. When it is converted to use Organizations. That same initial standalone account now becomes the **master** account. Any other accounts created now within the organization have the heiarchy of being **member** accounts. This will be referenced below. 
 
 What functionality is provided:
 -------------------------------
-- This allows environemnt to keep track of and structure environments that may be large in size with 'realitive' ease. 
+- This allows us to keep track of and structure environments that may be large in size with 'realitive' ease. 
 - Consolidated billing for all member accounts
 - Hierarchical grouping of your accounts to meet budgetary, security, and compliance needs
 - Control over AWS Services
@@ -28,7 +28,7 @@ What functionality is provided:
 **Walk-thru** Creating AWS Account within an Organization
 --------------------------------------------
 
-At this point we manage IAM Users and IAM Groups via a toolset called AWS-ORGS. 
+At this point we manage **IAM Users**, **IAM Groups**, **Member Account creations**  via a toolset called AWS-ORGS. 
 Files needed to be updated to either create a new **IAM User**, **IAM Group**, or **Member Account** within our Organization.
 ::
 
@@ -46,7 +46,7 @@ teams-spec.yml file - team definition file, this file is for ease of understandi
 - make note of the NAME of the team that best fits the REAL USER.  Note if none of the TEAMS fit, a new team can be added. All fields must be filled out.
 ::
 
-  - Name: operations     <--- make this name meaningful with good.    
+  - Name: operations     <--- make this name meaningful.    
       Description: Widget Administrators 
       BusinessContacts:
         - mickey.mouse@company.com
@@ -58,12 +58,12 @@ IAM Users
 =====
 users-spec.yml file - User definition file. Structure of file is as follows.
 
-The purpose of this file is to CREATE an IAM user in AWS for team members. These IAM users that are created will then be placed into a group (next step).
-- The real person you are creatingthis account for, place their information into the file. Required fields are (Name, Email, Team) 
-- NOTE: Remember you should of already made note of the team to put this user in from the previous step.
+The purpose of this file is to CREATE an IAM user in AWS for **real users**. These IAM users that are created will then be placed into a group (next step).
+- The real person you are creating this account for -  place their information into the file. Required fields are (Name, Email, Team) 
+- NOTE: Remember you should of already made note of the **Team** to put this user in from the previous step.
 
 - IMPORTANT NOTE: Indention in field as seen below is very picky. Misallign rows will result in errors.
-- Lets add the new team member Scooby Doo to AWS. His username is: sdoo
+- Lets add the **real user** Scooby Doo to AWS. His username is: sdoo
 ::
 
   users:
@@ -147,10 +147,10 @@ The following file is basically the 'tree' structure of the Organization. There 
 IMPORTANT NOTES TO UNDERSTAND
 - If you look at the organizational tree, you will notice that there is a ROOT OU and many CHILD OU's. Notice there is only one account in the ROOT OU, and all others are in a CHILD OU. There can be up to 5 level's of CHILD OU's, but as of now we only go down one level. There can also be N+1 member accounts in any given OU, root or child.
 
-- So to add a new account to the Organization we would modify this file and place the necessary information in the proper location.We are going to add a new account in the child OU (poc-accounts) 
+- So to add a new account to the Organization we would modify this file and place the necessary information in the proper location. We are going to add a new account in the child OU (poc-accounts) 
 
 So after we add the account to the proper OU, what exact permission will the account have, what can it do and not do?
-- The permissions are exlpicit and filter down from the parent. If we are adding the account "disney-poc" to the OU "poc-accounts". We can see there is no Explicit policies located in its SC_Policies. So what will govern its authority to utilize resources is the PARENT OU? The Parent OU rights filter down to this Child OU.
+- The permissions are exlpicit and filter down from the parent. If we are adding the account "disney-poc" to the OU "poc-accounts". We can see there is no Explicit policies located in its SC_Policies. So what will govern its authority to utilize resources is the PARENT OU. The Parent OU rights filter down to this Child OU.
 
 - In the case of the OU called "build-account". There is an explicit policy on this OU, therefore, this OU can ONLY do what is located within the policy. 
 
