@@ -205,6 +205,38 @@ Account-specs.yml file - Structure of file. Note read discription at top of file
       Alias: datacenter01 < -- the alias for the new account. you can use this alias to assume role
       Email:awsaccount@company.com  < -- Although this email address really does not matter, it must be 100% unique within AWS.
 
+Walk-thru on creating IAM Users and IAM Groups
+=================================
+::
+
+(python36) [djr@hostname spec.d]$ awsauth users --users
+[dryrun] awsorgs.utils: INFO     Creating user 'sdoo'
+[dryrun] awsorgs.utils: INFO     Adding user 'sdoo' to group 'all-users'
+[dryrun] awsorgs.utils: INFO     Adding user 'sdoo' to group 'admins'
+#
+#
+python36) [djr@hostname spec.d]$ awsauth users --users --exec
+awsorgs.utils: INFO     Creating user 'sdoo'
+awsorgs.utils: INFO     arn:aws:iam::333333333333:user/awsauth/sdoo
+awsorgs.utils: INFO     Adding user 'sdoo' to group 'all-users'
+awsorgs.utils: INFO     Adding user 'sdoo' to group 'admins'
+#
+#
+#
+(python36) [djr@hostname spec.d]$ awsauth report --users
+_________________________________________
+IAM Users and Groups in all Org Accounts:
+_________________________
+Account:    mydatacenter
+Users:
+- arn:aws:iam::215824054945:user/awsauth/sdoo
+#
+Groups:
+- arn:aws:iam::215824054945:group/awsauth/admins
+- arn:aws:iam::215824054945:group/awsauth/all-users
+
+
+
 
 
 Creating Member Accounts
