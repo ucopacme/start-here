@@ -219,16 +219,16 @@ Walk-thru on creating IAM Users and IAM Groups
   [dryrun] awsorgs.utils: INFO     Creating user 'sdoo'
   [dryrun] awsorgs.utils: INFO     Adding user 'sdoo' to group 'all-users'
   [dryrun] awsorgs.utils: INFO     Adding user 'sdoo' to group 'admins'
-  #
-  #
+  
+  
   python36) [djr@hostname spec.d]$ awsauth users --users --exec
   awsorgs.utils: INFO     Creating user 'sdoo'
   awsorgs.utils: INFO     arn:aws:iam::333333333333:user/awsauth/sdoo
   awsorgs.utils: INFO     Adding user 'sdoo' to group 'all-users'
   awsorgs.utils: INFO     Adding user 'sdoo' to group 'admins'
-  #
-  #
-  #
+  
+  
+  
   (python36) [djr@hostname spec.d]$ awsauth report --users
   _________________________________________
   IAM Users and Groups in all Org Accounts:
@@ -236,7 +236,7 @@ Walk-thru on creating IAM Users and IAM Groups
   Account:    mydatacenter
   Users:
   - arn:aws:iam::215824054945:user/awsauth/sdoo
-  #
+  
   Groups:
   - arn:aws:iam::215824054945:group/awsauth/admins
   - arn:aws:iam::215824054945:group/awsauth/all-users
