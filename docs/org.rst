@@ -236,6 +236,32 @@ Walk-thru on creating IAM Users and IAM Groups
   - arn:aws:iam::215824054945:group/awsauth/all-users
 
 
+  (python36) [djr@hostname spec.d]$ awsloginprofile --new sdoo  < -- This will create your loginprofile and send you and email with further steps.
+
+Example **loginprofile** email
+::
+
+  Dear User,
+
+  You have been granted access to our central AWS authentication account.  From here you can assume designated roles into other AWS accounts in our Organization.
+
+  You must complete the following tasks to configure your access:
+
+
+  1) Use the credentials below to log into the AWS console.  You will be required to change your password as you log in.  The rules for good passwords are as follows:
+
+  - Minimum password length: 8
+  - Require at least one uppercase character from Latin alphabet. (A-Z)
+  - Require at least one lowercase character from Latin alphabet. (a-z)
+  - Require at least one symbol. (!@#$%^&amp;*()_+-=[]{}|')
+  - Require at least one number. (0-9)
+
+  IMPORTANT: your one time password will expire after 24 hours.
+
+  IAM User Name:       **sdoo**
+  One Time Password:    Unedited:Pierced*Desirous+158
+  Login URL:            https://mydatacenter.signin.aws.amazon.com/console
+
 
 
 
