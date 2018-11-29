@@ -13,6 +13,7 @@ What is an AWS Organization:
 -------------------------
 - It is an account management services that allows you to consolidate multiple accounts into an Organization that you create and centrally manage them.
 
+By **default** when an AWS account is opened, it is a **standalone** account. When it is converted to use Organizations. That same initial standalone account now becomes the **master** account. Any other accounts created now within the organization have the heiarchy of being **member** aacounts. This will be referenced below. 
 
 What functionality is provided:
 -------------------------------
@@ -27,7 +28,8 @@ What functionality is provided:
 **Walk-thru** Creating AWS Account within an Organization
 --------------------------------------------
 
-Files needed to be updated to create new account.
+At this point we manage IAM Users and IAM Groups via a toolset called AWS-ORGS. 
+Files needed to be updated to either create a new **IAM User**, **IAM Group**, or **Member Account** within our Organization.
 ::
 
   /home/djr/.awsorgs/spec.d
