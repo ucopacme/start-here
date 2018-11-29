@@ -238,7 +238,7 @@ Walk-thru on creating IAM Users and IAM Groups
 
   (python36) [djr@hostname spec.d]$ awsloginprofile --new sdoo  < -- This will create your loginprofile and send you and email with further steps.
 
-  NOTE: if you make an OOPS: you nad maybe do a type in one of the User/Group Spec files and you receive an error upon trying to create the User.
+  NOTE: if you make an OOPS: you and maybe do a type in one of the User/Group Spec files and you receive an error upon trying to create the User.
  
   On the next pass of trying to create the account, use the following syntax instead.
 
@@ -307,17 +307,3 @@ These commands will create the new member account based off the information you 
   $ awsauth delegations  < --  dryrun only
   $ awsauth delegations --exec   < -- execute command 
 
-
-  # LoginProfile for users created
-  $ awsloginprofile --new sdoo   < --- dry run only
-  $ awsloginprofile --new sdoo --exec    < -- execute command
-
-  #OOOPS I messed up on the person email address in the 'users-spec.yml'
-
-  # will rerun and update loginprofile
-
-  $ awsloginprofile --update sdoo   < --- dry run only
-  $ awsloginprofile --update sdoo --exec    < -- execute command
-
-
-You should of received an email with the steps needed to complete the process and login to your new account!!!
