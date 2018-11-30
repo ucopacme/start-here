@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Run cloudFormation script:
+
+#
+# Usage: ./lab1-cf-david
+#
+
+echo " cloudformation stack creation started..."
+echo ""
+
+aws cloudformation create-stack --stack-name david-create-s3 --template-body file://lab1-s3-cf.yaml
+
+# verification that the stack has been completed correctly
+
+sleep 30
+echo "Verification that stack has been created..."
+echo ""
+
+aws cloudformation describe-stacks --stack-name david-create-s3 
+
+# Deletion of Cloud formaiton stack:
+
+echo ""
+echo " Deleting cloudformation stack.."
+echo ""
+
+aws cloudformation delete-stack --stack-name david-create-s3
+
+# versification of deletion:
+
+echo ""
+echo " Ddeletion verification"
+echo ""
+
+aws cloudformation describe-stacks --stack-name david-create-s3
