@@ -2,7 +2,7 @@ One Day Workshops
 =================
 
 
-The AWS Infrastructure team is presenting a series of currated
+The AWS Infrastructure team is presenting a series of curated
 hands-on AWS trainings for TDS staff.  These trainings will focus on skills
 needed to develop and support AWS infrastrucure as code.
 
@@ -83,7 +83,7 @@ Day 8 - Unit Testing
 
 - python assert statement
 - pytest
-- moching AWS api with moto
+- mocking AWS api with moto
 - unit test for s3 bucket python code
 - unit test for ec2 instance python code
 
