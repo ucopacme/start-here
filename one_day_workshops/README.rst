@@ -4,16 +4,16 @@ One Day Workshops
 
 The AWS Infrastructure team is presenting a series of curated
 hands-on AWS trainings for TDS staff.  These trainings will focus on skills
-needed to develop and support AWS infrastrucure as code.
+needed to develop and support AWS infrastructure as code.
 
 Each One Day Workshop focuses on a specific topic and should take around three
 hours to complete.  Together the workshops are organized to provide a coherent
 curriculum.  The skills mastered in one are built upon in the next.
 
-The workshops are self-paced and accomodate a range of AWS experience levels;
+The workshops are self-paced and accommodate a range of AWS experience levels;
 from first time users just getting started, to gurus ready to master
 programming in the python SDK.  They focus less on teaching about AWS resources
-and more on developing comfort at the commandline and good coding practices
+and more on developing comfort at the command line and good coding practices
 such as unit testing, packaging and automated self-documentation.
 
 
