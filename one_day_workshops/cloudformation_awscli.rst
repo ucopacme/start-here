@@ -21,11 +21,11 @@ Step 1) Download a copy of the CloudFormation template from the S3 Bucket
 - The file you need to download is called: **cf-awscli-template.yml**
 ::
 
-(python36) [user@aws examples]$ ls
-(python36) [user@aws examples]$ aws s3 sync s3://mys3bucket/ . --exclude "*" --include "cf-awscli-template.yml"
-download: s3://ait-workshop/cf-awscli-template.yml to ./cf-awscli-template.yml
-(python36) [user@aws examples]$ ls
-cf-awscli-template.yml
+ (python36) [user@aws examples]$ ls
+ (python36) [user@aws examples]$ aws s3 sync s3://mys3bucket/ . --exclude "*" --include "cf-awscli-template.yml"
+ download: s3://ait-workshop/cf-awscli-template.yml to ./cf-awscli-template.yml
+ (python36) [user@aws examples]$ ls
+ cf-awscli-template.yml
 
 
 Step 2) Updating the CloudFormation Template
