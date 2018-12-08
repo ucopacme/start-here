@@ -15,10 +15,10 @@ This Lab will have you fill in information into the **base** CloudFomration Temp
 
 Prerequisites for this lab
 -------------------------
-Lab 1 - AWS Console Lab
-Lab 2
-Lab 3
-Lab 4a - CloudFormation via the Console
+- Lab 1 - AWS Console Lab
+- Lab 2
+- Lab 3
+- Lab 4a - CloudFormation via the Console
 
 
 Step 1) Downloading the CloudFormation Template
@@ -190,8 +190,9 @@ Now that you have sucessfully built a CloudFormation Template and it is up and r
 
 - to find it, we use this command: **aws ec2 describe-instances** 
 
-**Example** aws ec2 describe-instances --filters "Name=tag:Name,Values=john-cf-ec2" 
-**NOTE** The one value you have to modify in the above command is: "Name=tag:Name,Values=(value-to-modify)" 
+**Example:** aws ec2 describe-instances --filters "Name=tag:Name,Values=john-cf-ec2" 
+
+**NOTE:** The one value you have to modify in the above command is: "Name=tag:Name,Values=(value-to-modify)" 
 
 Search for your Public IP Address in the results of the command.
 ::
