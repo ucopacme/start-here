@@ -144,7 +144,7 @@ Step 5) Verify your CloudFormation stack was successfully built
 
 To verify that the stack you intended on building actually completed to success, we use the **aws cloudformation describe-stack** command
 
-**Example** aws cloudformation describe-stacks  --stack-name john-cf-workshop
+**Example:** aws cloudformation describe-stacks  --stack-name john-cf-workshop
 ::
 
 
@@ -262,7 +262,7 @@ To shutdown the EC2 instance we will use this command: aws ec2 stop-instances
 
 **NOTE:** You can get the instance ID needed from the command previously used to find the IP Address.
 
-To get the instance ID: aws ec2 describe-instances --filters "Name=tag:Name,Values=john-cf-ec2"
+**Example:** To get the instance ID: aws ec2 describe-instances --filters "Name=tag:Name,Values=john-cf-ec2"
 ::
 
  (python36) [user@aws example]$ aws ec2 stop-instances --instance-ids i-04a49c6770305fefb
