@@ -254,6 +254,8 @@ Go to a browser and see:
 
 In a browser type: http://64.62.76.25
 
+**NOTE:** Replace the above IP with your IP Address
+
 
 
 Step 9) Shutting down your EC2 instance
