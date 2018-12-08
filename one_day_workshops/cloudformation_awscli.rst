@@ -29,7 +29,8 @@ Step 1) Download a copy of the CloudFormation template from the S3 Bucket
 - The file you need to download is called: **cf-awscli-template.yml**
 
 To download the file you will use the command: aws s3 sync s3://mys3bucket/ . --exclude "*" --include "cf-awscli-template.yml"
-**NOTE** It will download it to your CWD
+
+**NOTE:** It will download it to your CWD
 ::
 
  (python36) [user@aws examples]$ ls
@@ -41,7 +42,7 @@ To download the file you will use the command: aws s3 sync s3://mys3bucket/ . --
 
 Step 2) Updating the CloudFormation Template
 ---------------------------------------------
-The downloaded CloudFormation Template will be used to build a new CloudFormation Stack. However, we first need to make some updates to the template. In order to allow you to understand how this works, some pertenant information was left out that you must fill in based off informaiton provided to you in a seperate handout.
+The downloaded CloudFormation Template will be used to build a new CloudFormation Stack. However, we first need to make some updates to the template. In order to allow you to understand how this works, some pertenant information was left out that you must fill in based off information provided to you in a seperate handout.
 
 The information you must fill into the template is:
 - VPC Id
