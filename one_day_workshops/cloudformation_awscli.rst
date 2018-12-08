@@ -248,9 +248,10 @@ To log into the EC2 instance, we will have to use putty.
 - Finally the user to log into the EC2 instance is username: **ec2-user**
 
 
-Step 8) Verifying that the Web server is actaully serving data as you expected it to
-------------------------------------------------------------------------------------
+Step 8) Verifying that the web server is actually serving a web page
+--------------------------------------------------------------------
 Go to a browser and see:
+
 In a browser type: http://64.62.76.25
 
 
