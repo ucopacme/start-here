@@ -16,6 +16,8 @@ This Lab will have you fill in information into the **base** CloudFomration Temp
 Prerequisites for this lab
 -------------------------
 Lab 1 - AWS Console Lab
+Lab 2
+Lab 3
 Lab 4a - CloudFormation via the Console
 
 
@@ -25,6 +27,9 @@ Step 1) Download a copy of the CloudFormation template from the S3 Bucket
        ** Note: Due to GitHub being a public site, only examples of syntax are given. You will be given a sheet with pertenant info**
 
 - The file you need to download is called: **cf-awscli-template.yml**
+
+To download the file you will use the command: aws s3 sync s3://mys3bucket/ . --exclude "*" --include "cf-awscli-template.yml"
+**NOTE** It will download it to your CWD
 ::
 
  (python36) [user@aws examples]$ ls
@@ -68,7 +73,10 @@ The information you must fill into the template is:
 
 Step 3) Verify the Cloudformation template is valid and usable
 -------------------------------------------------------------
-Once you have made the changes to the template as needed, it is good practice to verify that the template is actually usable. To do this we run this awscli command:
+Once you have made the changes to the template as needed, it is good practice to verify that the template is actually usable. To do this we run this awscli command: **aws cloudformation validate-template**
+
+**Example:** aws cloudformation validate-template --template-body file://cf-awscli-template.yml 
+**Note** The location of the template is in the location I am running the command or I would have to qualify th path.
 ::
 
  (python36) [user@raws example]$ aws cloudformation validate-template --template-body file://cf-awscli-template.yml
@@ -112,6 +120,7 @@ The command needed to create the CloudFormation stack is: **aws cloudformation c
 
 - You must give the Stack a name: use this structure: **john-cf-workshop**
 
+**Example:** aws cloudformation create-stack --stack-name john-cf-workshop --template-body file://cf-awscli-template.yml
 
 Now let's kick it off
 ::
@@ -131,6 +140,8 @@ Step 5) Verify your CloudFormation stack was successfully built
 ---------------------------------------------------------------
 
 To verify that the stack you intended on building actually completed to success, we use the **aws cloudformation describe-stack** command
+
+**Example** aws cloudformation describe-stacks  --stack-name john-cf-workshop
 ::
 
 
@@ -168,7 +179,7 @@ To verify that the stack you intended on building actually completed to success,
 
 
 
-** YUP iT LOOKS LIKE IT CREATED SUCCESSFULLY!!
+** YUP IT LOOKS LIKE IT CREATED SUCCESSFULLY!!
 
 I wonder if we can log into it using our key?
 
@@ -178,6 +189,11 @@ Step 6) Find out what your Public IP Address is
 Now that you have sucessfully built a CloudFormation Template and it is up and running, we have to query to find your Public IP Address:
 
 - to find it, we use this command: **aws ec2 describe-instances** 
+
+**Example** aws ec2 describe-instances --filters "Name=tag:Name,Values=john-cf-ec2" 
+**NOTE** The one value you have to modify in the above command is: "Name=tag:Name,Values=(value-to-modify)" 
+
+Search for your Public IP Address in the results of the command.
 ::
 
  (python36) [user@aws test]$ aws ec2 describe-instances --filters "Name=tag:Name,Values=john-cf-ec2"
@@ -231,7 +247,7 @@ To log into the EC2 instance, we will have to use putty.
 Step 8) Verifying that the Web server is actaully serving data as you expected it to
 ------------------------------------------------------------------------------------
 Go to a browser and see:
-In a browswer type: http://64.62.76.25
+In a browser type: http://64.62.76.25
 
 
 
@@ -241,6 +257,8 @@ As a way to ensure we save money, the final step is to shutdown the EC2 instance
 To shutdown the EC2 instance we will use this command: aws ec2 stop-instances
 
 **NOTE:** You can get the instance ID needed from the command previously used to find the IP Address.
+
+To get instnance ID: aws ec2 describe-instances --filters "Name=tag:Name,Values=john-cf-ec2"
 ::
 
  (python36) [user@aws example]$ aws ec2 stop-instances --instance-ids i-04a49c6770305fefb
