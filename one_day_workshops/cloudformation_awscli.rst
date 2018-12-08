@@ -182,7 +182,7 @@ To verify that the stack you intended on building actually completed to success,
 
 
 
-** YUP IT LOOKS LIKE IT CREATED SUCCESSFULLY!!
+**YUP IT LOOKS LIKE IT CREATED SUCCESSFULLY!!**
 
 I wonder if we can log into it using our key?
 
