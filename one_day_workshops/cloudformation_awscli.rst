@@ -45,6 +45,7 @@ Step 2) Updating the CloudFormation Template
 The downloaded CloudFormation Template will be used to build a new CloudFormation Stack. However, we first need to make some updates to the template. In order to allow you to understand how this works, some pertenant information was left out that you must fill in based off information provided to you in a seperate handout.
 
 The information you must fill into the template is:
+
 - VPC Id
 - SubNet Id
 - SecurectyGroup Id
