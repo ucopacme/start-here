@@ -78,7 +78,8 @@ Step 3) Verify the Cloudformation template is valid and usable
 Once you have made the changes to the template as needed, it is good practice to verify that the template is actually usable. To do this we run this awscli command: **aws cloudformation validate-template**
 
 **Example:** aws cloudformation validate-template --template-body file://cf-awscli-template.yml 
-**Note** The location of the template is in the location I am running the command or I would have to qualify th path.
+
+**Note:** The location of the template is in the location I am running the command or I would have to qualify th path.
 ::
 
  (python36) [user@raws example]$ aws cloudformation validate-template --template-body file://cf-awscli-template.yml
