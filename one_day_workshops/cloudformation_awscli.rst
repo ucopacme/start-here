@@ -16,8 +16,8 @@ This Lab will have you fill in information into the **base** CloudFomration Temp
 Prerequisites for this lab
 -------------------------
 - Lab 1 - AWS Console Lab
-- Lab 2
-- Lab 3
+- Lab 2 - Cloud9 and AWS CLI
+- Lab 3 - Linux Workstation Setup
 - Lab 4a - CloudFormation via the Console
 
 
