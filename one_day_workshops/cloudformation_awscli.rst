@@ -42,11 +42,11 @@ The information you must fill into the template is:
 ** Notice in the snipit of the info you see (Insert * ID HERE0 this is the information you must change.
 ::
 
-(python36) [user@aws examples]$ vi cf-awscli-template.yml
+ (python36) [user@aws examples]$ vi cf-awscli-template.yml
 
-Description: >
+ Description: >
         AWS Scrum Team - One day Workshop on CloudFormation
-Parameters:
+ Parameters:
   ec2VPC:
     Description: VPC to be used - starting with existing VPC
     Type: String
@@ -65,8 +65,8 @@ Verify the the Cloudformation template is valid and usable
 Once you have made the changes to the template as needed, it is good practice to verify that the template is actually usable. To do this e run this awscli command:
 ::
 
-(python36) [user@raws example]$ aws cloudformation validate-template --template-body file://cf-awscli-template.yml
-{
+ (python36) [user@raws example]$ aws cloudformation validate-template --template-body file://cf-awscli-template.yml
+ {
     "Parameters": [
         {
             "ParameterKey": "ec2VPC",
@@ -108,11 +108,11 @@ The command needed to create the CloudFormation stack is: **aws cloudformation c
 
 Now let's kick it off
 ::
-
-(python36) [user@aws example]$ aws cloudformation create-stack --stack-name john-cf-workshop --template-body file://cf-awscli-template.yml
-{
+ 
+ (python36) [user@aws example]$ aws cloudformation create-stack --stack-name john-cf-workshop --template-body file://cf-awscli-template.yml
+ {
     "StackId": "arn:aws:cloudformation:us-west-2:071826132890:stack/john-cf-workshop/54120d70-fa5a-11e8-8a6c-503ac93168c5"
-}
+ }
 
 
 Was the build sucessful?
@@ -124,9 +124,11 @@ verify your CloudFormation stack sucessfully built
 --------------------------------------------------
 
 To verify that the stack you intended on building actually completed to success, we use the **aws cloudformation describe-stack** command
+::
 
-(python36) [user@aws documents]$ aws cloudformation describe-stacks  --stack-name john-cf-workshop
-{
+
+ (python36) [user@aws documents]$ aws cloudformation describe-stacks  --stack-name john-cf-workshop
+ {
     "Stacks": [
         {
             "StackId": "arn:aws:cloudformation:us-west-2:011026131110:stack/john-cf-workshop/54120d70-fa5a-11e8-8a6c-503ac93168c5",
@@ -171,8 +173,8 @@ Now that you have sucessfully built a CloudFormation Template and it is up and r
 - to find it, we use this command: aws ec2 describe-instances 
 ::
 
-(python36) [user@aws test]$ aws ec2 describe-instances --filters "Name=tag:Name,Values=john-cf-ec2"
-{
+ (python36) [user@aws test]$ aws ec2 describe-instances --filters "Name=tag:Name,Values=john-cf-ec2"
+ {
     "Reservations": [
         {
             "Groups": [],
@@ -231,8 +233,8 @@ To shutdown the EC2 instance we will use this command: aws ec2 stop-instances
 **NOTE:** You can get the instance ID needed from the command previously used to find the IP Address.
 ::
 
-(python36) [user@aws example]$ aws ec2 stop-instances --instance-ids i-04a49c6770305fefb
-{
+ (python36) [user@aws example]$ aws ec2 stop-instances --instance-ids i-04a49c6770305fefb
+ {
     "StoppingInstances": [
         {
             "CurrentState": {
@@ -246,7 +248,7 @@ To shutdown the EC2 instance we will use this command: aws ec2 stop-instances
             }
         }
     ]
-}
+ } 
 
 
                            YOU ARE DONE WITH THIS LAB!!!
