@@ -16,7 +16,7 @@ This Lab will have you fill in information into the **base** CloudFomration Temp
 Step 1) Downloading the CloudFormation Template
 ------------------------------------------------
 Step 1) Download a copy of the CloudFormation template from the S3 Bucket
-       ** Note: due Git being a public site, only examples of syntax is given. You will be given a sheet with pertenant info**
+       ** Note: Due to GiaHub being a public site, only examples of syntax is given. You will be given a sheet with pertenant info**
 
 - The file you need to download is called: **cf-awscli-template.yml**
 ::
@@ -37,9 +37,9 @@ The information you must fill into the template is:
 - SubNet Id
 - SecurectyGroup Id
 - your personal KeyName
-- Tag  (Name:)
+- tag   Name  (Value)
 
-** Notice in the snipit of the info you see (Insert * ID HERE0 this is the information you must change.
+** Notice in the snipit of the info you see (Insert * ID HERE) this is the information you must change.
 ::
 
  (python36) [user@aws examples]$ vi cf-awscli-template.yml
@@ -60,7 +60,7 @@ The information you must fill into the template is:
 
 
 
-Verify the the Cloudformation template is valid and usable
+Step 3) Verify the the Cloudformation template is valid and usable
 -------------------------------------------------------------
 Once you have made the changes to the template as needed, it is good practice to verify that the template is actually usable. To do this e run this awscli command:
 ::
@@ -96,10 +96,10 @@ Looks like we are good!!
 
 
 
-Build a CloudFormation Stack based off your CloudFormation Template
+Step 4) Build a CloudFormation Stack based off your CloudFormation Template
 -------------------------------------------------------------------
 
-Now that we have modified the CloudFormation Template to be specific you you. Let's create our stack.
+Now that we have modified the CloudFormation Template to be specific to  you. Let's create our stack.
 
 The command needed to create the CloudFormation stack is: **aws cloudformation create-stack**
 
@@ -120,7 +120,7 @@ Was the build sucessful?
 let's find out..
 
 
-verify your CloudFormation stack sucessfully built
+Step 5) Verify your CloudFormation stack sucessfully built
 --------------------------------------------------
 
 To verify that the stack you intended on building actually completed to success, we use the **aws cloudformation describe-stack** command
@@ -137,11 +137,11 @@ To verify that the stack you intended on building actually completed to success,
             "Parameters": [
                 {
                     "ParameterKey": "ec2VPC",
-                    "ParameterValue": "vpc-0e29e45765f7fv01c"
+                    "ParameterValue": "vpc-0e29e4573834rc65f75555c"
                 },
                 {
                     "ParameterKey": "ec2Subnet",
-                    "ParameterValue": "subnet-04b5f4c5c95b55070"
+                    "ParameterValue": "subnet-04b5f4c5555b55070"
                 },
                 {
                     "ParameterKey": "ec2key",
@@ -166,11 +166,11 @@ To verify that the stack you intended on building actually completed to success,
 I wonder if we can log into it using our key?
 
 
-Find out what your Public IP Address is
+Step 6) Find out what your Public IP Address is
 -----------------------------------------
 Now that you have sucessfully built a CloudFormation Template and it is up and running, we have to query to find your Public IP Address:
 
-- to find it, we use this command: aws ec2 describe-instances 
+- to find it, we use this command: **aws ec2 describe-instances** 
 ::
 
  (python36) [user@aws test]$ aws ec2 describe-instances --filters "Name=tag:Name,Values=john-cf-ec2"
@@ -209,24 +209,27 @@ We can see that our Public IP Address is: 64.62.76.25 **(yes this is a ficticiou
 
 Now that we know our IP, we can move onto logging into the EC2 instance...
 
-Logging into your EC2 instance using your keypair
+
+
+Step 7) Logging into your EC2 instance using your keypair
 --------------------------------------------------
 
 To log into the EC2 instance, we will have to use putty.
 
-- you will have to use the key that is saved on your system. 
+- you will have to use the key that is saved on your system from the previous labs. 
 - open putty, use the public IP address, make sure your key is attached. To attach key, you go to SSH, than Auth under putty.
 - Finally the user to log into the EC2 instance is username: **ec2-user**
 
 
-Verifying that the Web server is actaully servinig data as you exepected it to
-------------------------------------------------------------------------------
+Step 8) Verifying that the Web server is actaully servinig data as you exepected it to
+---------------------------------------------------------------------------------------
 Go to a browser and see:
 In a browswer type: http://64.62.76.25
 
 
-Shutting down your EC2 instance
--------------------------------
+
+Step 9) Shutting down your EC2 instance
+----------------------------------------
 As a way to ensure we save money, the final step is to shutdown the EC2 instance.
 To shutdown the EC2 instance we will use this command: aws ec2 stop-instances
 
