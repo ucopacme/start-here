@@ -1,8 +1,8 @@
-CloudFormation Lab using AWS CLI
-==================================
+Lab 4B - CloudFormation Lab using AWS CLI
+=========================================
 
 **Context:**
-In this Lab you will be utilizing the AWS CLI commands deleoped by AWS. 
+In this Lab you will be utilizing the AWS CLI commands developed by AWS. 
 
 **Goals:**
 - We will be creating an AWS EC2 web server that is serving a web page.
@@ -10,27 +10,33 @@ In this Lab you will be utilizing the AWS CLI commands deleoped by AWS.
 
 **Lay Out of Lab**
 This Lab will have you fill in information into the **base** CloudFomration Template.  
-**NOTE** In this Lab we will be using the YAML format. It must be said that the indentation is EXTREMELY particular. If something is not working, it proably is the issue.
+**NOTE** In this Lab we will be using the YAML format. It must be said that the indentation is EXTREMELY particular. If something is not working, it probably is the issue.
+
+
+Prerequisites for this lab
+-------------------------
+Lab 1 - AWS Console Lab
+Lab 4a - CloudFormation via the Console
 
 
 Step 1) Downloading the CloudFormation Template
 ------------------------------------------------
 Step 1) Download a copy of the CloudFormation template from the S3 Bucket
-       ** Note: Due to GiaHub being a public site, only examples of syntax is given. You will be given a sheet with pertenant info**
+       ** Note: Due to GitHub being a public site, only examples of syntax are given. You will be given a sheet with pertenant info**
 
 - The file you need to download is called: **cf-awscli-template.yml**
 ::
 
  (python36) [user@aws examples]$ ls
  (python36) [user@aws examples]$ aws s3 sync s3://mys3bucket/ . --exclude "*" --include "cf-awscli-template.yml"
- download: s3://ait-workshop/cf-awscli-template.yml to ./cf-awscli-template.yml
+ download: s3://mys3bucket/cf-awscli-template.yml to ./cf-awscli-template.yml
  (python36) [user@aws examples]$ ls
  cf-awscli-template.yml
 
 
 Step 2) Updating the CloudFormation Template
--------------------------------
-The downloaded ClooudFormation Template will be used to build a new CloudFormation Stack. However, we first need to make some updates to the template. In order to allow you to understand how this works, some pertenant information was left out that you must fill in based off informaiton provided to you in a seperate handout.
+---------------------------------------------
+The downloaded CloudFormation Template will be used to build a new CloudFormation Stack. However, we first need to make some updates to the template. In order to allow you to understand how this works, some pertenant information was left out that you must fill in based off informaiton provided to you in a seperate handout.
 
 The information you must fill into the template is:
 - VPC Id
@@ -60,9 +66,9 @@ The information you must fill into the template is:
 
 
 
-Step 3) Verify the the Cloudformation template is valid and usable
+Step 3) Verify the Cloudformation template is valid and usable
 -------------------------------------------------------------
-Once you have made the changes to the template as needed, it is good practice to verify that the template is actually usable. To do this e run this awscli command:
+Once you have made the changes to the template as needed, it is good practice to verify that the template is actually usable. To do this we run this awscli command:
 ::
 
  (python36) [user@raws example]$ aws cloudformation validate-template --template-body file://cf-awscli-template.yml
@@ -91,13 +97,14 @@ Once you have made the changes to the template as needed, it is good practice to
 
 
 Looks like we are good!!
+
 **NOTE:** this verification will only do a simple check on YAML and JSON formats, and for dependencies. If you have a miss-spelled word, this will not be caught till you attempt to create the stack. At that point the stack creation will fail.
 
 
 
 
 Step 4) Build a CloudFormation Stack based off your CloudFormation Template
--------------------------------------------------------------------
+---------------------------------------------------------------------------
 
 Now that we have modified the CloudFormation Template to be specific to  you. Let's create our stack.
 
@@ -115,13 +122,13 @@ Now let's kick it off
  }
 
 
-Was the build sucessful?
+Was the build successful?
 
 let's find out..
 
 
-Step 5) Verify your CloudFormation stack sucessfully built
---------------------------------------------------
+Step 5) Verify your CloudFormation stack was successfully built
+---------------------------------------------------------------
 
 To verify that the stack you intended on building actually completed to success, we use the **aws cloudformation describe-stack** command
 ::
@@ -167,7 +174,7 @@ I wonder if we can log into it using our key?
 
 
 Step 6) Find out what your Public IP Address is
------------------------------------------
+------------------------------------------------
 Now that you have sucessfully built a CloudFormation Template and it is up and running, we have to query to find your Public IP Address:
 
 - to find it, we use this command: **aws ec2 describe-instances** 
@@ -212,17 +219,17 @@ Now that we know our IP, we can move onto logging into the EC2 instance...
 
 
 Step 7) Logging into your EC2 instance using your keypair
---------------------------------------------------
+---------------------------------------------------------
 
 To log into the EC2 instance, we will have to use putty.
 
-- you will have to use the key that is saved on your system from the previous labs. 
+- you will have to use the key that is saved on your desktop from the previous labs. 
 - open putty, use the public IP address, make sure your key is attached. To attach key, you go to SSH, than Auth under putty.
 - Finally the user to log into the EC2 instance is username: **ec2-user**
 
 
-Step 8) Verifying that the Web server is actaully servinig data as you exepected it to
----------------------------------------------------------------------------------------
+Step 8) Verifying that the Web server is actaully serving data as you expected it to
+------------------------------------------------------------------------------------
 Go to a browser and see:
 In a browswer type: http://64.62.76.25
 
