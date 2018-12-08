@@ -79,7 +79,7 @@ Once you have made the changes to the template as needed, it is good practice to
 
 **Example:** aws cloudformation validate-template --template-body file://cf-awscli-template.yml 
 
-**Note:** The location of the template is in the location I am running the command or I would have to qualify th path.
+**Note:** The location of the template is in the location I am running the command or I would have to qualify the path.
 ::
 
  (python36) [user@raws example]$ aws cloudformation validate-template --template-body file://cf-awscli-template.yml
@@ -262,7 +262,7 @@ To shutdown the EC2 instance we will use this command: aws ec2 stop-instances
 
 **NOTE:** You can get the instance ID needed from the command previously used to find the IP Address.
 
-To get instnance ID: aws ec2 describe-instances --filters "Name=tag:Name,Values=john-cf-ec2"
+To get the instance ID: aws ec2 describe-instances --filters "Name=tag:Name,Values=john-cf-ec2"
 ::
 
  (python36) [user@aws example]$ aws ec2 stop-instances --instance-ids i-04a49c6770305fefb
