@@ -15,6 +15,21 @@ Prerequisites
 - AWS IAM service access to retrieve security credential
 
 
+Cloud9 Setup
+------------
+
+If you are working from a cloud9 environment you should create a local
+user and do the workshop as that user::
+
+  # As ec2-user
+  $ sudo useradd -m localuser
+  $ sudo su - localuser
+
+  # As localuser
+  $ echo "source /etc/bash_completion.d/aws_bash_completer" >> ~/.bashrc
+  $ source ~/.bashrc
+
+
 Python3 Package
 ---------------
 
