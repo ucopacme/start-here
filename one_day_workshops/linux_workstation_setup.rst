@@ -65,7 +65,7 @@ AWS CLI installation
 Install AWS CLI within python3 virtual environment::
 
   # Install AWS CLI
-  (py36) $ pip3 install awscli
+  (py36) $ pip install awscli
   (py36) $ aws --version
 
   # add following AWS CLI command completer in .bashrc 
@@ -126,7 +126,7 @@ Install aws-shell-tools within python3 virtual environment::
   (py36) $ aws-list-roles
 
   # Run 'aws sts assume-role' operation to obtain temporary assumed role credentials
-  (py36) $ aws-assume-role ait-training-xxxx
+  (py36) $ aws-assume-role <profile-name>
 
   # Print current values of AWS assumed role environment vars
   (py36) $ aws-display-assumed-role
