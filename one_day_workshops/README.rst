@@ -16,6 +16,9 @@ programming in the python SDK.  They focus less on teaching about AWS resources
 and more on developing comfort at the command line and good coding practices
 such as unit testing, packaging and automated self-documentation.
 
+The first set of workshops will be held Dec 13,14,17,18,19.  See the signup
+at https://www.signupgenius.com/go/70A0A4EA8A722A0FB6-oneday
+
 
 
 Day 1 - Console Access
