@@ -32,16 +32,16 @@ Day 1 - Console Access
 - working with EC2
 
 
-Day 2 - Cloud9 and AWS CLI
---------------------------
+Day 2 - `Cloud9 and AWS CLI`_
+-----------------------------
 
 - cloud9 instance
 - working with S3 in awscli
 - working with EC2 in awscli
 
 
-Day 3 - Linux Workstation Setup
--------------------------------
+Day 3 - `Linux Workstation Setup`_
+----------------------------------
 
 - python virtual environment
 - IAM access keys
@@ -49,16 +49,16 @@ Day 3 - Linux Workstation Setup
 - STS assume role deep dive
 
 
-Day 4 - Cloudformation
-----------------------
+Day 4 - `Cloudformation`_
+-------------------------
 
 - cloudformation basics
 - S3 bucket with cloudformation
 - EC2 instance with cloudformation
 
 
-Day 5 - Learning Git
---------------------
+Day 5 - `Learning Git`_
+-----------------------
 
 - git basics
 - working with remotes
@@ -66,8 +66,8 @@ Day 5 - Learning Git
 - github
 
 
-Day 6 - Beginning Python
-------------------------
+Day 6 - `Beginning Python`_
+---------------------------
 
 - getting started
 - resources
@@ -102,7 +102,7 @@ Day 9 - Collaborating on Github
 
 
 Day 10 - Making a Python Package
--------------------------------
+--------------------------------
 
 - directory layout
 - setup.py
@@ -113,7 +113,7 @@ Day 10 - Making a Python Package
 
 
 Day 11 - Automated Unit Testing
-------------------------------
+-------------------------------
 
 - pytest again
 - flake8
@@ -121,10 +121,15 @@ Day 11 - Automated Unit Testing
 
 
 Day 12 - Automated Project Documentation
----------------------------------------
+----------------------------------------
 
 - ReSTructuredText revisited
 - sphinx
 - sphinx-apidocs
 - Readthedocs.io
 
+.. _Cloud9 and AWS CLI: cloud9_and_awscli.rst
+.. _Linux Workstation Setup: linux_workstation_setup.rst
+.. _Cloudformation: cloudformation_awscli.rst
+.. _Learning Git: learning_git.rst
+.. _Beginning Python: beginning_python.rst
