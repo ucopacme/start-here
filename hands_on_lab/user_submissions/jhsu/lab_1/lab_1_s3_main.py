@@ -1,4 +1,4 @@
-#! /home/jhsu/python/python3/bin/python3
+#! /usr/bin/env python
 
 import time
 import boto3
