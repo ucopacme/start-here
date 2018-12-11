@@ -23,7 +23,7 @@ Be sure to **Bring your Laptop.**
 
 
 
-Day 1 - Console Access
+Day 1 - `AWS Console`_
 ----------------------
 
 - obtain access to AWS
@@ -133,6 +133,7 @@ Day 12 - Automated Project Documentation
 - sphinx-apidocs
 - Readthedocs.io
 
+.. _AWS Console: aws_console.rst
 .. _Cloud9 and AWS CLI: cloud9_and_awscli.rst
 .. _Linux Workstation Setup: linux_workstation_setup.rst
 .. _Cloudformation from the Console: cloudformation_console.rst

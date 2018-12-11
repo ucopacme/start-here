@@ -5,7 +5,7 @@ Converting word doc with images to rst
 
   pandoc -f docx -t rst -o cloudformation_console.rst CloudFormation_Console.docx --extract-media=cloudformation
   
-  pandoc -f docx -t rst -o console.rst Console.docx --extract-media=console
+  pandoc -f docx -t rst -o aws_console.rst aws_console.docx --extract-media=console
 
   rst2html cloudformation_console.rst > cloudformation_console.html
   
