@@ -23,7 +23,7 @@ Be sure to **Bring your Laptop.**
 
 
 
-Day 1 - Console Access
+Day 1 - `AWS Console`_
 ----------------------
 
 - obtain access to AWS
@@ -49,12 +49,17 @@ Day 3 - `Linux Workstation Setup`_
 - STS assume role deep dive
 
 
-Day 4 - `Cloudformation`_
--------------------------
+Day 4 - Cloudformation
+----------------------
 
 - cloudformation basics
 - S3 bucket with cloudformation
 - EC2 instance with cloudformation
+
+There are 2 parts to this workshop:
+
+- `Cloudformation from the Console`_
+- `Cloudformation from AWS CLI`_
 
 
 Day 5 - `Learning Git`_
@@ -128,8 +133,10 @@ Day 12 - Automated Project Documentation
 - sphinx-apidocs
 - Readthedocs.io
 
+.. _AWS Console: aws_console.rst
 .. _Cloud9 and AWS CLI: cloud9_and_awscli.rst
 .. _Linux Workstation Setup: linux_workstation_setup.rst
-.. _Cloudformation: cloudformation_awscli.rst
+.. _Cloudformation from the Console: cloudformation_console.rst
+.. _Cloudformation from AWS CLI: cloudformation_awscli.rst
 .. _Learning Git: learning_git.rst
 .. _Beginning Python: beginning_python.rst

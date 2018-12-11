@@ -37,10 +37,21 @@ This one is my favorite.  Again just see how far you get.  Skip the sections
 on `Installation` and `Using mu editor`.
 
 
-Corey Schaffer Videos
-*********************
 
-https://www.youtube.com/watch?v=YYXdXT2l-Gg&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU
+Video Turorial
+--------------
+
+Automate the Boring Stuff
+*************************
+https://www.youtube.com/playlist?list=PL0-84-yl1fUnRuXGFe_F7qSH1LEnn9LkW
+
+This series of videos accompany a book by the same name by Al Sweigart
+
+Users can skip lesson 1.  This talks mostly about installing python.
+
+
+use cloud9 ide or any text editor instead of 'idle'
+
 
 Please use earphones if viewing this in class.
 
