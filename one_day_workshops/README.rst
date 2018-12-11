@@ -80,8 +80,8 @@ Day 6 - `Beginning Python`_
 - working with modules
 
 
-Day 7 - Boto3 Python SDK
-------------------------
+Day 7 - `Boto3 Python SDK`_
+---------------------------
 
 - getting started with boto3
 - S3 bucket with boto3
@@ -140,3 +140,4 @@ Day 12 - Automated Project Documentation
 .. _Cloudformation from AWS CLI: cloudformation_awscli.rst
 .. _Learning Git: learning_git.rst
 .. _Beginning Python: beginning_python.rst
+.. _Boto3 Python SDK: boto3_python_sdk.rst
