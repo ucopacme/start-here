@@ -1,5 +1,5 @@
-Lab 4B - CloudFormation Lab using AWS CLI
-=========================================
+CloudFormation Lab using AWS CLI
+================================
 
 **Context:**
 In this Lab you will be utilizing the AWS CLI commands developed by AWS. 
