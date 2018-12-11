@@ -1,0 +1,32 @@
+# AWS LAB 
+ # Tasks: Create IAM USER via CloudFormation
+ # Tasks: Create IAM GROUP via CloudFormation
+ # Tasks: Add IAM USER to IAM GROUP via CloudFormation
+ 
+Resources:
+  iamuser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: 'iam-david-user'
+
+#  iamassociation:
+#    Type: 'AWS::IAM::UserToGroupAddition'
+#    Properties:
+#    GroupName: 'iam-david-group'
+#    Users:
+#      - iam-david-user
+
+#Resources:
+  iamgroup:
+    Type: 'AWS::IAM::Group'
+    Properties:
+      GroupName: 'iam-david-group'
+
+  #iamuser:
+#Resources:
+  iamassociation:
+    Type: 'AWS::IAM::UserToGroupAddition'
+    Properties:
+      GroupName: 'iam-david-group'
+      Users:   
+      - !Ref iamuser

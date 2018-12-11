@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#mybucket ='lab2-s3-awscli'
+
+# Create S3 Bucket via AWSCLI
+aws s3 mb s3://lab2-s3-awscli
+
+# Copy file from local system to S3 Bucket
+aws s3 cp lab1-del-cf.yml s3://lab2-s3-awscli
+
+# List files in New S3 bucket
+aws s3 ls s3://lab2-s3-awscli
+
+# Remove file from New S3 Bucket
+aws s3 rm s3://lab2-s3-awscli/lab1-del-cf.yml
+
+# Delete S3 Bucket
+aws s3 rb s3://lab2-s3-awscli
+
+
