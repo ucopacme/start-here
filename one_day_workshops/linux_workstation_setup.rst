@@ -3,16 +3,20 @@ Linux Workstation Setup
 
 Goals
 
-- Python3 virtual environment
+- Create Python3 virtual environment
 - AWS CLI environment
-- UCOP aws-shelltools in Linux 
+- Install UCOP aws-shelltools package 
 
 Prerequisites
 
 - Linux Platform (CentOS, AWS Cloud9)
 - LInux user account, bash environment
-- AWS service access through anagement console 
+- AWS service access through management console 
 - AWS IAM service access to retrieve security credential
+
+Reference
+- Refer to following documents for aws-shelltools pacakge
+- https://github.com/ucopacme/aws-shelltools
 
 
 Cloud9 Setup
@@ -65,7 +69,8 @@ Python3 Virtual Environment
 
 From bash command prompt::
 
-  # To avoid python version conflicts with other pip packages, create python3 virtual environment.
+  # To avoid python version conflicts with other pip packages, 
+  # create python3 virtual environment.
   #
   $ mkdir ~/python
   $ python3 -m venv ~/python/py36
@@ -102,9 +107,14 @@ AWS configuration
 
 Create AWS access key from AWS IAM console and run following command::
 
-  # For general use, the aws configure command is the fastest way to set up your AWS CLI installation.
-  # Supply AWS Access Secret Key credential generated from IAM user service when running 'aws configure'
+  # For general use, the aws configure command is the fastest way 
+  # to set up your AWS CLI installation.
+  # Supply AWS account credential generated from IAM user service 
+  # when running 'aws configure'
   # 
+  # Access keys consist of an access key ID and secret access key, 
+  # which are used to sign programmatic requests that you make to AWS.
+  #
   # aws configure 
   (py36) $ aws configure
   AWS Access Key ID [None]:
@@ -112,9 +122,11 @@ Create AWS access key from AWS IAM console and run following command::
   Default region name [None]: us-west-2
   Default output format [None]:
 
-  # The AWS CLI supports named profiles stored in the config and credentials files. You can configure
-  # additional profiles by using aws configure with the --profile option or by adding entries to the
-  # config and credentials files.
+  # The AWS CLI supports named profiles stored in the config and 
+  # credentials files. 
+  # You can configure additional profiles by using aws configure 
+  # with the --profile option or by adding entries to the config 
+  # and credentials files.
   #
   # check AWS default profile in ~/.aws directory
   #
@@ -126,7 +138,7 @@ Create AWS access key from AWS IAM console and run following command::
 aws-shelltools and AWS STS service
 ----------------------------------
 
-Install aws-shell-tools within python3 virtual environment::
+Install aws-shelltools within python3 virtual environment::
 
   # pip install aws-shelltools
   #
@@ -136,6 +148,56 @@ Install aws-shell-tools within python3 virtual environment::
   # source ~/.bashrc 
   #
   (py36) $ . ~/.bashrc
+
+  # Following is the list of defined bash function from aws-shelltools python package
+  #
+  # aws-whoami()
+  # aws-env()
+  # aws-unset-mfa-token()
+  # aws-display-assumed-role()
+  # aws-drop-assumed-role()
+  # aws-profile()
+  # aws-set-mfa-token()
+  # aws-list-roles()
+  # aws-assume-role()
+  # aws-refresh()
+  # aws-list-roles()
+  # aws-export-env()
+  # aws-import-env()
+  #
+  (py36) $ aws-env
+  (py36) $ aws-whoami
+
+  # The AWS CLI supports the following environment variables.
+  #
+  # AWS_ACCESS_KEY_ID – AWS access key.
+  #
+  # AWS_SECRET_ACCESS_KEY – AWS secret key. Access and secret key variables 
+  # override credentials stored in credential and config files.
+  #
+  # AWS_SESSION_TOKEN – Specify a session token if you are using 
+  # temporary security credentials.
+  #
+  # AWS_DEFAULT_REGION – AWS region. This variable overrides 
+  # the default region of the in-use profile, if set.
+  #
+  # AWS_DEFAULT_OUTPUT – Change the AWS CLI's output formatting 
+  # to json, text, or table.
+  #
+  # AWS_PROFILE – name of the CLI profile to use. This can be 
+  # the name of a profile stored in a credential or config file, 
+  # or default to use the default profile.
+  #
+  # AWS_CA_BUNDLE – Specify the path to a certificate bundle 
+  # to use for HTTPS certificate validation.
+  #
+  # AWS_SHARED_CREDENTIALS_FILE – Change the location of the file 
+  # that the AWS CLI uses to store access keys.
+  #
+  # AWS_CONFIG_FILE – Change the location of the file that 
+  # the AWS CLI uses to store configuration profiles.
+  #
+
 
   # run aws-shelltools script functions from bash prompt 
 
@@ -203,8 +265,6 @@ Install aws-shell-tools within python3 virtual environment::
   #
   (py36) $ aws-env
 
-  # Refer to following documents for aws-shelltools pacakge
-  # https://github.com/ucopacme/aws-shelltools
 
 
 
