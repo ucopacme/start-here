@@ -12,11 +12,14 @@ Prerequisites
 - ait-training account access with MFA authentication
 - aws-shelltools package installed
 
+Reference
+- boto3 documentation https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
 
-Assume working role into ait-training account
+
+Assume role into ait-training account
 ---------------------------------------------
 
-Following following step in Python virtual enviroment to assume role in ait-training account::
+From Python virtual enviroment, Assume role in ait-training account::
 
   # Enter Python virtual environment
   jhsu@scrappy-aws $ cd
@@ -36,17 +39,20 @@ Following following step in Python virtual enviroment to assume role in ait-trai
   (py3) jhsu $ aws-whoami
 
 Access AWS/S3 service with boto3 SDK
----------------------------------------------
+------------------------------------
 
-Check boto3-related python package::
+boto is the Amazon Web Services (AWS) SDK for Python, 
+which allows Python developers to write software that makes use of 
+Amazon services like S3 and EC2. Boto provides an easy to use, i
+object-oriented API as well as low-level direct service access.  ::
 
-  # Following boto3 related packages should have been installed
+  # boto3 related packages should have been installed
   (py3) jhsu $ pip list | grep oto
   (py3) jhsu $ boto3                    1.9.28
   (py3) jhsu $ botocore                 1.12.28
 
 
-Following boto3 client object methods are defined in boto3 SDK::
+Following boto3/s3 client object methods are defined in boto3 SDK::
 
  class S3.Client
 
@@ -158,7 +164,7 @@ Following boto3 client object methods are defined in boto3 SDK::
         upload_part_copy()
 
 
-S3 bucket creation/deletion module definition in this workshop session::
+Python modules defined in this workshop session::
 
   # Mutiple python modules are defined in the working directory
   (py3) jhsu $ ls -l *py
