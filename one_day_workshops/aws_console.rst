@@ -6,7 +6,7 @@ initial setup of your IAM User.
 
 POC Environment you will be working in:
 
-The account name is: **(will be given to you in a separate paper)**
+The account name is: **(Refer to parameters URL)**
 
 Rights granted: FULL ADMIN rights.
 
@@ -28,7 +28,7 @@ Services.
 
 **TRY THIS**: You can access the account via the following:
 
-(you will be given this in a separate paper)
+(**Refer to parameters URL**)
 
 **Step 2) Password Reset**
 
@@ -465,9 +465,9 @@ We will do it now…
 
    -  Hit Next: Configure Instance Details
 
--  Under Networking – Select VPC: **(based off information given)**
+-  Under Networking – Select VPC: **(Refer to parameters URL)**
 
--  Under Subnet - Select Subnet: **(based off information given)**
+-  Under Subnet - Select Subnet: **(Refer to parameters URL)**
 
 -  Auto-assign Public IP: **Select Enable**
 
@@ -484,8 +484,7 @@ We will do it now…
 
    -  Value = put your name here EG: David-Rivera
 
-   -  **Note: the full list of tag will be on a separate handout for you
-      to add**
+   -  **Note: Refer to parameters URL**
 
    -  Hit Next: Configure Security Group
 
@@ -546,6 +545,11 @@ it in PEM format. Using Putty Gen we will convert it and set it up.
 **Step 14) Download – Putty Gen and Putty Client**
 
 **TRY THIS: **
+
+**Note: For Mac Users: you can use the native shell.**
+
+**Use the command structure: ssh –i <pem key location>
+ec2-user@public\_ip **
 
 Download “Putty Gen” and “Putty” to your desktop
 
