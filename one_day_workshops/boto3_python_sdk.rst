@@ -276,6 +276,7 @@ Test AWS S3 service
 Run python main() executable to create/delete AWS S3 bucket::
 
   # In the working directory
+  (py3) $ chmod u+x ./lab_1_s3_main.py
   (py3) $ ./lab_1_s3_main.py
 
 
