@@ -115,6 +115,7 @@ Create AWS access key from AWS IAM console and run following command::
   # Access keys consist of an access key ID and secret access key, 
   # which are used to sign programmatic requests that you make to AWS.
   #
+
   # aws configure 
   (py36) $ aws configure
   AWS Access Key ID [None]:
@@ -134,6 +135,15 @@ Create AWS access key from AWS IAM console and run following command::
   (py36) $ cat config
   (py36) $ cat credentials
 
+  # Generate aws client configuation file
+  # 
+  (py36) $ cd
+  (py36) $ aws-make-config
+  # 
+  # List of porfile to be assumed
+  (py36) $ cd ~/.aws/config.d
+  (py36) $ ls config.aws_shelltools
+  
 
 aws-shelltools and AWS STS service
 ----------------------------------
