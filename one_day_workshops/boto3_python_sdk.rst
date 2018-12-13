@@ -22,21 +22,21 @@ Assume role into ait-training account
 From Python virtual enviroment, Assume role in ait-training account::
 
   # Enter Python virtual environment
-  jhsu@scrappy-aws $ cd
-  jhsu@scrappy-aws $ alias py3
-  jhsu@scrappy-aws $ alias py3='source ~/python/py3/bin/activate'
-  jhsu@scrappy-aws $ py3
-  (py3) jhsu $ python -V
+  $ cd
+  $ alias py3
+  $ alias py3='source ~/python/py3/bin/activate'
+  $ py3
+  (py3) $ python -V
 
   # Check current aws iam user status
-  (py3) jhsu $ aws-refresh
-  (py3) jhsu $ aws-drop-assumed-role
-  (py3) jhsu $ aws-whoami
+  (py3) $ aws-refresh
+  (py3) $ aws-drop-assumed-role
+  (py3) $ aws-whoami
 
   # Assume role into ait-traing account
-  (py3) jhsu $ aws-list-rols
-  (py3) jhsu $ aws-assume-role ait-training-xxxx
-  (py3) jhsu $ aws-whoami
+  (py3) $ aws-list-rols
+  (py3) $ aws-assume-role ait-training-xxxx
+  (py3) $ aws-whoami
 
 Access AWS/S3 service with boto3 SDK
 ------------------------------------
@@ -47,9 +47,9 @@ Amazon services like S3 and EC2. Boto provides an easy to use, i
 object-oriented API as well as low-level direct service access.  ::
 
   # boto3 related packages should have been installed
-  (py3) jhsu $ pip list | grep oto
-  (py3) jhsu $ boto3                    1.9.28
-  (py3) jhsu $ botocore                 1.12.28
+  (py3) $ pip list | grep oto
+  (py3) $ boto3                    1.9.28
+  (py3) $ botocore                 1.12.28
 
 
 Following boto3/s3 client object methods are defined in boto3 SDK::
@@ -167,11 +167,11 @@ Following boto3/s3 client object methods are defined in boto3 SDK::
 Python modules defined in this workshop session::
 
   # Mutiple python modules are defined in the working directory
-  (py3) jhsu $ ls -l *py
+  (py3) $ ls -l *py
   lab_1_s3_def.py
   lab_1_s3_main.py
   myutil.py
-  (py3) jhsu $
+  (py3) $
 
   # lab_1_s3_def.py  : call out boto3 methods for s3 bucket listing/creation/deletion
   # lab_1_s3_main.py : executable python main module to exercise boto3 functions
@@ -180,7 +180,7 @@ Python modules defined in this workshop session::
 
 S3 bucket creation/deletion functions::
 
-  (py3) jhsu $ cat lab_1_s3_def.py
+  (py3) $ cat lab_1_s3_def.py
 
   def s3_list_buckets(s3_client):
      s3_buckets = s3_client.list_buckets()
@@ -218,7 +218,7 @@ S3 bucket creation/deletion functions::
 
 main function to call out above functions::
 
-  (py3) jhsu $ cat lab_1_s3_main.py
+  (py3) $ cat lab_1_s3_main.py
 
   #! /usr/bin/env python
 
@@ -276,7 +276,7 @@ Test AWS S3 service
 Run python main() executable to create/delete AWS S3 bucket::
 
   # In the working directory
-  (py3) jhsu $ ./lab_1_s3_main.py
+  (py3) $ ./lab_1_s3_main.py
 
 
    --- S3 bucket list ---
