@@ -22,6 +22,16 @@ at https://www.signupgenius.com/go/70A0A4EA8A722A0FB6-oneday
 Be sure to **Bring your Laptop.**
 
 
+Site Specific Parameters
+------------------------
+
+Several of the workshops require site specific parameters such as login URL and
+training account Id.  These parameters will be made available to you when you 
+sign up or at the workshop location.
+
+
+
+
 
 Day 1 - `AWS Console`_
 ----------------------
