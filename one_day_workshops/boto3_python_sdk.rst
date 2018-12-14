@@ -4,7 +4,7 @@ AWS boto3 Python SDK
 Goals
 
 - Access AWS service through boto3 Python SDK
-- Acess S3 bucket creation/deletion service
+- Access S3 bucket creation/deletion service
 
 Prerequisites
 
@@ -43,7 +43,7 @@ Access AWS/S3 service with boto3 SDK
 
 boto is the Amazon Web Services (AWS) SDK for Python, 
 which allows Python developers to write software that makes use of 
-Amazon services like S3 and EC2. Boto provides an easy to use, i
+Amazon services like S3 and EC2. Boto provides an easy to use, 
 object-oriented API as well as low-level direct service access.  ::
 
   # boto3 related packages should have been installed
