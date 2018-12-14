@@ -10,7 +10,7 @@ Goals
 Prerequisites
 
 - Linux Platform (CentOS, AWS Cloud9)
-- LInux user account, bash environment
+- Linux user account, bash environment
 - AWS service access through management console 
 - AWS IAM service access to retrieve security credential
 
