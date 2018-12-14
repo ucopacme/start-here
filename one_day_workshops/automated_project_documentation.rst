@@ -71,8 +71,8 @@ reStructuredText Workshop Assignment
 
 Recreate the following ``.html`` pages using reStructuredText.
 
-- `Simple Document Example <rst_samples/simple.docx>`_
-- `Harder Document Example <rst_samples/harder.docx>`_
+- `Simple Document Example <rst_samples/simple.pdf>`_
+- `Harder Document Example <rst_samples/harder.pdf>`_
 
 
 

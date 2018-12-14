@@ -32,10 +32,10 @@ a nested list of stuff:
   - hand lotion
 
 
-Plain Text
-----------
+another sub-section
+-------------------
 
-Run the following commands::
+This is a plain text example::
 
   $ echo 'hello world' > /tmp/output.txt
   $ cat /tmp/output.txt
