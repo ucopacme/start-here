@@ -10,6 +10,7 @@ Prerequisites:
 
 - AWS login profile and credentials for the Auth account
 - ability to assume role into the training account
+- either Chrome or Firefox
 
 Required params:
 
@@ -36,6 +37,10 @@ Spend some time reading the info on this page.  Notice the various links to
 documentation and resources.
 
 **Create your instance**
+
+**NOTE**
+  Cloud9 does not support Internet Explorer.  Please use either Chrome
+  or Firefox.
 
 - validate you are in the ``Oregon/us-west-2`` region
 - press **Create Environment**
