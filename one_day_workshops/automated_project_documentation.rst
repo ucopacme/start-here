@@ -67,12 +67,150 @@ file and select **Preview**::
 
 
 reStructuredText Workshop Assignment
-------------------------------------
+************************************
 
-Recreate the following ``.html`` pages using reStructuredText.
+Recreate the following PDFs using reStructuredText.
 
 - `Simple Document Example <rst_samples/simple.pdf>`_
 - `Harder Document Example <rst_samples/harder.pdf>`_
+
+
+Once you have them looking good, make a directory called ``my_project`` and
+save them ``.rst`` files there.  We will use them in the next section.
+
+
+
+Sphinx
+------
+
+Sphinx is a tool that makes it easy to create intelligent and beautiful
+documentation.  It was originally created for the Python documentation, and it
+has excellent facilities for the documentation of software projects in a range
+of languages.
+
+Perform the tasks in this section from within your python virtual
+environnment.
+
+Sphinx Documentation:
+
+- http://www.sphinx-doc.org/en/master/
+- http://www.sphinx-doc.org/en/master/usage/quickstart.html
+- https://matplotlib.org/sampledoc/
+
+
+Getting Started Tutorial:
+
+- https://matplotlib.org/sampledoc/getting_started.html
+
+
+Initial sphinx setup
+********************
+
+Install sphinx python package::
+
+  $ pip install  sphinx sphinx-autobuild
+
+Create your docs project directory::
+
+  $ mkdir -p my_project/docs
+  $ cd my_project/docs
+
+Initialize your sphinx project. you will be asked a lot of config questions.
+You can just go with the offered defaults, but you will have to supply 
+values for supply a **Project name** (``my-project``) and **Author name**::
+
+  $ sphinx-quickstart 
+  $ ls -l
+  $ cat index.rst 
+
+
+Build your site by running the ``make`` command::  
+
+  $ make html
+
+You should now be able to view the rendered website from a browser at ``docs/_build/html/index.html``
+
+
+Adding pages to your site
+*************************
+
+Copy your ``.rst`` files from the previous section into your ``docs/`` 
+directory::
+
+  $ cp ~/simple.rst ~/harder.rst docs/
+
+Setup links to these docs in the ``index.rst`` file.  Add the filenames
+minus the ``.rst`` suffix below the ``toctree`` keyword.  Be sure they
+are indented properly::
+
+  Welcome to MyProject's documentation!
+  ================================
+  
+  .. toctree::
+     :maxdepth: 2
+     :caption: Contents:
+  
+     simple
+     harder
+
+Rebuild your site and view from a browser as before::
+
+   $ make html
+
+
+
+Hosting your Site on readthedocs.io
+-----------------------------------
+
+The first step is to create a repository on GitHub for your project.
+
+https://readthedocs.org/
+
+
+
+
+Configure Sphinx with AutoAPI Extention
+---------------------------------------
+
+To get RTD to autobuild API docs from your python module doc strings use th
+autoapi extention.  Once this is configured you do not need to alter your
+``index.rst`` file.  The extention adds its own toctree for you.
+
+For autoapi to source your docstrings, it must import your modules.
+So you may have to tweek advances settings in RTD to builds with python 3.
+
+On project page select ``Admin -> Advanced Settings``.
+In the ``Python Interpreter`` dropdown select ``cpython 3.x```.
+
+
+Install sphinx-autoapi::
+
+  > pip install sphinx-autoapi
+
+
+add sphinx and sphinx-autoapi to ``requirements.txt``::
+
+  > cat requirements.txt 
+  pytest
+  pytest-cov
+  flake8
+  sphinx
+  sphinx-autoapi
+
+
+In ``docs/conf.py``::
+
+  # Add any Sphinx extension module names here, as strings. They can be
+  # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
+  # ones.
+  extensions = [
+      'autoapi.extension',
+      'sphinx.ext.napoleon',
+  ]
+  
+  # Document Python Code - for use with autoapi.extension
+  autoapi_type = 'python'
+  autoapi_dirs = ['../organizer']
 
 
 
