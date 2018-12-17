@@ -424,7 +424,7 @@ pretty easy. It will just take the following steps:
 
 -  Did the S3 Bucket really get deleted? (Hint: is it listed still with all the other S3 Buckets?)
 
--  How can you confirm? Hint: At bottom of screen click on 'success', on window that pops up, click on trash can. A verification of deletion is listed
+-  How can you confirm? **Hint:** At bottom of screen click on 'success', on the window that pops up, click on the trash can. A verification of deletion is given.
 
 **IMPORTANT NOTE:** When deleting an S3 bucket via AWS-CLI or SDK, you
 are **REQUIRED** to empty the bucket before it allows you to delete the
