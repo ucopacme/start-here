@@ -117,7 +117,10 @@ The AWS Web Portal is laid out in a ‘Box structure’. The boxes are:
 Notice on the ‘AWS Service’ box there is a “SEARCH” icon, along with a
 ‘Recently Visited Services’ area. You will soon understand this area
 will be your friend and the fastest and easiest way to navigate services
-within AWS. **NOTE** there is more than one way to get to the search function. Another easy way is to click on the "AWS" icon in the top left corner of your screen. If you are on any screen, clicking on that icon will bring up the search function.
+within AWS. 
+
+**NOTE:** there is more than one way to get to the search function. Another easy way is to click on the "AWS" icon in the top left corner of your screen. If you are on any screen, clicking on that icon will bring up the search function.
+
 
 AWS manages Users that log onto the AWS portal through a system called:
 IAM Users. Additionally IAM groups, a set of IAM Users that are placed
