@@ -422,6 +422,8 @@ pretty easy. It will just take the following steps:
 
 |image15|
 
+-  Hit "Confirm"
+
 -  Did the S3 Bucket really get deleted? (Hint: is it listed still with all the other S3 Buckets?)
 
 -  How can you confirm? **Hint:** At bottom of screen click on 'success', on the window that pops up, click on the trash can. A verification of deletion is given.
