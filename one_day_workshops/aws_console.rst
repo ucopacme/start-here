@@ -117,7 +117,7 @@ The AWS Web Portal is laid out in a ‘Box structure’. The boxes are:
 Notice on the ‘AWS Service’ box there is a “SEARCH” icon, along with a
 ‘Recently Visited Services’ area. You will soon understand this area
 will be your friend and the fastest and easiest way to navigate services
-within AWS.
+within AWS. **NOTE** there is more than one way to get to the search function. Another easy way is to click on the "AWS" icon in the top left corner of your screen. If you are on any screen, clicking on that icon will bring up the search function.
 
 AWS manages Users that log onto the AWS portal through a system called:
 IAM Users. Additionally IAM groups, a set of IAM Users that are placed
@@ -252,7 +252,7 @@ uniquely named. No two S3 buckets can be named the same all through AWS.
 **TRY THIS:** Accessing the S3 Service and list its content:
 
 -  As mentioned in Step 4, you can use the ‘search’ function to get to
-   S3.
+   S3. (**Hint** click on AWS icon on top left corner to access the search function)
 
    -  The keyword is **S3**
 
@@ -419,9 +419,9 @@ pretty easy. It will just take the following steps:
 
 |image15|
 
--  Did the S3 Bucket really get deleted?
+-  Did the S3 Bucket really get deleted? (Hint: is it listed still with all the other S3 Buckets?)
 
--  How can you confirm? Hint: ( Do you see a trash can)?
+-  How can you confirm? Hint: At bottom of screen click on 'success', on window that pops up, click on trash can. A verification of deletion is listed
 
 **IMPORTANT NOTE:** When deleting an S3 bucket via AWS-CLI or SDK, you
 are **REQUIRED** to empty the bucket before it allows you to delete the
@@ -626,8 +626,9 @@ running instance.
 
 -  Select “Actions”
 
--  Select “Stop” (**Hint:** **selecting “Terminate would delete the
-   instance**\ ”)
+-  Select "Instance State"
+
+-  Select “Stop” (**Hint:** selecting “Terminate" would delete the instance.)
 
 **You are Done!!!**
 
