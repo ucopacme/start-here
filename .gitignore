@@ -1,6 +1,8 @@
 # editor cruft
 *.swp
 *.bak
+*.bkup
+*.tmp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
