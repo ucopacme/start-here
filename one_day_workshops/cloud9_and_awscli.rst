@@ -144,13 +144,34 @@ https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html
 
 **Working with EC2**
 
-AWS provides a good tutorial for creating an ec2 instance with AWS CLI:
-https://docs.aws.amazon.com/cli/latest/userguide/tutorial-ec2-ubuntu.html
+For this excercise you will be using the following EC2 sub-commands:
 
-Since you are in Cloud9, you do not need to configure your access keys.  Skip
-to the section *Create a Security Group and Key Pair for the EC2 Instance*
-and follow the rest of the tutorial.
+- create-key-pair
+- describe-key-pairs
+- run-instances
+- describe-instances
+- stop-instance
+- terminate-instances
 
-Again, I recommend you avoid cut-and-paste and type out the command lines.
-Make use of tag completion.
+
+See the Workshop Parameters page to get the following values require when 
+running the ``run-instances`` sub-command:
+
+- image-id
+- subnet-id
+- securitygroup-ids
+
+If you do not already have an ssh keypair, create one with ``create-key-pair``.
+
+If you have one, but do not remember your keypair name, list key-pairs with
+``describe-key-pairs``.
+
+When you create your instance, you will need to supply the ``--associate-public-ip-address`` flag in order to generate a public IP address.
+
+To create a ``Name`` tag, you will need the ``--tag-specifications`` paramete.
+
+See the examples in the ``run-instances`` help page.  These are near the
+end of the page.
+
+After creating your instance, get the public IP address by running the
 
