@@ -162,7 +162,25 @@ Rebuild your site and view from a browser as before::
 Hosting your Site on readthedocs.io
 -----------------------------------
 
-The first step is to create a repository on GitHub for your project.
+Change directory into your ``my_project`` directory and initialize a
+git repository.  ::
+
+  $ cd my_project
+  $ git init
+
+Commit your project into your new git repo::
+
+  $ git add .
+  $ git commit -m "Initial Commit of my_project"
+
+
+If you do not already have a personal account on GitHub, do so now.  Go to
+https://github.com/ and select **Sign up for Github**.
+
+On GitHub create a new repository with the same name as your local repo.
+Get the clone URL for the new repo (either ``ssh`` or ``https`` is ok).
+
+Back in your local repo,your GitHub repo 
 
 https://readthedocs.org/
 

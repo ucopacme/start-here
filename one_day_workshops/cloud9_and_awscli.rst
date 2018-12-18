@@ -155,19 +155,34 @@ For this excercise you will be using the following EC2 sub-commands:
 - stop-instance
 - terminate-instances
 
-See the Workshop Parameters page to get the following values require when 
-running the ``run-instances`` sub-command:
-
-- image-id
-- subnet-id
-- securitygroup-ids
+SSH Key Pair
+************
 
 If you do not already have an ssh keypair, create one with ``create-key-pair``.
 
 If you have one, but do not remember your keypair name, list key-pairs with
 ``describe-key-pairs``.
 
-When you create your instance, you will need to supply the ``--associate-public-ip-address`` flag in order to generate a public IP address.
+
+Create EC2 Instance
+*******************
+
+See the **EC2 VPC params** section in the Workshop Parameters page to
+get the following values require when running the ``run-instances``
+sub-command:
+
+- image-id
+- subnet-id
+- securitygroup-ids
+
+Cloud9 Issue
+  If you are working from Cloud9 environment, you must specify a different set of
+  paramaters for ``subnet-id`` and ``securitygroup-ids``.  See the section in the
+  Paramaters page for **EC2 params - AWS CLI from Cloud9**
+
+When you create your instance, you will need to supply the
+``--associate-public-ip-address`` flag in order to generate a public IP
+address.
 
 To create a ``Name`` tag, you will need the ``--tag-specifications`` parameter.
 Supply your own user name instead of ``my_user_name``::
@@ -181,21 +196,29 @@ new instance::
 
 See the examples in the ``run-instances`` help page.
 
+
+Connect to your EC2 Instance
+****************************
+
 After creating your instance, get the public IP address by running the
 describe-instances command.  Use the ``--instance-ids`` param to specify
 the instance Id of your new instance.
 
-Try to connect to your new instance over ssh::
+Try to connect to your new instance over ssh.  Substitute your **PublicIpAddress** for
+``<instance_ip_address>``.
 
   ssh -i my_key.pem ec2-user@<instance_ip_address>
 
 
-If you are working from Cloud9 environment,  you can skip connecting
-to your instance over ssh.  The predefined security group does not
-permit access from Cloud9.
+Cloud9 Issue
+  If you are running ssh from Cloud9 environment, substitute your
+  **PrivateIpAddress** for ``<instance_ip_address>``.
 
 
-Now terminate your instance with the ``terminate-instances`` sub-command.
+Congradulations!
+****************
+
+You are almost done.  Terminate your instance with the ``terminate-instances``
+sub-command.
 
 
-**Congradulations!**
