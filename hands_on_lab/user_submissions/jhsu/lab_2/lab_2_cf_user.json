@@ -1,0 +1,12 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Resources" : {
+     "JhsuUser1" : {
+        "Type": "AWS::IAM::User",
+        "Properties" : {
+        "UserName" : "jhsu_user_cf_user2"
+
+	}
+     } 
+  }
+}

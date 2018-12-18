@@ -1,0 +1,2 @@
+
+pytest --cov=lab_2_def --cov-report term-missing --cov-fail-under=100 test_lab_2.py
