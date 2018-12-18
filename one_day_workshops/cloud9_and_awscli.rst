@@ -107,7 +107,8 @@ the exercises below:
 - Shorthand Syntax
 
 
-**Working with S3**
+Working with S3
+---------------
 
 By now you should be ready to try out some aws cli commands from your cloud9
 terminal session.  Using the ``s3api`` service and the help menus to guide you,
@@ -142,7 +143,8 @@ https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html
 
 
 
-**Working with EC2**
+Working with EC2
+----------------
 
 For this excercise you will be using the following EC2 sub-commands:
 
@@ -152,7 +154,6 @@ For this excercise you will be using the following EC2 sub-commands:
 - describe-instances
 - stop-instance
 - terminate-instances
-
 
 See the Workshop Parameters page to get the following values require when 
 running the ``run-instances`` sub-command:
@@ -168,10 +169,33 @@ If you have one, but do not remember your keypair name, list key-pairs with
 
 When you create your instance, you will need to supply the ``--associate-public-ip-address`` flag in order to generate a public IP address.
 
-To create a ``Name`` tag, you will need the ``--tag-specifications`` paramete.
+To create a ``Name`` tag, you will need the ``--tag-specifications`` parameter.
+Supply your own user name instead of ``my_user_name``::
 
-See the examples in the ``run-instances`` help page.  These are near the
-end of the page.
+  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=my_user_name}]'
+
+Add the following parameter to display the instance Id when you create a
+new instance::
+
+  --query "Instances[0].InstanceId"
+
+See the examples in the ``run-instances`` help page.
 
 After creating your instance, get the public IP address by running the
+describe-instances command.  Use the ``--instance-ids`` param to specify
+the instance Id of your new instance.
 
+Try to connect to your new instance over ssh::
+
+  ssh -i my_key.pem ec2-user@<instance_ip_address>
+
+
+If you are working from Cloud9 environment,  you can skip connecting
+to your instance over ssh.  The predefined security group does not
+permit access from Cloud9.
+
+
+Now terminate your instance with the ``terminate-instances`` sub-command.
+
+
+**Congradulations!**
