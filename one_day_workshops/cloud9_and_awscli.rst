@@ -158,10 +158,16 @@ For this excercise you will be using the following EC2 sub-commands:
 SSH Key Pair
 ************
 
-If you do not already have an ssh keypair, create one with ``create-key-pair``.
+If you created an EC2 ssh key pair in the previous workshop, `AWS Console <aws_console.rst>`_.
 
 If you have one, but do not remember your keypair name, list key-pairs with
 ``describe-key-pairs``.
+
+If you do not already have an ssh keypair, create one with ``create-key-pair``.
+This command will create a key file onto your Cloud9 environment::
+
+  aws ec2 create-key-pair --key-name my_key_pair --query "KeyMaterial" --output text > my_key_pair.pem
+
 
 
 Create EC2 Instance
@@ -176,9 +182,10 @@ sub-command:
 - securitygroup-ids
 
 Cloud9 Issue
-  If you are working from Cloud9 environment, you must specify a different set of
-  paramaters for ``subnet-id`` and ``securitygroup-ids``.  See the section in the
-  Paramaters page for **EC2 params - AWS CLI from Cloud9**
+  If you plan to connect to your EC2 instance (ssh) from your Cloud9
+  environment, you must specify a different set of paramaters for ``subnet-id``
+  and ``securitygroup-ids``.  See the section in the Paramaters page for **EC2
+  params - SSH from Cloud9**
 
 When you create your instance, you will need to supply the
 ``--associate-public-ip-address`` flag in order to generate a public IP
