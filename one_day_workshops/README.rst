@@ -151,4 +151,4 @@ Day 12 - `Automated Project Documentation`_
 .. _Learning Git: learning_git.rst
 .. _Beginning Python: beginning_python.rst
 .. _Boto3 Python SDK: boto3_python_sdk.rst
-.. _Automated Project Documentation: automated_project_documentation.rst
+.. _Automated Project Documentation: autodoc.rst

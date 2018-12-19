@@ -71,8 +71,8 @@ reStructuredText Workshop Assignment
 
 Recreate the following PDFs using reStructuredText.
 
-- `Simple Document Example <rst_samples/simple.pdf>`_
-- `Harder Document Example <rst_samples/harder.pdf>`_
+- `Simple Document Example <autodoc/simple.pdf>`_
+- `Harder Document Example <autodoc/harder.pdf>`_
 
 
 Once you have them looking good, make a directory called ``my_project`` and
@@ -162,11 +162,18 @@ Rebuild your site and view from a browser as before::
 Hosting your Site on readthedocs.io
 -----------------------------------
 
+GitHub Setup
+************
+
 Change directory into your ``my_project`` directory and initialize a
 git repository.  ::
 
   $ cd my_project
   $ git init
+
+Create a ``.gitignore`` file with the following contents::
+
+  docs/_build
 
 Commit your project into your new git repo::
 
@@ -180,24 +187,52 @@ https://github.com/ and select **Sign up for Github**.
 On GitHub create a new repository with the same name as your local repo.
 Get the clone URL for the new repo (either ``ssh`` or ``https`` is ok).
 
-Back in your local repo,your GitHub repo 
+Back in your local repo, define your GitHub repo as a remote repository and
+syncronize your local repo contents with your remote::
 
-https://readthedocs.org/
+  $ git remote add origin <clone URL>
+  $ git push -u origin master
+
+
+Read the Docs Setup
+*******************
+
+Open the Read the Docs website at https://readthedocs.org and open the **login**
+dialogue.  Select **Sign in with GitHub**.
+
+Configure your new GitHub project as a Read the Docs project.  Select **Import
+a Project**.  Read the Docs will scan your GitHub repositories.  This may
+take a few seconds.  Hit the plus sign ``+`` next to your ``my_project``
+repo.
+
+The name of your project must be unique or you will get a build error.  So in the ``Name`` entry widget edit the project name to something other than ``my_project``.
+
+Now select **Build version**.  This should generate html files from your sphinx
+project and post them to a world accessible URL.  Once the build is finished
+select **View Docs** in the upper left corner of your project page.  This 
+should take you to ``https://<project_name>.readthedocs.io/en/latest/``.  
+Your docs site is live!
+
+Make a change to one of your ``.rst`` files in your local repo.  Commit the
+change and push to your remote.  Read the Docs will notice the new version and
+automatically rebuild your project documentation.  In a few minutes you will
+see your change on your project URL.
+
+Sweet!
 
 
 
+Configure Sphinx with AutoAPI Extention - Extra Credit
+------------------------------------------------------
 
-Configure Sphinx with AutoAPI Extention
----------------------------------------
-
-To get RTD to autobuild API docs from your python module doc strings use th
+To get RTD to autobuild API docs from your python module doc strings use the
 autoapi extention.  Once this is configured you do not need to alter your
-``index.rst`` file.  The extention adds its own toctree for you.
+``index.rst`` file.  The extention adds its own ``toctree`` for you.
 
 For autoapi to source your docstrings, it must import your modules.
 So you may have to tweek advances settings in RTD to builds with python 3.
 
-On project page select ``Admin -> Advanced Settings``.
+On your Read the Docs project page select ``Admin -> Advanced Settings``.
 In the ``Python Interpreter`` dropdown select ``cpython 3.x```.
 
 
