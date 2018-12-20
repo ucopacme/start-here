@@ -25,13 +25,13 @@ Cloud9 Setup
 If you are working from a cloud9 environment you should create a local
 user and do the workshop as that user::
 
-  # As ec2-user
-  #
+As ec2-user
+  
   $ sudo useradd -m localuser
   $ sudo su - localuser
 
-  # As localuser
-  #
+As localuser
+  
   $ echo "source /etc/bash_completion.d/aws_bash_completer" >> ~/.bashrc
   $ source ~/.bashrc
 
@@ -41,12 +41,12 @@ Python3 Package
 
 From bash command prompt::
 
-  # Check Python3.x package installation
-  #
+Check Python3.x package installation
+  
   $ python3 -V
 
-  # Install Python3.x package
-  #
+Install Python3.x package
+  
   $ cd ~/Download
   $ wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz
   $ tar zxvf ./Python-3.6.4.tgz
@@ -56,8 +56,8 @@ From bash command prompt::
   $ sudo make install
   $ python3 -V
 
-  # Install PIP Python Installation Package
-  #
+Install PIP Python Installation Package
+  
   $ cd ~/Download
   $ curl -O https://bootstrap.pypa.io/get-pip.py
   $ sudo python   get-pip.py
@@ -69,17 +69,17 @@ Python3 Virtual Environment
 
 From bash command prompt::
 
-  To avoid python version conflicts with other pip packages, 
-  create python3 virtual environment.
+To avoid python version conflicts with other pip packages, 
+create python3 virtual environment.
  
   $ mkdir ~/python
   $ python3 -m venv ~/python/py36
 
-  Add following bash alias in .bashrc
+Add following bash alias in .bashrc
  
   alias py36='source ~/python/py36/bin/activate'
 
-  Entering python3 virtual environment
+Entering python3 virtual environment
   
   $ cd 
   $ py36
