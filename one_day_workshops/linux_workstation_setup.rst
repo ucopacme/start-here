@@ -137,9 +137,6 @@ Create AWS access key from AWS IAM console and run following command::
 
   # Generate aws client configuation file
   # 
-  (py36) $ cd
-  (py36) $ aws-make-config
-  # 
   # List of porfile to be assumed
   (py36) $ cd ~/.aws/config.d
   (py36) $ ls config.aws_shelltools
@@ -150,14 +147,22 @@ aws-shelltools and AWS STS service
 
 Install aws-shelltools within python3 virtual environment::
 
-  # pip install aws-shelltools
+  # Install aws-shelltools package
   #
   (py36) $ cd  
   (py36) $ pip install https://github.com/ucopacme/aws-shelltools/archive/master.zip 
   
-  # source ~/.bashrc 
+  # Run aws-shelltool-setup
+  # and source ~/.bashrc
   #
+  (py36) $ which aws-shelltool-setup
+  (py36) $ aws-shelltool-setup
   (py36) $ . ~/.bashrc
+
+  # Generate aws client configuation file
+  # 
+  (py36) $ cd
+  (py36) $ aws-make-config
 
   # Following is the list of defined bash function from aws-shelltools python package
   #
