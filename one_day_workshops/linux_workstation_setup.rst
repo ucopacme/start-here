@@ -25,12 +25,12 @@ Cloud9 Setup
 If you are working from a cloud9 environment you should create a local
 user and do the workshop as that user::
 
-As ec2-user
+  As ec2-user
   
   $ sudo useradd -m localuser
   $ sudo su - localuser
 
-As localuser
+  As localuser
   
   $ echo "source /etc/bash_completion.d/aws_bash_completer" >> ~/.bashrc
   $ source ~/.bashrc
@@ -56,13 +56,6 @@ From bash command prompt::
   $ sudo make install
   $ python3 -V
 
-  Install PIP Python Installation Package
-  
-  $ cd ~/Download
-  $ curl -O https://bootstrap.pypa.io/get-pip.py
-  $ sudo python   get-pip.py
-  $ pip install --upgrade pip
-
   
 Python3 Virtual Environment
 ---------------------------
@@ -75,9 +68,12 @@ From bash command prompt::
   $ mkdir ~/python
   $ python3 -m venv ~/python/py36
 
-  Add following bash alias in .bashrc
-
+  Add following bash alias in ~/.bashrc
   alias py36='source ~/python/py36/bin/activate'
+
+  $ vi ~/.bashrc
+  $ source ~/.bashrc
+  $ alias
 
   Entering python3 virtual environment
 
@@ -85,6 +81,7 @@ From bash command prompt::
   $ py36
   (py36) $ python3 -V
   (py36) $ pip install --upgrade pip
+  (py36) $ pip -V
  
 
 AWS CLI installation 
@@ -143,48 +140,44 @@ aws-shelltools and AWS STS service
 
 Install aws-shelltools within python3 virtual environment::
 
-  # Install aws-shelltools package
-  #
+  Install aws-shelltools package
+  
   (py36) $ cd  
   (py36) $ pip install https://github.com/ucopacme/aws-shelltools/archive/master.zip 
   (py36) $ pip list | grep aws-shelltools
   
-  # Run aws-shelltool-setup
-  # and source ~/.bashrc
-  #
+  Run aws-shelltool-setup
+
   (py36) $ which aws-shelltools-setup
   (py36) $ aws-shelltools-setup
-  (py36) $ . ~/.bashrc
+  (py36) $ source ~/.bashrc
 
-  # Generate aws client configuation file
-  # 
+  Generate aws client configuation file
+  
   (py36) $ cd
   (py36) $ aws-make-config
 
-  # List of porfile to be assumed
-  #
+  List of porfile to be assumed
+
   (py36) $ cd ~/.aws/config.d
-  (py36) $ ls config.aws_shelltools
+  (py36) $ cat config.aws_shelltools
 
-  # Following is the list of defined bash function from aws-shelltools python package
-  #
-  # aws-whoami()
-  # aws-env()
-  # aws-unset-mfa-token()
-  # aws-display-assumed-role()
-  # aws-drop-assumed-role()
-  # aws-profile()
-  # aws-set-mfa-token()
-  # aws-list-roles()
-  # aws-assume-role()
-  # aws-refresh()
-  # aws-list-roles()
-  # aws-export-env()
-  # aws-import-env()
-  #
-  (py36) $ aws-env
-  (py36) $ aws-whoami
-
+  Following is the list of defined bash function from aws-shelltools python package
+  
+  aws-whoami()
+  aws-env()
+  aws-unset-mfa-token()
+  aws-display-assumed-role()
+  aws-drop-assumed-role()
+  aws-profile()
+  aws-set-mfa-token()
+  aws-list-roles()
+  aws-assume-role()
+  aws-refresh()
+  aws-list-roles()
+  aws-export-env()
+  aws-import-env()
+  
   The AWS CLI supports the following environment variables.
 
   AWS_ACCESS_KEY_ID – AWS access key.
