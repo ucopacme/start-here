@@ -208,70 +208,54 @@ Install aws-shelltools within python3 virtual environment::
   the AWS CLI uses to store configuration profiles.
 
 
-  # run aws-shelltools script functions from bash prompt 
+  run aws-shelltools script functions from bash prompt 
 
-  # Print current values of all AWS environment vars
-  #
+  Print current values of all AWS environment vars
   (py36) $ aws-env
 
-  # Print output of 'aws sts get-caller-identity'
-  #
+  Print output of 'aws sts get-caller-identity'
   (py36) $ aws-whoami
 
-  # Request temporary session credentials from AWS STS
-  #
+  Request temporary session credentials from AWS STS
   (py36) $ aws-set-mfa-token
 
-  # Print current values of all AWS environment vars
-  #
+  Print current values of all AWS environment vars
   (py36) $ aws-env
 
-  # Print output of 'aws sts get-caller-identity'
-  #
+  Print output of 'aws sts get-caller-identity'
   (py36) $ aws-whoami
 
-  # Print current values of AWS assumed role environment vars
-  #
+  Print current values of AWS assumed role environment vars
   (py36) $ aws-display-assumed-role
 
-  # Print list of available AWS assume role profiles
-  #
+  Print list of available AWS assume role profiles
   (py36) $ aws-list-roles
 
-  # Run 'aws sts assume-role' operation to obtain temporary assumed role credentials
-  #
+  Run 'aws sts assume-role' operation to obtain temporary assumed role credentials
   (py36) $ aws-assume-role ait-training-xxxx
 
-  # Print current values of AWS assumed role environment vars
-  #
+  Print current values of AWS assumed role environment vars
   (py36) $ aws-display-assumed-role
 
-  # Print current values of all AWS environment vars
-  #
+  Print current values of all AWS environment vars
   (py36) $ aws-env
 
-  # Print output of 'aws sts get-caller-identity'
-  #
+  Print output of 'aws sts get-caller-identity'
   (py36) $ aws-whoami
 
-  # Unset all AWS session token environemt vars
-  #
+  Unset all AWS session token environemt vars
   (py36) $ aws-unset-mfa-token
 
-  # Reset AWS session environment vars to values prior to assuming role
-  #
+  Reset AWS session environment vars to values prior to assuming role
   (py36) $ aws-drop-assumed-role
 
-  # Print current values of AWS assumed role environment vars
-  #
+  Print current values of AWS assumed role environment vars
   (py36) $ aws-display-assumed-role
 
-  # Print output of 'aws sts get-caller-identity'
-  #
+  Print output of 'aws sts get-caller-identity'
   (py36) $ aws-whoami
 
-  # Print current values of all AWS environment vars
-  #
+  Print current values of all AWS environment vars
   (py36) $ aws-env
 
 
