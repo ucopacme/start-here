@@ -41,11 +41,11 @@ Python3 Package
 
 From bash command prompt::
 
-Check Python3.x package installation
+  Check Python3.x package installation
   
   $ python3 -V
 
-Install Python3.x package
+  Install Python3.x package
   
   $ cd ~/Download
   $ wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz
@@ -56,7 +56,7 @@ Install Python3.x package
   $ sudo make install
   $ python3 -V
 
-Install PIP Python Installation Package
+  Install PIP Python Installation Package
   
   $ cd ~/Download
   $ curl -O https://bootstrap.pypa.io/get-pip.py
@@ -69,23 +69,23 @@ Python3 Virtual Environment
 
 From bash command prompt::
 
-To avoid python version conflicts with other pip packages, 
-create python3 virtual environment.
- 
+  To avoid python version conflicts with other pip packages, 
+  create python3 virtual environment
+
   $ mkdir ~/python
   $ python3 -m venv ~/python/py36
 
-Add following bash alias in .bashrc
- 
+  Add following bash alias in .bashrc
+
   alias py36='source ~/python/py36/bin/activate'
 
-Entering python3 virtual environment
-  
-  $ cd 
+  Entering python3 virtual environment
+
+  $ cd
   $ py36
   (py36) $ python3 -V
   (py36) $ pip install --upgrade pip
-
+ 
 
 AWS CLI installation 
 --------------------
@@ -93,11 +93,11 @@ AWS CLI installation
 Install AWS CLI within python3 virtual environment::
 
   Install AWS CLI
- 
+  
   (py36) $ pip install awscli
   (py36) $ aws --version
 
-  Add following AWS CLI command completer in .bashrc 
+   Add following AWS CLI command completer in .bashrc 
   
   (py36) $ complete -C '/home/jhsu/python/py36/bin/aws_completer' aws
   (py36) $ . ~/.bashrc
@@ -119,28 +119,24 @@ Create AWS access key from AWS IAM console and run following command::
   From AWS IAM console, switch back to seg-auth account.
   Access the IAM service, and re-generate security credential.
 
-  # aws configure 
   (py36) $ aws configure
   AWS Access Key ID [None]: AKI**********W5AFPSNQ
   AWS Secret Access Key [None]: U/QotA**********************543vuYB
   Default region name [None]: us-west-2
   Default output format [None]:
 
-  # The AWS CLI supports named profiles stored in the config and 
-  # credentials files. 
-  # You can configure additional profiles by using aws configure 
-  # with the --profile option or by adding entries to the config 
-  # and credentials files.
-  #
-  # check AWS default profile in ~/.aws directory
-  #
+  The AWS CLI supports named profiles stored in the config and 
+  credentials files. 
+  You can configure additional profiles by using aws configure 
+  with the --profile option or by adding entries to the config 
+  and credentials files.
+  
+  check AWS default profile in ~/.aws directory
+  
   (py36) $ cd ~/.aws
   (py36) $ cat config
   (py36) $ cat credentials
 
-  # Generate aws client configuation file
-  # 
-  
 
 aws-shelltools and AWS STS service
 ----------------------------------
@@ -190,7 +186,7 @@ Install aws-shelltools within python3 virtual environment::
   (py36) $ aws-whoami
 
   The AWS CLI supports the following environment variables.
- 
+
   AWS_ACCESS_KEY_ID – AWS access key.
   
   AWS_SECRET_ACCESS_KEY – AWS secret key. Access and secret key variables 
