@@ -143,6 +143,7 @@ Install aws-shelltools within python3 virtual environment::
   Install aws-shelltools package
   
   (py36) $ cd  
+  (py36) $ pip install https://github.com/ucopacme/aws-orgs/archive/master.zip
   (py36) $ pip install https://github.com/ucopacme/aws-shelltools/archive/master.zip 
   (py36) $ pip list | grep aws-shelltools
   
