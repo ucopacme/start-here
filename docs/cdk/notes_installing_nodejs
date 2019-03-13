@@ -1,0 +1,106 @@
+________________________________________________________________________________
+2/20/2019
+
+ 1049  dnf search nodejs
+ 1050  rpm -qa | grep nodejs
+ 1051  sudo dnf install nodejs
+ 1052  which npm
+ 1053  npm help
+
+agould@horus:~> node --version
+v6.12.0
+agould@horus:~> npm --version
+3.10.10
+
+
+these are old.  I should install direct from nodejs repo.
+
+
+________________________________________________________________________________
+
+agould@horus:~/development/nodejs> curl -sL https://rpm.nodesource.com/setup_11.x > node_setup.sh
+agould@horus:~/development/nodejs> sudo bash node_setup.sh 
+
+## Installing the NodeSource Node.js 11.x repo...
+
+
+## Inspecting system...
+
++ rpm -q --whatprovides redhat-release || rpm -q --whatprovides centos-release || rpm -q --whatprovides cloudlinux-release || rpm -q --whatprovides sl-release
++ uname -m
+
+## You don't appear to be running a supported version of Enterprise Linux. Please contact NodeSource at https://github.com/nodesource/distributions/issues if you think this is incorrect or would like your architecture to be considered for support. Include your 'distribution package' name: generic-release-25-1.noarch. 
+
+FAIL!
+
+
+________________________________________________________________________________
+
+trying now with nvm...
+
+https://medium.com/@ramsondon/running-nodejs-8-x-on-fedora-26-e062d06cf0dd
+
+
+agould@horus:~/development/nodejs> wget https://raw.githubusercontent.com/creationix/nvm/master/install.sh
+agould@horus:~/development/nodejs> mv install.sh nvm_install.sh
+
+agould@horus:~/development/nodejs> sudo bash nvm_install.sh 
+=> Downloading nvm from git to '/root/.nvm'
+=> Cloning into '/root/.nvm'...
+remote: Enumerating objects: 278, done.
+remote: Counting objects: 100% (278/278), done.
+remote: Compressing objects: 100% (249/249), done.
+remote: Total 278 (delta 33), reused 93 (delta 16), pack-reused 0
+Receiving objects: 100% (278/278), 142.36 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (33/33), done.
+Checking connectivity... done.
+=> Compressing and cleaning up git repository
+
+=> Appending nvm source string to /root/.bashrc
+=> Appending bash_completion source string to /root/.bashrc
+=> Close and reopen your terminal to start using nvm or run the following to use it now:
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+looks like I should have done this install as normal user.  try again
+
+ 1151  bash nvm_install.sh 
+ 1152  cat ~/.bashrc 
+ 1153  which nvm
+ 1154  . ~/.bashrc 
+ 1155  which nvm
+
+sweet!
+
+
+agould@horus:~/development/nodejs> nvm ls-remote | tail
+        v11.1.0
+        v11.2.0
+        v11.3.0
+        v11.4.0
+        v11.5.0
+        v11.6.0
+        v11.7.0
+        v11.8.0
+        v11.9.0
+       v11.10.0
+
+agould@horus:~/development/nodejs> nvm install stable
+Downloading and installing node v11.10.0...
+Downloading https://nodejs.org/dist/v11.10.0/node-v11.10.0-linux-x64.tar.xz...
+######################################################################## 100.0%
+Computing checksum with sha256sum
+Checksums matched!
+Now using node v11.10.0 (npm v6.7.0)
+Creating default alias: default -> stable (-> v11.10.0)
+agould@horus:~/development/nodejs> nvm current
+v11.10.0
+agould@horus:~/development/nodejs> nvm use system
+Now using system version of node: v6.12.0 (npm v3.10.10)
+agould@horus:~/development/nodejs> nvm use stable
+Now using node v11.10.0 (npm v6.7.0)
+
+
