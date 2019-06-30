@@ -63,6 +63,9 @@ test the install::
   Installing collected packages: orgcrawler
   Successfully installed orgcrawler-1.0.0a1
 
+Alternate version::
+
+  > pip install -i https://test.pypi.org/simple/ --no-deps orgcrawler==1.0.0a4.dev0
 
 Now publish to real pypi.  create an account at https://pypi.org::
 
@@ -111,10 +114,15 @@ Additional labels for pre-release and build metadata are available as extensions
 See the faq for more details.
 
 
-PEP 440
-*******
+PEP 440 - Public version identifiers
+************************************
 
 https://www.python.org/dev/peps/pep-0440/
+
+The canonical public version identifiers MUST comply with the following scheme::
+
+  [N!]N(.N)*[{a|b|rc}N][.postN][.devN]
+
 
 Within a numeric release, the following suffixes are permitted and MUST be ordered as shown::
 
@@ -226,28 +234,44 @@ Now upload to real PyPI::
 
 ---
 
+
+
+Using .pypirc
+-------------
+
+I have a lot to learn about this, but I got twine upload to testpypi to work::
+
+  (testenv) agould@horus:~> cat .pypirc
+  [distutils]
+  index-servers=
+      pypi
+      testpypi
+  
+  [pypi]
+  repository: https://pypi.org/legacy/
+  username: agould
+  
+  [testpypi]
+  repository: https://test.pypi.org/legacy/
+  username: agould
+  
+  (testenv) agould@horus:~> python setup.py sdist bdist_wheel
+  (testenv) agould@horus:~> twine upload --repository testpypi dist/*
+
+
 need vetting
 ------------
 
-
-https://packaging.python.org/en/latest/distributing.html
-https://github.com/pypa/sampleproject
-https://pypi.python.org/pypi?%3Aaction=list_classifiers
-
-https://github.com/kennethreitz/setup.py/blob/master/setup.py
-
-https://packaging.python.org/tutorials/installing-packages/
-
 https://setuptools.readthedocs.io/en/latest/
 
-# very nice
+https://packaging.python.org/en/latest/distributing.html
+https://packaging.python.org/tutorials/installing-packages/
+https://packaging.python.org/guides/using-testpypi/
+
+https://pypi.python.org/pypi?%3Aaction=list_classifiers
+
+
+https://github.com/pypa/sampleproject
+https://github.com/kennethreitz/setup.py/blob/master/setup.py
 https://blog.ionelmc.ro/2014/05/25/python-packaging/#the-structure
-
-
-
-setup.py explain links:
------------------------
-
-http://peak.telecommunity.com/DevCenter/setuptools
 https://manikos.github.io/how-pythons-import-machinery-works
-
