@@ -197,6 +197,19 @@ syncronize your local repo contents with your remote::
 Read the Docs Setup
 *******************
 
+Edit your sphinx conf.py file.
+
+set your ``index.rst`` as the ``master_doc``::
+
+  master_doc = 'index'
+
+set your sphinx theme to the ReadTheDocs theme (optional)::
+
+  #html_theme = 'alabaster'
+  import sphinx_rtd_theme
+  html_theme = 'sphinx_rtd_theme'
+
+
 Open the Read the Docs website at https://readthedocs.org and open the **login**
 dialogue.  Select **Sign in with GitHub**.
 
