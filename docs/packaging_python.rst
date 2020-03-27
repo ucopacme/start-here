@@ -241,22 +241,22 @@ Using .pypirc
 
 I have a lot to learn about this, but I got twine upload to testpypi to work::
 
-  (testenv) agould@horus:~> cat .pypirc
+  ~> cat .pypirc
   [distutils]
   index-servers=
       pypi
       testpypi
   
   [pypi]
-  repository: https://pypi.org/legacy/
   username: agould
   
   [testpypi]
   repository: https://test.pypi.org/legacy/
   username: agould
   
-  (testenv) agould@horus:~> python setup.py sdist bdist_wheel
-  (testenv) agould@horus:~> twine upload --repository testpypi dist/*
+  orgcrawler> python setup.py sdist bdist_wheel
+  orgcrawler> twine upload --repository testpypi dist/*
+  orgcrawler> twine upload dist/*
 
 
 need vetting
